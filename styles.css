@@ -1,0 +1,70 @@
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Map Styles */
+.island {
+    fill: #10b981;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.island:hover {
+    fill: #34d399;
+    filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.6));
+}
+
+.island.selected {
+    fill: #f59e0b;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.8));
+}
+
+.map-text {
+    fill: white;
+    font-size: 13px;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom Styles untuk Diagram Tubuh */
+.body-diagram-container {
+    position: relative;
+}
+
+.word-card {
+    z-index: 10;
+    position: relative;
+}
+
+/* Custom Scrollbar untuk Peta (Biar estetik) */
+#map-scroll-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#map-scroll-container::-webkit-scrollbar-track {
+    background: rgba(186, 230, 253, 0.3);
+    border-radius: 8px;
+}
+
+#map-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.6);
+    border-radius: 8px;
+}
+
+#map-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.8);
+}
