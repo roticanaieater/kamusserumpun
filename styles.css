@@ -1,3 +1,102 @@
+/* Subtle Batik/Songket Pattern Placeholder */
+        
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Map Specific Styles */
+        .language-region {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .language-region path {
+            fill: #1b242d;
+            transition: fill 0.3s ease;
+        }
+
+        .dark .language-region path {
+            fill: #2d3748;
+            stroke: #1b242d;
+        }
+
+        .language-region:hover path {
+            fill: #475569;
+        }
+
+        .language-region.selected path {
+            fill: #eab308 !important;
+            filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.5));
+        }
+
+        #map-scroll-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        #map-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #map-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.5);
+            border-radius: 10px;
+        }
+
+        .custom-select {
+            appearance: none;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding-right: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+
+        .custom-select option {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dark .custom-select option {
+            background-color: #1b242d;
+            color: #fff;
+        }
+
+        .icon-svg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+
+        /* Flags styling */
+        .flag-icon {
+            width: 28px;
+            height: 20px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: inline-block;
+        }
+
 .fade-in {
     animation: fadeIn 0.4s ease-in-out;
 }
