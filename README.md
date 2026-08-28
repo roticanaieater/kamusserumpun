@@ -17,3 +17,4 @@ As the entry of words here are mostly based on published literary materials rath
 ## ✨ Features
 
 * **Interactive map:** Languages are primarily picked through the map that shows the areas where each language is spoken. Users are able to zoom in or enlarge the map to see small details better.
+* **Dialects Availability:** Visitors not only can compare the standard version of the language to another. As languages are naturally divided into dialects whereas each dialect can differ each other despite being in the same language root, users can choose which dialect to compare.
