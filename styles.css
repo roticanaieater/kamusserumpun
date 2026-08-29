@@ -17,30 +17,7 @@
             }
         }
 
-        /* Map Specific Styles */
-        .language-region {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .language-region path {
-            fill: #1b242d;
-            transition: fill 0.3s ease;
-        }
-
-        .dark .language-region path {
-            fill: #2d3748;
-            stroke: #1b242d;
-        }
-
-        .language-region:hover path {
-            fill: #475569;
-        }
-
-        .language-region.selected path {
-            fill: #eab308 !important;
-            filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.5));
-        }
+        
 
         #map-scroll-container::-webkit-scrollbar {
             width: 8px;
