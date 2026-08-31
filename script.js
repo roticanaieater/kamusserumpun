@@ -14,6 +14,8 @@ const icons = {
     jawa: getFlag('jawa.svg'),
     bali: getFlag('bali.svg'),
     sunda: getFlag('sunda.svg'),
+    sunbanten: getFlag('sunbanten.svg'),
+    banten: getFlag('banten.svg'),
     sasak: getFlag('sasak.svg'),
     betawi: getFlag('betawi.svg'),
     madura: getFlag('madura.svg'),
@@ -83,10 +85,14 @@ const languageMap = {
                 name: 'Tegal',
                 file: 'bahasa/jav_tegal.json'
             },
+            'ngawi': {
+                name: 'Ngawi',
+                file: 'bahasa/jav_ngawi.json'
+            },
         }
     },
     'sun': {
-        name: 'Sunda',
+        name: 'Sunda Jawa Barat',
         icon: icons.sunda,
         dialects: {
             'standard': {
@@ -96,13 +102,31 @@ const languageMap = {
                     'lemes': { name: 'Lemes', file: 'bahasa/sun_lemes.json' }
                 }
             },
-            'tangerang': {
-                name: 'Tangerang',
-                file: 'bahasa/sun_tangerang.json'
+            'bogorkarawang': {
+                name: 'Bogor-Karawang',
+                file: 'bahasa/sun_bogorkarawang.json'
             },
             'indramayu': {
                 name: 'Indramayu',
                 file: 'bahasa/sun_indramayu.json'
+            },
+        }
+    },
+    'sunbanten': {
+        name: 'Sunda Banten',
+        icon: icons.sunbanten,
+        dialects: {
+            'standard': {
+                name: 'Sérang',
+                file: 'bahasa/sun_banten.json'
+            },
+            'tangerang': {
+                name: 'Tangerang',
+                file: 'bahasa/sun_tangerang.json'
+            },
+            'pandeglang': {
+                name: 'Pandéglang',
+                file: 'bahasa/sun_pandeglang.json'
             },
             'baduy': {
                 name: 'Baduy',
