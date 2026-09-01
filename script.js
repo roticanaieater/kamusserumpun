@@ -118,7 +118,7 @@ const languageMap = {
         dialects: {
             'standard': {
                 name: 'Sérang',
-                file: 'bahasa/sun_banten.json'
+                file: 'bahasa/sun_serang.json'
             },
             'tangerang': {
                 name: 'Tangerang',
