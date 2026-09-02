@@ -19,6 +19,7 @@ const icons = {
     sasak: getFlag('sasak.svg'),
     betawi: getFlag('betawi.svg'),
     madura: getFlag('madura.svg'),
+    sumbawa: getFlag('sumbawa.svg'),
     bima: getFlag('bima.svg'),
     karo: getFlag('karo.svg'),
     simalungun: getFlag('simalungun.svg'),
@@ -96,7 +97,7 @@ const languageMap = {
         icon: icons.sunda,
         dialects: {
             'standard': {
-                name: 'Baku',
+                name: 'Baku (Priangan)',
                 registers: {
                     'loma': { name: 'Loma', file: 'bahasa/sun_loma.json' },
                     'lemes': { name: 'Lemes', file: 'bahasa/sun_lemes.json' }
@@ -104,7 +105,8 @@ const languageMap = {
             },
             'bogorkarawang': {
                 name: 'Bogor-Karawang',
-                file: 'bahasa/sun_bogorkarawang.json'
+                file: 'bahasa/sun_bogorkarawang.json',
+                biblio: '<strong>Hardja Sudjana, Ahmad S., Ahmad Marzuki, Ahmad Abas, dan Rukmanta Jayawiguna.</strong> (1983). <em>Struktur Bahasa Sunda Pesisir Utara Jawa Barat</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.',
             },
             'indramayu': {
                 name: 'Indramayu',
@@ -118,19 +120,23 @@ const languageMap = {
         dialects: {
             'standard': {
                 name: 'Sérang',
-                file: 'bahasa/sun_serang.json'
+                file: 'bahasa/sun_serang.json',
+                biblio: '',
             },
             'tangerang': {
                 name: 'Tangerang',
-                file: 'bahasa/sun_tangerang.json'
+                file: 'bahasa/sun_tangerang.json',
+                biblio: '<strong>Sobarna, C.; Wartini, T.; Ampera, T.<strong> (2022). <em>Bahasa dan Sastra Daerah di Kabupaten Tangerang</em>. Tangerang: Pusat Studi Sunda dan Pemerintah Kabupaten Tangerang.',
             },
             'pandeglang': {
                 name: 'Pandéglang',
-                file: 'bahasa/sun_pandeglang.json'
+                file: 'bahasa/sun_pandeglang.json',
+                biblio: '<strong>Sujana, Dadan.</strong> (Penyunting). (2015). <em>Bahasa Sunda Banten di Pandéglang</em>. Dinas Kebudayaan dan Pariwisata Provinsi Banten dan Banten Heritage, Serang dan Pandeglang.',
             },
             'baduy': {
                 name: 'Baduy',
-                file: 'bahasa/sun_baduy.json'
+                file: 'bahasa/sun_baduy.json',
+                biblio: '',
             },
         }
     },
@@ -139,6 +145,7 @@ const languageMap = {
     'ban': { name: 'Bali', icon: icons.bali, registers: { 'andap': { name: 'Andap', file: 'bahasa/ban_andap.json' }, 'alus': { name: 'Alus', file: 'bahasa/ban_alus.json' } }, },
     'banten': { name: 'Jawa Sérang', icon: icons.banten, file: 'bahasa/banten.json' },
     'sas': { name: 'Sasak', icon: icons.sasak, file: 'bahasa/sas.json' },
+    'smw': { name: 'Sumbawa', icon: icons.sumbawa, file: 'bahasa/smw.json' },
     'bhp': { name: 'Bima', icon: icons.bima, file: 'bahasa/bhp.json' },
     'ace': { name: 'Aceh', icon: icons.aceh, file: 'bahasa/ace.json' },
     'gay': { name: 'Gayo', icon: icons.gayo, file: 'bahasa/gay.json' },
@@ -155,11 +162,19 @@ const languageMap = {
         dialects: {
             'standard': { name: 'Deli', file: 'bahasa/deli.json' },
             'langkat': { name: 'Langkat', file: 'bahasa/langkat.json' },
-            'tamiang': { name: 'Tamiang', file: 'bahasa/Tamiang.json' },
+            'tamiang': { name: 'Tamiang', file: 'bahasa/tamiang.json' },
         }
     },
     'asahan': { name: 'Melayu Asahan-Panai', icon: icons.asahan, file: 'bahasa/asahan.json' },
-    'riau': { name: 'Melayu Riau', icon: icons.riau, file: 'bahasa/rokan.json' },
+    'riau': {
+        name: 'Melayu Riau',
+        icon: icons.riau,
+        dialects: {
+            'standard': { name: 'Siak', file: 'bahasa/siak.json' },
+            'rokan': { name: 'Rokan', file: 'bahasa/rokan.json' },
+            'kuansing': { name: 'Kuantan Singingi', file: 'bahasa/kuansing.json' },
+        }
+    },
     'zlm': { name: 'Melayu Kelantan', icon: icons.kelantan, file: 'bahasa/zlm.json' },
     'terengganu': {
         name: 'Melayu Terengganu',
@@ -175,12 +190,12 @@ const languageMap = {
         dialects: {
             'standard': { name: 'Umum', file: 'bahasa/pahang.json' },
             'timur': { name: 'Timur (Kuantan-Gambang)', file: 'bahasa/pahangtimur.json' },
-            'hilir': { name: 'Hilir', file: 'bahasa/pahanghilir.json' },
-            'tengah': { name: 'Tengah (Temerloh)', file: 'bahasa/pahangtengah.json' },
+            'hilir': { name: 'Hilir (Pekan-Rompin)', file: 'bahasa/pahanghilir.json' },
+            'tengah': { name: 'Tengah (Temerloh-Teriang)', file: 'bahasa/pahangtengah.json' },
             'barat': { name: 'Barat (Raub)', file: 'bahasa/pahangbarat.json' },
-            'hulu': { name: 'Hulu', file: 'bahasa/pahanghulu.json' },
+            'hulu': { name: 'Hulu (Lipis)', file: 'bahasa/pahanghulu.json' },
             'tembeling': { name: 'Hulu Tembeling', file: 'bahasa/pahangtembeling.json' },
-            'tawar': { name: 'Pulau Tawar', file: 'bahasa/pahangptawar.json' },
+            'jerantut': { name: 'Jerantut', file: 'bahasa/pahangjerantut.json' },
             'bentong': { name: 'Bentong', file: 'bahasa/pahangbentong.json' },
             'rompin': { name: 'Hulu Rompin', file: 'bahasa/pahangrompin.json' },
         }
@@ -196,15 +211,14 @@ const languageMap = {
         }
     },
     'zmi': { name: 'Melayu Negeri Sembilan', icon: icons.negeri, file: 'bahasa/zmi.json' },
-    'jax': { name: 'Melayu Jambi', icon: icons.jambi, file: 'bahasa/jax.json' },
     'jax': {
         name: 'Melayu Jambi',
         icon: icons.jambi,
         dialects: {
-            'standard': { name: 'Jambi Standard', file: 'bahasa/jax.json' },
+            'standard': { name: 'Umum', file: 'bahasa/jax.json' },
             'seberang': { name: 'Seberang', file: 'bahasa/jambi_seberang.json' },
             'anakdalam': { name: 'Anak Dalam', file: 'bahasa/jambi_anakdalam.json' },
-            'tanjabtimur': { name: 'Tanjung Jabung Timur', file: 'bahasa/jambi_tanjabtimur.json' },
+            'kualajambi': { name: 'Kuala Jambi', file: 'bahasa/jambi_kuala.json', biblio: `<strong>Mira, Gustia, M. Jul Adwin, Rahmadina, & Fitria.</strong> (2025). <em>Kamus Melayu Jambi Dialek Teluk Majelis-Indonesia</em>. Balai Bahasa Provinsi Jambi, Jambi.` },
         }
     },
     'mfb': { name: 'Melayu Bangka', icon: icons.placeholder, file: 'bahasa/mfb.json' },
@@ -297,10 +311,17 @@ const languageMap = {
             'selayar': { name: 'Selayar', file: 'bahasa/mak_selayar.json' }
         }
     },
-    'bug': { name: 'Bugis', icon: icons.bugis, file: 'bahasa/bug.json' },
+    'bug': { 
+        name: 'Bugis', 
+        icon: icons.bugis, 
+        dialects: {
+            'standard': { name: 'Baku', file: 'bahasa/bug.json' },
+            'sawitto': { name: 'Sawitto', file: 'bahasa/bug_sawitto.json' }
+        }
+    },
     'mdr': { name: 'Mandar', icon: icons.placeholder, file: 'bahasa/mdr.json', biblio: '<strong>Muthalib, Abdul.</strong> (1977). <em>Kamus Bahasa Mandar - Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
     'lew': { name: 'Kaili Ledo', icon: icons.placeholder, file: 'bahasa/lew.json' },
-    'sle': { name: 'Saluan', icon: icons.placeholder, file: 'bahasa/sle.json' },
+    'loe': { name: 'Saluan', icon: icons.placeholder, file: 'bahasa/loe.json' },
     'lbw': { name: 'Tolaki', icon: icons.tolaki, file: 'bahasa/lbw.json', biblio: '<strong>Muthalib, Abdul, Alimuddin D.P., Husen Chalik, & Arsamid.</strong> (1985). <em>Kamus Tolaki – Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
     'mnb': { name: 'Muna', icon: icons.muna, file: 'bahasa/mnb.json' },
     'gor': { name: 'Gorontalo', icon: icons.gorontalo, file: 'bahasa/gor.json' },
