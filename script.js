@@ -311,9 +311,9 @@ const languageMap = {
             'selayar': { name: 'Selayar', file: 'bahasa/mak_selayar.json' }
         }
     },
-    'bug': { 
-        name: 'Bugis', 
-        icon: icons.bugis, 
+    'bug': {
+        name: 'Bugis',
+        icon: icons.bugis,
         dialects: {
             'standard': { name: 'Baku', file: 'bahasa/bug.json' },
             'sawitto': { name: 'Sawitto', file: 'bahasa/bug_sawitto.json' }
@@ -373,6 +373,17 @@ window.onload = () => {
     initMapInteractive();
     updateBibliography();
     renderEmptyDictionary();
+
+    // Ekstrak nama bahasa untuk Autocomplete
+    availableLanguageNames = Object.values(languageMap).map(lang => lang.name).sort();
+
+    // Menutup modal jika area gelap (backdrop) di-klik
+    const modalOverlay = document.getElementById('report-modal-overlay');
+    modalOverlay.addEventListener('click', function (e) {
+        if (e.target === modalOverlay) {
+            toggleReportModal(false);
+        }
+    });
 };
 
 // --- 3. UI CONTROLS ---
@@ -896,4 +907,115 @@ function generatePopulatedTableView(dataMap) {
                     </table>
                 </div>
             </div>`;
+}
+
+// --- 6. LOGIKA PELAPORAN KESALAHAN (DENGAN CENTERING SEMPURNA) ---
+function toggleReportModal(show) {
+    const modalOverlay = document.getElementById('report-modal-overlay');
+    const modalContent = document.getElementById('report-modal-content');
+
+    if (show) {
+        // Hapus 'hidden' dan aktifkan 'flex' agar items-center & justify-center berjalan
+        modalOverlay.classList.remove('hidden');
+        modalOverlay.classList.add('flex');
+
+        // Animasi fade-in dan scale-in
+        setTimeout(() => {
+            modalOverlay.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    } else {
+        modalOverlay.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+            modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidden');
+            document.getElementById('report-form').reset();
+            document.getElementById('lang-autocomplete-list').classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = '';
+    }
+}
+
+// Fitur Autocomplete Bahasa
+function handleLangAutocomplete(val) {
+    const list = document.getElementById('lang-autocomplete-list');
+    list.innerHTML = '';
+
+    if (!val || val.length === 0) {
+        list.classList.add('hidden');
+        return;
+    }
+
+    const filtered = availableLanguageNames.filter(lang => lang.toLowerCase().startsWith(val.toLowerCase()));
+
+    if (filtered.length > 0) {
+        filtered.forEach(lang => {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer text-sm text-slate-800 dark:text-slate-200 transition-colors border-b border-slate-100 dark:border-slate-700 last:border-0';
+            const matchText = lang.substring(0, val.length);
+            const remText = lang.substring(val.length);
+            li.innerHTML = `<strong>${matchText}</strong>${remText}`;
+
+            li.onclick = () => {
+                document.getElementById('report-lang').value = lang;
+                list.classList.add('hidden');
+            };
+            list.appendChild(li);
+        });
+        list.classList.remove('hidden');
+    } else {
+        list.classList.add('hidden');
+    }
+}
+
+document.addEventListener('click', function (e) {
+    const input = document.getElementById('report-lang');
+    const list = document.getElementById('lang-autocomplete-list');
+    if (e.target !== input && e.target !== list && !list.contains(e.target)) {
+        list.classList.add('hidden');
+    }
+});
+
+function showToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.innerText = message;
+
+    toast.classList.remove('opacity-0', '-translate-y-full');
+    toast.classList.add('translate-y-0');
+
+    setTimeout(() => {
+        toast.classList.remove('translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-full');
+    }, 3500);
+}
+
+function submitReport(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('report-name').value;
+    const email = document.getElementById('report-email').value;
+    const lang = document.getElementById('report-lang').value;
+    const desc = document.getElementById('report-desc').value;
+
+    const targetEmail = "#";
+    const subject = encodeURIComponent(`Laporan Kesalahan Bahasa: ${lang}`);
+    const bodyText = `Halo Ruang Serumpun,\n\nSaya ingin melaporkan kesalahan / memberikan masukan terkait bahasa pada sistem.\n\n` +
+        `---\n` +
+        `Nama Pengunjung: ${name}\n` +
+        `Email: ${email}\n` +
+        `Bahasa yang Diperbaiki: ${lang}\n\n` +
+        `Keterangan/Koreksi:\n${desc}\n` +
+        `---\n\nTerima kasih.`;
+    const body = encodeURIComponent(bodyText);
+
+    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+
+    toggleReportModal(false);
+
+    setTimeout(() => {
+        showToast("Laporan berhasil disiapkan! Silakan kirim melalui aplikasi email Anda.");
+    }, 500);
 }
