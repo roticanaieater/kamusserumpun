@@ -175,7 +175,7 @@ const languageMap = {
             'kuansing': { name: 'Kuantan Singingi', file: 'bahasa/kuansing.json' },
         }
     },
-    'zlm': { name: 'Melayu Kelantan', icon: icons.kelantan, file: 'bahasa/zlm.json' },
+    'mfa': { name: 'Melayu Kelantan', icon: icons.kelantan, file: 'bahasa/mfa.json' },
     'terengganu': {
         name: 'Melayu Terengganu',
         icon: icons.terengganu,
@@ -386,7 +386,19 @@ window.onload = () => {
     });
 };
 
-// --- 3. UI CONTROLS ---
+// --- 3. UI CONTROLS & LEGEND ---
+function toggleLegendCollapse() {
+            const list = document.getElementById('legend-list');
+            const icon = document.getElementById('legend-collapse-icon');
+            if (list.classList.contains('hidden')) {
+                list.classList.remove('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                list.classList.add('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
 function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
     const isDark = document.documentElement.classList.contains('dark');
