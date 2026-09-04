@@ -16,6 +16,13 @@ In current development, the entry of words will be limited to the 207 Swadesh li
 
 ---
 
+<div align="center">
+  <h1 align="center">💻 Programs & Languages used</h1>
+  <img src="https://skillicons.dev/icons?i=vscode,html,css,js,svg,tailwind&theme=dark" />
+</div>
+
+---
+
 ## ✨ Features
 
 * **Interactive map:** Languages are primarily picked through the map that shows the areas where each language is spoken. Users are able to zoom in or enlarge the map to see small details better.
