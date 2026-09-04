@@ -82,10 +82,8 @@
                 <span id="current-lang-icon"
                     class="w-5 h-3.5 flex overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]">
                     <!-- Default ID Flag -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-full h-full object-cover">
-                        <path fill="#fff" d="M0 0h640v480H0z" />
-                        <path fill="#ce1126" d="M0 0h640v240H0z" />
-                    </svg>
+                    <img src="./flag/indonesia.svg" alt="Indonesia" class="w-full h-full object-cover"
+                                onerror="this.style.display='none'">
                 </span>
                 <span id="current-lang-text">Indonesia</span>
                 <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
@@ -98,11 +96,8 @@
                     <button onclick="changeUILang('id')"
                         class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
                         <span class="w-5 h-3.5 flex overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"
-                                class="w-full h-full object-cover">
-                                <path fill="#fff" d="M0 0h640v480H0z" />
-                                <path fill="#ce1126" d="M0 0h640v240H0z" />
-                            </svg>
+                            <img src="./flag/indonesia.svg" alt="Indonesia" class="w-full h-full object-cover"
+                                onerror="this.style.display='none'">
                         </span>
                         Indonesia
                     </button>
@@ -129,6 +124,30 @@
                             </svg>
                         </span>
                         English
+                    </button>
+                    <button onclick="changeUILang('jw')"
+                        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
+                        <span class="w-5 h-3.5 flex overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]">
+                            <img src="./flag/jawa.svg" alt="Jawa" class="w-full h-full object-cover"
+                                onerror="this.style.display='none'">
+                        </span>
+                        ꦗꦮ
+                    </button>
+                    <button onclick="changeUILang('su')"
+                        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
+                        <span class="w-5 h-3.5 flex overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]">
+                            <img src="./flag/sunda.svg" alt="Sunda" class="w-full h-full object-cover"
+                                onerror="this.style.display='none'">
+                        </span>
+                        ᮞᮥᮔ᮪ᮓ
+                    </button>
+                    <button onclick="changeUILang('tb')"
+                        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
+                        <span class="w-5 h-3.5 flex overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]">
+                            <img src="./flag/toba.svg" alt="Toba" class="w-full h-full object-cover"
+                                onerror="this.style.display='none'">
+                        </span>
+                        ᯖᯬᯅ
                     </button>
                 </div>
             </div>
@@ -214,7 +233,7 @@
             <aside id="legend-box"
                 class="w-full lg:w-72 xl:w-[290px] shrink-0 bg-serumpun-dark text-white rounded-2xl lg:rounded-3xl p-4 sm:p-5 lg:p-4 shadow-2xl border border-slate-800 lg:sticky lg:top-4 transition-all">
                 <div class="flex items-center justify-between pb-2.5 border-b border-slate-800 mb-3.5">
-                    <h2 class="text-lg md:text-xl font-bold font-sans tracking-tight text-white flex items-center gap-2">
+                    <h2 id="legend-title" class="text-lg md:text-xl font-bold font-sans tracking-tight text-white flex items-center gap-2">
                         <span>Rumpun Bahasa:</span>
                     </h2>
                     <!-- Toggle untuk tampilan layar kecil/ponsel -->
@@ -234,7 +253,7 @@
                             <div class="w-1/3 h-full" style="background-color: #34cd73;" title="Melayik Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #a8ffcb;" title="Melayik Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Melayik-Chamik</span>
+                        <span id="legend-green" class="text-sm font-bold text-white tracking-wide">Melayu-Chamik</span>
                     </div>
 
                     <!-- 2. Sumatra non-Melayu (dengan subketerangan) -->
@@ -246,8 +265,8 @@
                             <div class="w-1/3 h-full" style="background-color: #fcaeb3;" title="Sumatra Non-Melayu Terang"></div>
                         </div>
                         <div>
-                            <span class="text-sm font-bold text-white tracking-wide block leading-tight">Sumatra non-Melayu</span>
-                            <span class="text-[11px] text-slate-300 italic font-normal block leading-tight mt-0.5">Batak, Nias-Mentawai, Lampungik, Rejang</span>
+                            <span id="legend-red" class="text-sm font-bold text-white tracking-wide block leading-tight">Sumatra non-Melayu</span>
+                            <span id="legend-desc" class="text-[11px] text-slate-300 italic font-normal block leading-tight mt-0.5">Batak, Nias, Mentawai, Lampungik, Rejang</span>
                         </div>
                     </div>
 
@@ -259,7 +278,7 @@
                             <div class="w-1/3 h-full" style="background-color: #0055ff;" title="Nusa Tenggara Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #00d8ff;" title="Nusa Tenggara Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Nusa Tenggara</span>
+                        <span id="legend-blue" class="text-sm font-bold text-white tracking-wide">Nusa Tenggara</span>
                     </div>
 
                     <!-- 4. Pulau Jawa -->
@@ -270,7 +289,7 @@
                             <div class="w-1/3 h-full" style="background-color: #de8900;" title="Jawa Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #fffa00;" title="Jawa Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Pulau Jawa</span>
+                        <span id="legend-yellow" class="text-sm font-bold text-white tracking-wide">Pulau Jawa</span>
                     </div>
 
                     <!-- 5. Dayak -->
@@ -281,7 +300,7 @@
                             <div class="w-1/3 h-full" style="background-color: #ff5e00;" title="Dayak Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #ffd6b8;" title="Dayak Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Dayak</span>
+                        <span id="legend-orange" class="text-sm font-bold text-white tracking-wide">Dayak</span>
                     </div>
 
                     <!-- 6. Celebic (Sulawesi) -->
@@ -292,7 +311,7 @@
                             <div class="w-1/3 h-full" style="background-color: #9933ff;" title="Celebic Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #ebd4ff;" title="Celebic Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Celebic (Sulawesi)</span>
+                        <span id="legend-purple" class="text-sm font-bold text-white tracking-wide">Celebic (Sulawesi)</span>
                     </div>
 
                     <!-- 7. Filipina-Sabah -->
@@ -303,7 +322,7 @@
                             <div class="w-1/3 h-full" style="background-color: #e60088;" title="Filipina-Sabah Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #ffc7e6;" title="Filipina-Sabah Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Filipina-Sabah</span>
+                        <span id="legend-pink" class="text-sm font-bold text-white tracking-wide">Filipina-Sabah</span>
                     </div>
 
                     <!-- 8. Maluku-Timor -->
@@ -314,7 +333,7 @@
                             <div class="w-1/3 h-full" style="background-color: #00b4b4;" title="Maluku-Timor Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #bdf7f7;" title="Maluku-Timor Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Maluku-Timor</span>
+                        <span id="legend-tosca" class="text-sm font-bold text-white tracking-wide">Maluku-Timor</span>
                     </div>
 
                     <!-- 9. Halmahera-Papua -->
@@ -325,7 +344,7 @@
                             <div class="w-1/3 h-full" style="background-color: #64748b;" title="Halmahera-Papua Sedang"></div>
                             <div class="w-1/3 h-full" style="background-color: #e2e8f0;" title="Halmahera-Papua Terang"></div>
                         </div>
-                        <span class="text-sm font-bold text-white tracking-wide">Halmahera-Papua</span>
+                        <span id="legend-grey" class="text-sm font-bold text-white tracking-wide">Halmahera-Papua</span>
                     </div>
                 </div>
             </aside>

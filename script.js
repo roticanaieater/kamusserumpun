@@ -78,18 +78,9 @@ const languageMap = {
                     'krama': { name: 'Krama', file: 'bahasa/jav_krama.json' }
                 }
             },
-            'cirebon': {
-                name: 'Cirebon',
-                file: 'bahasa/jav_cirebon.json'
-            },
-            'tegal': {
-                name: 'Tegal',
-                file: 'bahasa/jav_tegal.json'
-            },
-            'ngawi': {
-                name: 'Ngawi',
-                file: 'bahasa/jav_ngawi.json'
-            },
+            'cirebon': { name: 'Cirebon', file: 'bahasa/jav_cirebon.json' },
+            'tegal': { name: 'Tegal', file: 'bahasa/jav_tegal.json' },
+            'ngawi': { name: 'Ngawi', file: 'bahasa/jav_ngawi.json' }
         }
     },
     'sun': {
@@ -106,43 +97,32 @@ const languageMap = {
             'bogorkarawang': {
                 name: 'Bogor-Karawang',
                 file: 'bahasa/sun_bogorkarawang.json',
-                biblio: '<strong>Hardja Sudjana, Ahmad S., Ahmad Marzuki, Ahmad Abas, dan Rukmanta Jayawiguna.</strong> (1983). <em>Struktur Bahasa Sunda Pesisir Utara Jawa Barat</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.',
+                biblio: '<strong>Hardja Sudjana, Ahmad S., Ahmad Marzuki, Ahmad Abas, dan Rukmanta Jayawiguna.</strong> (1983). <em>Struktur Bahasa Sunda Pesisir Utara Jawa Barat</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.'
             },
-            'indramayu': {
-                name: 'Indramayu',
-                file: 'bahasa/sun_indramayu.json'
-            },
+            'indramayu': { name: 'Indramayu', file: 'bahasa/sun_indramayu.json' }
         }
     },
     'sunbanten': {
         name: 'Sunda Banten',
         icon: icons.sunbanten,
         dialects: {
-            'standard': {
-                name: 'Sérang',
-                file: 'bahasa/sun_serang.json',
-                biblio: '',
-            },
+            'standard': { name: 'Sérang', file: 'bahasa/sun_serang.json' },
             'tangerang': {
                 name: 'Tangerang',
                 file: 'bahasa/sun_tangerang.json',
-                biblio: '<strong>Sobarna, C.; Wartini, T.; Ampera, T.<strong> (2022). <em>Bahasa dan Sastra Daerah di Kabupaten Tangerang</em>. Tangerang: Pusat Studi Sunda dan Pemerintah Kabupaten Tangerang.',
+                biblio: '<strong>Sobarna, C.; Wartini, T.; Ampera, T.</strong> (2022). <em>Bahasa dan Sastra Daerah di Kabupaten Tangerang</em>. Tangerang: Pusat Studi Sunda dan Pemerintah Kabupaten Tangerang.'
             },
             'pandeglang': {
                 name: 'Pandéglang',
                 file: 'bahasa/sun_pandeglang.json',
-                biblio: '<strong>Sujana, Dadan.</strong> (Penyunting). (2015). <em>Bahasa Sunda Banten di Pandéglang</em>. Dinas Kebudayaan dan Pariwisata Provinsi Banten dan Banten Heritage, Serang dan Pandeglang.',
+                biblio: '<strong>Sujana, Dadan.</strong> (Penyunting). (2015). <em>Bahasa Sunda Banten di Pandéglang</em>. Dinas Kebudayaan dan Pariwisata Provinsi Banten dan Banten Heritage, Serang dan Pandeglang.'
             },
-            'baduy': {
-                name: 'Baduy',
-                file: 'bahasa/sun_baduy.json',
-                biblio: '',
-            },
+            'baduy': { name: 'Baduy', file: 'bahasa/sun_baduy.json' }
         }
     },
     'bew': { name: 'Betawi', icon: icons.betawi, file: 'bahasa/bew.json' },
     'mad': { name: 'Madura', icon: icons.madura, file: 'bahasa/mad.json' },
-    'ban': { name: 'Bali', icon: icons.bali, registers: { 'andap': { name: 'Andap', file: 'bahasa/ban_andap.json' }, 'alus': { name: 'Alus', file: 'bahasa/ban_alus.json' } }, },
+    'ban': { name: 'Bali', icon: icons.bali, registers: { 'andap': { name: 'Andap', file: 'bahasa/ban_andap.json' }, 'alus': { name: 'Alus', file: 'bahasa/ban_alus.json' } } },
     'banten': { name: 'Jawa Sérang', icon: icons.banten, file: 'bahasa/banten.json' },
     'sas': { name: 'Sasak', icon: icons.sasak, file: 'bahasa/sas.json' },
     'smw': { name: 'Sumbawa', icon: icons.sumbawa, file: 'bahasa/smw.json' },
@@ -155,14 +135,14 @@ const languageMap = {
     'btp': { name: 'Batak Pakpak', icon: icons.pakpak, file: 'bahasa/btp.json' },
     'bbc': { name: 'Batak Toba', icon: icons.toba, file: 'bahasa/bbc.json' },
     'akb': { name: 'Batak Angkola-Mandailing', icon: icons.angkola, file: 'bahasa/akb.json' },
-    'kvr': { name: 'Kerinci', icon: icons.kerinci, file: 'bahasa/kvr.json' },
+    'kvr': { name: 'Kerinci', icon: icons.kerinci, file: 'bahasa/kvr.json', biblio:'<strong>Usman, A. Hakim.</strong> (1985). <em>Kamus Umum Kerinci-Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
     'deli': {
         name: 'Melayu Sumatera Timur',
         icon: icons.sumtim,
         dialects: {
             'standard': { name: 'Deli', file: 'bahasa/deli.json' },
             'langkat': { name: 'Langkat', file: 'bahasa/langkat.json' },
-            'tamiang': { name: 'Tamiang', file: 'bahasa/tamiang.json' },
+            'tamiang': { name: 'Tamiang', file: 'bahasa/tamiang.json' }
         }
     },
     'asahan': { name: 'Melayu Asahan-Panai', icon: icons.asahan, file: 'bahasa/asahan.json' },
@@ -172,7 +152,7 @@ const languageMap = {
         dialects: {
             'standard': { name: 'Siak', file: 'bahasa/siak.json' },
             'rokan': { name: 'Rokan', file: 'bahasa/rokan.json' },
-            'kuansing': { name: 'Kuantan Singingi', file: 'bahasa/kuansing.json' },
+            'kuansing': { name: 'Kuantan Singingi', file: 'bahasa/kuansing.json' }
         }
     },
     'mfa': { name: 'Melayu Kelantan', icon: icons.kelantan, file: 'bahasa/mfa.json' },
@@ -197,7 +177,7 @@ const languageMap = {
             'tembeling': { name: 'Hulu Tembeling', file: 'bahasa/pahangtembeling.json' },
             'jerantut': { name: 'Jerantut', file: 'bahasa/pahangjerantut.json' },
             'bentong': { name: 'Bentong', file: 'bahasa/pahangbentong.json' },
-            'rompin': { name: 'Hulu Rompin', file: 'bahasa/pahangrompin.json' },
+            'rompin': { name: 'Hulu Rompin', file: 'bahasa/pahangrompin.json' }
         }
     },
     'perak': { name: 'Melayu Perak', icon: icons.perak, file: 'bahasa/perak.json' },
@@ -207,7 +187,7 @@ const languageMap = {
         dialects: {
             'standard': { name: 'Kedah', file: 'bahasa/meo.json' },
             'perlis': { name: 'Perlis', file: 'bahasa/perlis.json' },
-            'pinang': { name: 'Pulau Pinang', file: 'bahasa/pinang.json' },
+            'pinang': { name: 'Pulau Pinang', file: 'bahasa/pinang.json' }
         }
     },
     'zmi': { name: 'Melayu Negeri Sembilan', icon: icons.negeri, file: 'bahasa/zmi.json' },
@@ -218,18 +198,15 @@ const languageMap = {
             'standard': { name: 'Umum', file: 'bahasa/jax.json' },
             'seberang': { name: 'Seberang', file: 'bahasa/jambi_seberang.json' },
             'anakdalam': { name: 'Anak Dalam', file: 'bahasa/jambi_anakdalam.json' },
-            'kualajambi': { name: 'Kuala Jambi', file: 'bahasa/jambi_kuala.json', biblio: `<strong>Mira, Gustia, M. Jul Adwin, Rahmadina, & Fitria.</strong> (2025). <em>Kamus Melayu Jambi Dialek Teluk Majelis-Indonesia</em>. Balai Bahasa Provinsi Jambi, Jambi.` },
+            'kualajambi': { name: 'Kuala Jambi', file: 'bahasa/jambi_kuala.json', biblio: `<strong>Mira, Gustia, M. Jul Adwin, Rahmadina, & Fitria.</strong> (2025). <em>Kamus Melayu Jambi Dialek Teluk Majelis-Indonesia</em>. Balai Bahasa Provinsi Jambi, Jambi.` }
         }
     },
-    'mfb': { name: 'Melayu Bangka', icon: icons.placeholder, file: 'bahasa/mfb.json' },
+    'mfb': { name: 'Melayu Bangka', icon: icons.placeholder, file: 'bahasa/mfb.json', biblio: `<strong>Khaliffitriansyah, Feri Pristiawan, Prima Hariyanto, Dwi Oktarina, Dewi Septi Kurniawati, dan Edwin Dwijaya.</strong> (2018). <em>Kamus Bahasa Melayu Bangka - Indonesia</em>. Kantor Bahasa Kepulauan Bangka Belitung, Kementerian Pendidikan dan Kebudayaan, Pangkalpinang.` },
     'mui': {
         name: 'Melayu Musi',
         icon: icons.musi,
         dialects: {
-            'standard': {
-                name: 'Musi',
-                file: 'bahasa/mui.json'
-            },
+            'standard': { name: 'Musi', file: 'bahasa/mui.json' },
             'palembang': {
                 name: 'Palembang',
                 registers: {
@@ -237,17 +214,14 @@ const languageMap = {
                     'bebaso': { name: 'Bebaso', file: 'bahasa/palembang_bebaso.json' }
                 }
             },
-            'lematang': {
-                name: 'Lematang',
-                file: 'bahasa/lmt.json'
-            },
+            'lematang': { name: 'Lematang', file: 'bahasa/lmt.json' }
         }
     },
     'pse': {
         name: 'Melayu Tengah',
         icon: icons.placeholder,
         dialects: {
-            'standard': { name: 'Besemah', file: 'bahasa/pse.json' },
+            'standard': { name: 'Besemah', file: 'bahasa/pse.json' }
         }
     },
     'rej': { name: 'Rejang', icon: icons.placeholder, file: 'bahasa/rej.json' },
@@ -275,21 +249,21 @@ const languageMap = {
             'kimaragang': { name: 'Kimaragang', file: 'bahasa/kqr.json' },
             'klias': { name: 'Sungai Klias', file: 'bahasa/kqt.json' },
             'kinabatangan': { name: 'Labuk-Kinabatangan', file: 'bahasa/dtb.json' },
-            'lotud': { name: 'Lotud', file: 'bahasa/dtr.json' },
+            'lotud': { name: 'Lotud', file: 'bahasa/dtr.json' }
         }
     },
     'kayan': {
         name: 'Dayak Kayan',
         icon: icons.placeholder,
         dialects: {
-            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' },
+            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' }
         }
     },
     'tid': {
         name: 'Tidong',
         icon: icons.tidong,
         dialects: {
-            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' },
+            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' }
         }
     },
     'murut': {
@@ -297,7 +271,7 @@ const languageMap = {
         icon: icons.placeholder,
         dialects: {
             'standard': { name: 'Tahol', file: 'bahasa/mvv.json' },
-            'timugon': { name: 'Timugon', file: 'bahasa/tih.json' },
+            'timugon': { name: 'Timugon', file: 'bahasa/tih.json' }
         }
     },
     'bjn': { name: 'Banjar', icon: icons.banjar, dialects: { 'standard': { name: 'Kuala', file: 'bahasa/bjn_kuala.json' }, 'hulu': { name: 'Hulu', file: 'bahasa/bjn_hulu.json' } } },
@@ -326,7 +300,7 @@ const languageMap = {
     'mnb': { name: 'Muna', icon: icons.muna, file: 'bahasa/mnb.json' },
     'gor': { name: 'Gorontalo', icon: icons.gorontalo, file: 'bahasa/gor.json' },
     'tld': { name: 'Talaud', icon: icons.placeholder, file: 'bahasa/tld.json', biblio: '<strong>Balai Bahasa Sulawesi Utara.</strong> (2018). <em>Kamus Dwibahasa Bahasa Talaud-Bahasa Indonesia</em>. Balai Bahasa Sulawesi Utara, Manado.' },
-    'mqy': { name: 'Manggarai', icon: icons.placeholder, file: 'bahasa/mqy.json', biblio: '<strong>Lon, Yohanes S., Inosensius Sutam, Fransiska Widyawati, Bonefasius Rampung, Eliterius Sennen, Stanislaus Tatul, Bernadeta Dudet, Andreas Alang, Maria Jelamut, Fransiskus Sawan, & Yohanes Mariano Dangku.</strong> (2018). <em>Kamus Bahasa Indonesia – Manggarai</em>. PT Kanisius & LPPM STKIP Santu Paulus Ruteng, Yogyakarta & Ruteng.' },
+    'mqy': { name: 'Manggarai', icon: icons.placeholder, file: 'bahasa/mqy.json', biblio: '<strong>Lon, Yohanes S., dkk.</strong> (2018). <em>Kamus Bahasa Indonesia – Manggarai</em>. PT Kanisius & LPPM STKIP Santu Paulus Ruteng.' },
     'aoz': { name: 'Uab Meto', icon: icons.placeholder, file: 'bahasa/aoz.json' },
     'bhw': { name: 'Biak', icon: icons.placeholder, file: 'bahasa/bhw.json' },
     'kei': { name: 'Kei', icon: icons.placeholder, file: 'bahasa/kei.json' }
@@ -339,65 +313,223 @@ const swadeshCore = {
     kerja: ['Makan', 'Minum', 'Tidur', 'Jalan']
 };
 
-const translationsUI = {
-    id: {
-        emptyMsg: "Silakan pilih bahasa dari peta untuk memulai.",
-        dialek: "Pilih Dialek",
-        tingkat: "Tingkat Bahasa",
-        menunggu: "Menunggu pilihan bahasa..."
-    },
-    my: {
-        emptyMsg: "Sila pilih bahasa dari peta untuk bermula.",
-        dialek: "Pilih Dialek",
-        tingkat: "Tahap Bahasa",
-        menunggu: "Menunggu pilihan bahasa..."
-    },
-    en: {
-        emptyMsg: "Please select languages from the map to start.",
-        dialek: "Select Dialect",
-        tingkat: "Language Register",
-        menunggu: "Waiting for language selection..."
-    }
-};
-
+// --- DATA I18N DINAMIS & KAMUS LENGKAP MANDIRI ---
+let uiTranslationsCache = null;
 let currentLangUI = 'id';
 let viewMode = 'swadesh'; // 'swadesh' | 'list'
 let selectedLangs = [];
 let activeDialects = {};
 let activeRegisters = {};
-let languageCache = {}; // Cache JSON
+let languageCache = {}; // Cache JSON kata
+let availableLanguageNames = [];
+
+// Kamus lengkap bawaan (Fallback & Offline-First) agar tetap berjalan di protokol file:// tanpa web server
+const FALLBACK_UI_TRANSLATIONS = {
+    "id": {
+        "current-lang-text": "Indonesia",
+        "ui-desc": "Jelajahi perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.",
+        "ui-map-hint": "Klik wilayah di peta untuk memilih bahasa (Maks 3 bahasa)",
+        "ui-title-compare": "Perbandingan Bahasa Pilihan",
+        "btn-swadesh": "Kamus Swadesh",
+        "btn-list": "Daftar Kosa Kata",
+        "ui-btn-source": "Lihat Sumber",
+        "btn-compare": "Bandingkan",
+        "ui-title-bib": "Sumber & Bibliografi",
+        "ui-desc-bib": "Kumpulan data linguistik dan kosa kata swadesh pada website ini merujuk pada literatur akademis dan penelitian serumpunologi berikut:",
+        "emptyMsg": "Silakan pilih bahasa dari peta untuk memulai.",
+        "dialek": "Pilih Dialek",
+        "tingkat": "Tingkat Bahasa",
+        "menunggu": "Menunggu pilihan bahasa...",
+        "tidak_tersedia": "- Tidak tersedia -",
+        "kategori_warna": "🎨 Spektrum Warna",
+        "kategori_tubuh": "🧍 Anatomi Tubuh",
+        "kategori_hewan": "🐕 Fauna",
+        "kategori_kerja": "🏃 Kata Kerja Dasar",
+        "header_kata_dasar": "Kata Dasar",
+        "terpilih_label": "Terpilih:",
+        "max_lang_alert": "Maksimal memilih 3 bahasa."
+    },
+    "my": {
+        "current-lang-text": "Melayu",
+        "ui-desc": "Terokai perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.",
+        "ui-map-hint": "Klik wilayah pada peta untuk memilih bahasa (Maks 3 bahasa)",
+        "ui-title-compare": "Perbandingan Bahasa Pilihan",
+        "btn-swadesh": "Kamus Swadesh",
+        "btn-list": "Senarai Kosa Kata",
+        "ui-btn-source": "Lihat Sumber",
+        "btn-compare": "Bandingkan",
+        "ui-title-bib": "Sumber & Bibliografi",
+        "ui-desc-bib": "Kumpulan data linguistik dan kosa kata swadesh pada laman web ini merujuk kepada literatur akademik dan penyelidikan serumpunologi berikut:",
+        "emptyMsg": "Sila pilih bahasa dari peta untuk bermula.",
+        "dialek": "Pilih Dialek",
+        "tingkat": "Tahap Bahasa",
+        "menunggu": "Menunggu pilihan bahasa...",
+        "tidak_tersedia": "- Tidak tersedia -",
+        "kategori_warna": "🎨 Spektrum Warna",
+        "kategori_tubuh": "🧍 Anatomi Tubuh",
+        "kategori_hewan": "🐕 Fauna",
+        "kategori_kerja": "🏃 Kata Kerja Asas",
+        "header_kata_dasar": "Kata Dasar",
+        "terpilih_label": "Dipilih:",
+        "max_lang_alert": "Maksimum memilih 3 bahasa sahaja."
+    },
+    "en": {
+        "current-lang-text": "English",
+        "ui-desc": "Explore the vocabulary comparison of Austronesian languages in the Archipelago.",
+        "ui-map-hint": "Click regions on the map to select languages (Max 3 languages)",
+        "ui-title-compare": "Comparison of Selected Languages",
+        "btn-swadesh": "Swadesh Dictionary",
+        "btn-list": "Vocabulary List",
+        "ui-btn-source": "View Sources",
+        "btn-compare": "Compare",
+        "ui-title-bib": "Sources & Bibliography",
+        "ui-desc-bib": "The collection of linguistic data and Swadesh vocabulary on this website refers to the following academic literature and cognate research:",
+        "emptyMsg": "Please select languages from the map to start.",
+        "dialek": "Select Dialect",
+        "tingkat": "Language Register",
+        "menunggu": "Waiting for language selection...",
+        "tidak_tersedia": "- Not available -",
+        "kategori_warna": "🎨 Color Spectrum",
+        "kategori_tubuh": "🧍 Body Anatomy",
+        "kategori_hewan": "🐕 Fauna",
+        "kategori_kerja": "🏃 Basic Verbs",
+        "header_kata_dasar": "Root Word",
+        "terpilih_label": "Selected:",
+        "max_lang_alert": "Maximum 3 languages can be selected."
+    },
+    "jw": {
+        "current-lang-text": "ꦗꦮ",
+        "ui-desc": "ꦗꦺꦭꦗꦲꦶꦧꦤ꧀ꦢ꧀ꦲꦶꦤ꧀ꦒꦤ꧀ꦠꦺꦩ꧀ꦧꦸꦤ꧀ꦒ꧀ꦧꦱ​ꦧꦱꦄꦲꦸꦱ꧀ꦠ꧀ꦫꦺꦴꦤꦺꦱꦶꦪꦲꦶꦤ꧀ꦒ꧀ꦤꦸꦱ꧀ꦮꦤ꧀ꦠꦫ꧉​",
+        "ui-map-hint": "ꦏ꧀ꦭꦶꦏ꧀ꦮꦶꦭꦪꦃꦲꦶꦁꦥꦺꦠꦏꦁꦒꦺꦩꦶꦭꦶꦃꦧꦱ(ꦩꦏ꧀ꦱꦶꦩꦭ꧀꧇꧓꧇ꦧꦱ)",
+        "ui-title-compare": "ꦧꦤ꧀ꦢ꧀ꦲꦶꦤ꧀ꦒꦤ꧀ꦧꦱꦥꦶꦤꦶꦭꦶꦃ",
+        "btn-swadesh": "ꦏꦩꦸꦱ꧀ꦱ꧀ꦮꦢꦺꦱ꧀ꦃ",
+        "btn-list": "ꦢꦥ꦳꧀ꦠꦂꦠꦺꦩ꧀ꦧꦸꦤ꧀ꦒ꧀",
+        "ui-btn-source": "ꦢꦼꦊꦁꦱꦸꦩ꧀ꦧꦼꦂ",
+        "btn-compare": "ꦧꦤ꧀ꦢ꧀ꦲꦶꦤ꧀ꦒꦏꦺꦤ꧀",
+        "ui-title-bib": "ꦱꦸꦩ꧀ꦧꦼꦂꦭꦤ꧀ꦧꦶꦧ꧀ꦭꦶꦪꦺꦴꦒꦿꦥ꦳ꦶ",
+        "ui-desc-bib": "ꦏꦸꦩ꧀ꦥꦸꦭꦤ꧀ꦝꦠꦭꦶꦔꦸꦮꦶꦱ꧀ꦠꦶꦏ꧀ꦭꦤ꧀ꦠꦺꦩ꧀ꦧꦸꦁꦱ꧀ꦮꦢꦺꦱ꧀ꦲꦶꦁꦱꦶꦠꦸꦱ꧀ꦲꦶꦏꦶꦚꦸꦮꦸꦤ꧀ꦫꦸꦗꦸꦏꦤ꧀ꦱꦏꦥꦤ꧀ꦭꦶꦠꦺꦤ꧀ꦲꦏꦢꦼꦩꦶꦱ꧀ꦭꦤ꧀ꦥꦱꦶꦤꦲꦺꦴꦤ꧀ꦱꦼꦫꦸꦩ꧀ꦥꦸꦤ꧀ꦲꦶꦏꦶ:",
+        "emptyMsg": "ꦱꦸꦩꦤ꧀ꦒ꧀ꦒꦩꦶꦭꦶꦃꦧꦱꦱꦏꦶꦤ꧀ꦒ꧀ꦥꦺꦠꦏꦤ꧀ꦒ꧀ꦒꦺꦩꦶꦮꦶꦠꦶ꧉​",
+        "dialek": "ꦥꦶꦭꦶꦃꦢ꧀ꦲꦶꦪꦭꦺꦏ꧀",
+        "tingkat": "ꦠꦠꦏ꧀ꦫꦩ",
+        "menunggu": "ꦤ꧀ꦒꦤ꧀ꦠꦺꦴꦱꦏꦺꦤ꧀ꦥꦶꦭꦶꦲꦤ꧀ꦧꦱ...",
+        "tidak_tersedia": "- ꦩꦺꦴꦠꦺꦤ꧀ꦮꦺꦴꦤ꧀ꦠꦺꦤ꧀ -",
+        "kategori_warna": "🎨 ꦮꦼꦂꦤ",
+        "kategori_tubuh": "🧍 ꦥꦺꦫꦁꦔꦤꦶꦁꦄꦮꦏ꧀",
+        "kategori_hewan": "🐕 ꦱꦠꦺꦴꦏꦺꦮꦤ꧀",
+        "kategori_kerja": "🏃 ꦠꦺꦩ꧀ꦧꦸꦁꦏꦿꦶꦪ",
+        "header_kata_dasar": "ꦠꦺꦩ꧀ꦧꦸꦁꦮꦶꦒꦠꦶ",
+        "terpilih_label": "ꦏꦥꦶꦭꦶꦃ:",
+        "max_lang_alert": "ꦩꦏ꧀ꦱꦶꦩꦭ꧀ꦩꦶꦭꦶꦃ꧇꧓꧇ꦧꦱ꧉"
+    },
+    "su": {
+        "current-lang-text": "ᮞᮥᮔ᮪ᮓ",
+        "ui-desc": "ᮍᮜᮨᮑᮨᮕᮔ᮪ ᮊᮧᮞᮊᮨᮎᮕ᮪ ᮘᮘᮔ᮪ᮓᮤᮍᮔ᮪ ᮘᮞ ᮃᮅᮞ᮪ᮒᮢᮧᮔᮨᮞᮤᮃ ᮓᮤ ᮊᮕᮥᮜᮧᮃᮔ᮪ ᮄᮔ᮪ᮓᮧᮔᮦᮞᮤᮃ.",
+        "ui-map-hint": "Klik wewengkon dina peta pikeun milih basa (Maks 3 basa)",
+        "ui-title-compare": "ᮘᮘᮔ᮪ᮓᮤᮍᮔ᮪ ᮘᮞ ᮃᮔᮥ ᮓᮤᮕᮤᮜᮤᮂ",
+        "btn-swadesh": "ᮊᮙᮥᮞ᮪ ᮞ᮪ᮝᮓᮦᮞ᮪ᮂ",
+        "btn-list": "ᮓᮕ᮪ᮒᮁ ᮊᮧᮞᮊᮨᮎᮕ᮪",
+        "ui-btn-source": "Tingali Sumber",
+        "btn-compare": "ᮘᮔ᮪ᮓᮤᮀᮊᮩᮔ᮪",
+        "ui-title-bib": "ᮞᮥᮙ᮪ᮘᮨᮁ & ᮘᮤᮘᮣᮤᮇᮌᮢᮖᮤ",
+        "ui-desc-bib": "Kumpulan data linguistik sareng kosakecap swadesh dina ieu ramatloka dumasar kana literatur akademis sareng panalungtikan serumpunologi ieu:",
+        "emptyMsg": "ᮙᮀᮌ ᮕᮤᮜᮤᮂ ᮘᮞ ᮒᮤᮔ ᮕᮨᮒ ᮊᮀᮌᮧ ᮍᮙᮤᮙᮤᮒᮤᮃᮔ᮪.",
+        "dialek": "ᮕᮤᮜᮤᮂ ᮓᮤᮃᮜᮦᮊ᮪",
+        "tingkat": "ᮒᮤᮀᮊᮒ᮪ ᮘᮞ",
+        "menunggu": "ᮍᮔ᮪ᮒᮧᮞᮔ᮪ ᮕᮤᮜᮤᮠᮔ᮪ ᮘᮞ...",
+        "tidak_tersedia": "- Teu aya -",
+        "kategori_warna": "🎨 Warna",
+        "kategori_tubuh": "🧍 Babagian Awak",
+        "kategori_hewan": "🐕 Sato",
+        "kategori_kerja": "🏃 Kecap Pagawéan",
+        "header_kata_dasar": "Kecap Dasar",
+        "terpilih_label": "Kacangking:",
+        "max_lang_alert": "Maksimal milih 3 basa."
+    },
+    "tb": {
+        "current-lang-text": "ᯖᯬᯅ",
+        "ui-desc": "Jalajahi pambandingon hata-hata Austronesia di Nusantara.",
+        "ui-map-hint": "Klik luat di peta laho mamillit sahata (Maks 3 sahata)",
+        "ui-title-compare": "Pambandingon Hata Na Tarpillit",
+        "btn-swadesh": "Kamus Swadesh",
+        "btn-list": "Daftar Hata",
+        "ui-btn-source": "Ida Sumber",
+        "btn-compare": "Pabandinhon",
+        "ui-title-bib": "Sumber & Bibliografi",
+        "ui-desc-bib": "Kumpulan data linguistik dohot hata swadesh di situs on marojahan tu literatur akademis dohot panalitian serumpunologi on:",
+        "emptyMsg": "Pillit ma sahata sian peta laho mamungka.",
+        "dialek": "Pillit Dialek",
+        "tingkat": "Tingkat Hata",
+        "menunggu": "Paimahon pamilliton hata...",
+        "tidak_tersedia": "- Ndang adong -",
+        "kategori_warna": "🎨 Warna",
+        "kategori_tubuh": "🧍 Pamatang",
+        "kategori_hewan": "🐕 Binatang",
+        "kategori_kerja": "🏃 Hata Karejo",
+        "header_kata_dasar": "Hata Dasar",
+        "terpilih_label": "Tarpillit:",
+        "max_lang_alert": "Maksimal mamillit 3 sahata."
+    }
+};
+
+// Muat kamus terjemahan UI secara asinkron dengan deteksi kedua varian nama file & proteksi fallback
+async function loadUITranslations() {
+    if (uiTranslationsCache) return uiTranslationsCache;
+
+    const fileNamesToTry = ['ui_translations.json', 'ui_translation.json'];
+    for (const fileName of fileNamesToTry) {
+        try {
+            const response = await fetch(fileName);
+            if (response.ok) {
+                uiTranslationsCache = await response.json();
+                return uiTranslationsCache;
+            }
+        } catch (e) {
+            // Lanjut mencoba file berikutnya atau gunakan fallback
+        }
+    }
+
+    // Jika gagal fetch (misalnya dibuka langsung via file:/// atau offline), gunakan fallback internal lengkap
+    uiTranslationsCache = FALLBACK_UI_TRANSLATIONS;
+    return uiTranslationsCache;
+}
+
+// Helper untuk mengambil string teks terjemahan berdasarkan kunci
+function t(key, lang = currentLangUI) {
+    const all = uiTranslationsCache || FALLBACK_UI_TRANSLATIONS;
+    const currentDict = all[lang] || all['id'] || {};
+    return currentDict[key] || key;
+}
 
 // --- 2. INISIALISASI ---
-window.onload = () => {
+window.onload = async () => {
     lucide.createIcons();
     initMapInteractive();
+    await loadUITranslations();
     updateBibliography();
     renderEmptyDictionary();
 
-    // Ekstrak nama bahasa untuk Autocomplete
     availableLanguageNames = Object.values(languageMap).map(lang => lang.name).sort();
 
-    // Menutup modal jika area gelap (backdrop) di-klik
     const modalOverlay = document.getElementById('report-modal-overlay');
-    modalOverlay.addEventListener('click', function (e) {
-        if (e.target === modalOverlay) {
-            toggleReportModal(false);
-        }
-    });
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function (e) {
+            if (e.target === modalOverlay) toggleReportModal(false);
+        });
+    }
 };
 
-// --- 3. UI CONTROLS & LEGEND ---
+// --- 3. UI CONTROLS & I18N ENGINE (Otomatis & Efisien) ---
 function toggleLegendCollapse() {
-            const list = document.getElementById('legend-list');
-            const icon = document.getElementById('legend-collapse-icon');
-            if (list.classList.contains('hidden')) {
-                list.classList.remove('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                list.classList.add('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            }
-        }
+    const list = document.getElementById('legend-list');
+    const icon = document.getElementById('legend-collapse-icon');
+    if (list.classList.contains('hidden')) {
+        list.classList.remove('hidden');
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        list.classList.add('hidden');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
 
 function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
@@ -406,19 +538,59 @@ function toggleDarkMode() {
     lucide.createIcons();
 }
 
-function changeUILang(lang) {
-    currentLangUI = lang;
-    const t = translationsUI[lang];
+// Pemetaan ikon bendera untuk dropdown navigasi atas
+const navFlagMap = {
+    'id': `<img src="./flag/indonesia.svg" alt="Indonesia" class="w-full h-full object-cover" onerror="this.style.display='none'">`,
+    'my': `<img src="./flag/malaysia.svg" alt="Malaysia" class="w-full h-full object-cover" onerror="this.style.display='none'">`,
+    'en': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-full h-full object-cover"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="M75 0l244 181L562 0h78v62L400 241l240 178v61h-80L320 301 79 480H0v-60l239-178L0 64V0h75z"/><path fill="#C8102E" d="M424 281l216 159v40L369 281h55zm-184 20L24 480H0v-24l240-176v-20zM640 0v3L391 191v-20L598 0h42zM0 0l239 176h-60L0 42V0z"/><path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/><path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/></svg>`,
+    'jw': `<img src="./flag/jawa.svg" alt="Jawa" class="w-full h-full object-cover" onerror="this.style.display='none'">`,
+    'su': `<img src="./flag/sunda.svg" alt="Sunda" class="w-full h-full object-cover" onerror="this.style.display='none'">`,
+    'tb': `<img src="./flag/toba.svg" alt="Toba" class="w-full h-full object-cover" onerror="this.style.display='none'">`
+};
 
-    if (lang === 'id') { document.getElementById('current-lang-text').innerText = 'Indonesia'; document.getElementById('ui-desc').innerText = 'Jelajahi perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.'; }
-    if (lang === 'my') { document.getElementById('current-lang-text').innerText = 'Melayu'; document.getElementById('ui-desc').innerText = 'Terokai perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.'; }
-    if (lang === 'en') { document.getElementById('current-lang-text').innerText = 'English'; document.getElementById('ui-desc').innerText = 'Explore the vocabulary comparison of Austronesian languages in the Archipelago.'; }
+function updateNavFlag(lang) {
+    const flagContainer = document.getElementById('current-lang-icon');
+    if (flagContainer && navFlagMap[lang]) {
+        flagContainer.innerHTML = navFlagMap[lang];
+    }
+}
+
+/**
+ * Menerapkan bahasa UI secara deklaratif tanpa getElementById manual berulang-ulang
+ */
+async function changeUILang(lang) {
+    currentLangUI = lang;
+    const allTranslations = await loadUITranslations();
+    const dictionary = allTranslations[lang] || allTranslations['id'] || {};
+
+    // 1. Perbarui semua elemen dengan atribut [data-i18n]
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dictionary[key]) el.textContent = dictionary[key];
+    });
+
+    // 2. Perbarui elemen berdasarkan ID (backward compatibility dengan markup HTML yang ada)
+    for (const [key, text] of Object.entries(dictionary)) {
+        const el = document.getElementById(key);
+        if (el && !el.hasAttribute('data-i18n')) {
+            el.textContent = text;
+        }
+    }
+
+    // 3. Perbarui ikon bendera pada dropdown navbar
+    updateNavFlag(lang);
+
+    // 4. Render ulang elemen yang dinamis
+    updateDropdownsUI();
+    updateStickyBar();
 
     if (selectedLangs.length === 0) {
         renderEmptyDictionary();
     } else {
         fetchAndRenderDictionary();
     }
+
+    lucide.createIcons();
 }
 
 function scrollToSource() {
@@ -490,10 +662,23 @@ function resetZoom() {
 function initMapInteractive() {
     const scrollContainer = document.getElementById('map-scroll-container');
     let isDown = false, startX, startY, scrollLeft, scrollTop;
-    scrollContainer.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - scrollContainer.offsetLeft; startY = e.pageY - scrollContainer.offsetTop; scrollLeft = scrollContainer.scrollLeft; scrollTop = scrollContainer.scrollTop; });
+    scrollContainer.addEventListener('mousedown', (e) => { 
+        isDown = true; 
+        startX = e.pageX - scrollContainer.offsetLeft; 
+        startY = e.pageY - scrollContainer.offsetTop; 
+        scrollLeft = scrollContainer.scrollLeft; 
+        scrollTop = scrollContainer.scrollTop; 
+    });
     scrollContainer.addEventListener('mouseleave', () => isDown = false);
     scrollContainer.addEventListener('mouseup', () => isDown = false);
-    scrollContainer.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - scrollContainer.offsetLeft; const y = e.pageY - scrollContainer.offsetTop; scrollContainer.scrollLeft = scrollLeft - (x - startX); scrollContainer.scrollTop = scrollTop - (y - startY); });
+    scrollContainer.addEventListener('mousemove', (e) => { 
+        if (!isDown) return; 
+        e.preventDefault(); 
+        const x = e.pageX - scrollContainer.offsetLeft; 
+        const y = e.pageY - scrollContainer.offsetTop; 
+        scrollContainer.scrollLeft = scrollLeft - (x - startX); 
+        scrollContainer.scrollTop = scrollTop - (y - startY); 
+    });
 
     const tooltip = document.getElementById('map-tooltip');
     const tooltipIcon = document.getElementById('tooltip-icon');
@@ -508,7 +693,10 @@ function initMapInteractive() {
                 tooltip.classList.remove('hidden', 'opacity-0');
             }
         });
-        region.addEventListener('mousemove', (e) => { tooltip.style.left = e.clientX + 'px'; tooltip.style.top = e.clientY + 'px'; });
+        region.addEventListener('mousemove', (e) => { 
+            tooltip.style.left = e.clientX + 'px'; 
+            tooltip.style.top = e.clientY + 'px'; 
+        });
         region.addEventListener('mouseleave', () => tooltip.classList.add('hidden', 'opacity-0'));
     });
 }
@@ -524,7 +712,7 @@ function toggleLanguage(langCode) {
         delete activeRegisters[langCode];
     } else {
         if (selectedLangs.length >= 3) {
-            alert("Maksimal memilih 3 bahasa.");
+            alert(t('max_lang_alert'));
             return;
         }
         selectedLangs.push(langCode);
@@ -532,12 +720,9 @@ function toggleLanguage(langCode) {
 
         const langInfo = languageMap[langCode];
 
-        // Setup initial default logic (PENTING untuk mekanisme nested)
         if (langInfo.dialects) {
             const firstDialectKey = Object.keys(langInfo.dialects)[0];
             activeDialects[langCode] = firstDialectKey;
-
-            // Cek apakah dialek pertama ini punya register di dalamnya
             if (langInfo.dialects[firstDialectKey].registers) {
                 activeRegisters[langCode] = Object.keys(langInfo.dialects[firstDialectKey].registers)[0];
             }
@@ -566,12 +751,12 @@ function updateStickyBar() {
             const langInfo = languageMap[selectedLangs[i]];
             const iconSvg = langInfo.icon || icons.placeholder;
             slotsContainer.innerHTML += `
-                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-serumpun-yellow text-slate-900 flex items-center justify-center shadow-md relative group cursor-help icon-svg p-2 overflow-hidden border-2 border-white dark:border-slate-700">
-                            ${iconSvg}
-                            <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity font-semibold shadow-sm z-50">
-                                ${langInfo.name}
-                            </span>
-                        </div>`;
+                <div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-serumpun-yellow text-slate-900 flex items-center justify-center shadow-md relative group cursor-help icon-svg p-2 overflow-hidden border-2 border-white dark:border-slate-700">
+                    ${iconSvg}
+                    <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity font-semibold shadow-sm z-50">
+                        ${langInfo.name}
+                    </span>
+                </div>`;
         } else {
             slotsContainer.innerHTML += `<div class="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center text-slate-400 dark:text-slate-500 text-sm font-medium transition-colors">${i + 1}</div>`;
         }
@@ -581,16 +766,13 @@ function updateStickyBar() {
     document.getElementById('btn-compare').disabled = selectedLangs.length === 0;
 }
 
-// Handler khusus saat dialek diubah
 function handleDialectChange(langCode, dialectKey) {
     activeDialects[langCode] = dialectKey;
     const dialectMeta = languageMap[langCode].dialects[dialectKey];
 
-    // Cek apakah dialek yang baru dipilih memiliki tingkatan bahasa (register)
     if (dialectMeta && dialectMeta.registers) {
         activeRegisters[langCode] = Object.keys(dialectMeta.registers)[0];
     } else {
-        // Hapus register jika dialek ini tidak punya tingkatan
         delete activeRegisters[langCode];
     }
 
@@ -598,7 +780,6 @@ function handleDialectChange(langCode, dialectKey) {
     fetchAndRenderDictionary();
 }
 
-// Handler khusus saat register diubah
 function handleRegisterChange(langCode, registerKey) {
     activeRegisters[langCode] = registerKey;
     fetchAndRenderDictionary();
@@ -616,8 +797,8 @@ function updateDropdownsUI() {
     if (selectedLangs.length === 0) {
         dBox.classList.add('opacity-50', 'grayscale', 'pointer-events-none');
         rBox.classList.add('opacity-50', 'grayscale', 'pointer-events-none');
-        dOptions.innerHTML = `<span class="text-sm italic text-slate-400">Pilih bahasa...</span>`;
-        rOptions.innerHTML = `<span class="text-sm italic text-slate-700">Pilih bahasa...</span>`;
+        dOptions.innerHTML = `<span class="text-sm italic text-slate-400">${t('menunggu')}</span>`;
+        rOptions.innerHTML = `<span class="text-sm italic text-slate-700">${t('menunggu')}</span>`;
         return;
     }
 
@@ -628,7 +809,6 @@ function updateDropdownsUI() {
         const langInfo = languageMap[code];
         let activeDialectObj = null;
 
-        // Render Opsi Dialek
         if (langInfo && langInfo.dialects) {
             hasDialect = true;
             activeDialectObj = langInfo.dialects[activeDialects[code]];
@@ -640,7 +820,6 @@ function updateDropdownsUI() {
             dOptions.innerHTML += selectHTML;
         }
 
-        // Tentukan dari mana asal Register (apakah dari root bahasa, atau dari dalam dialek yang aktif)
         let registersObj = null;
         let baseName = langInfo.name;
 
@@ -648,10 +827,9 @@ function updateDropdownsUI() {
             registersObj = langInfo.registers;
         } else if (activeDialectObj && activeDialectObj.registers) {
             registersObj = activeDialectObj.registers;
-            baseName = activeDialectObj.name; // Tampilkan nama dialek di dropdown register
+            baseName = activeDialectObj.name;
         }
 
-        // Render Opsi Register
         if (registersObj) {
             hasRegister = true;
             let selectHTML = `<select class="custom-select bg-yellow-400 text-sm font-bold rounded px-2 py-1" onchange="handleRegisterChange('${code}', this.value)">`;
@@ -663,55 +841,54 @@ function updateDropdownsUI() {
         }
     });
 
-    // Toggle Box Appearance
     if (hasDialect) {
         dBox.classList.remove('opacity-50', 'grayscale', 'pointer-events-none');
     } else {
         dBox.classList.add('opacity-50', 'grayscale', 'pointer-events-none');
-        dOptions.innerHTML = `<span class="text-sm italic text-slate-400">- Tidak tersedia -</span>`;
+        dOptions.innerHTML = `<span class="text-sm italic text-slate-400">${t('tidak_tersedia')}</span>`;
     }
 
     if (hasRegister) {
         rBox.classList.remove('opacity-50', 'grayscale', 'pointer-events-none');
     } else {
         rBox.classList.add('opacity-50', 'grayscale', 'pointer-events-none');
-        rOptions.innerHTML = `<span class="text-sm italic text-slate-700">- Tidak tersedia -</span>`;
+        rOptions.innerHTML = `<span class="text-sm italic text-slate-700">${t('tidak_tersedia')}</span>`;
     }
 }
 
 function updateBibliography() {
     const bibList = document.getElementById('bibliography-list');
+    if (!bibList) return;
     bibList.innerHTML = '';
 
     bibliographyBase.forEach(bib => {
         bibList.innerHTML += `
-                <li class="flex items-start gap-3 fade-in">
-                    <i data-lucide="bookmark" class="w-4 h-4 mt-0.5 text-serumpun-yellow shrink-0"></i>
-                    <div class="text-slate-300">${bib}</div>
-                </li>`;
+            <li class="flex items-start gap-3 fade-in">
+                <i data-lucide="bookmark" class="w-4 h-4 mt-0.5 text-serumpun-yellow shrink-0"></i>
+                <div class="text-slate-300">${bib}</div>
+            </li>`;
     });
 
     selectedLangs.forEach(langCode => {
         const bib = languageMap[langCode].biblio;
         if (bib) {
             bibList.innerHTML += `
-                    <li class="flex items-start gap-3 fade-in">
-                        <i data-lucide="book-open" class="w-4 h-4 mt-0.5 text-blue-400 shrink-0"></i>
-                        <div class="text-slate-300">${bib} <span class="text-xs ml-2 text-slate-500">[Data: ${languageMap[langCode].name}]</span></div>
-                    </li>`;
+                <li class="flex items-start gap-3 fade-in">
+                    <i data-lucide="book-open" class="w-4 h-4 mt-0.5 text-blue-400 shrink-0"></i>
+                    <div class="text-slate-300">${bib} <span class="text-xs ml-2 text-slate-500">[Data: ${languageMap[langCode].name}]</span></div>
+                </li>`;
         }
     });
     lucide.createIcons();
 }
 
-// --- 5. LOGIKA DATA JSON & RENDERING ---
+// --- 5. LOGIKA DATA KOSA KATA & RENDERING ---
 async function loadLanguageJSON(langCode) {
     const langMeta = languageMap[langCode];
     let fetchKey = langCode;
     let filePath = langMeta.file;
     let currentLevel = langMeta;
 
-    // Cek Level 1: Dialek
     if (langMeta.dialects && activeDialects[langCode]) {
         const activeD = activeDialects[langCode];
         fetchKey += `_${activeD}`;
@@ -719,7 +896,6 @@ async function loadLanguageJSON(langCode) {
         if (currentLevel.file) filePath = currentLevel.file;
     }
 
-    // Cek Level 2: Register (Bisa di root, bisa di dalam dialek)
     if (currentLevel.registers && activeRegisters[langCode]) {
         const activeR = activeRegisters[langCode];
         fetchKey += `_${activeR}`;
@@ -736,11 +912,9 @@ async function loadLanguageJSON(langCode) {
         languageCache[fetchKey] = data;
         return data;
     } catch (error) {
-        // Fallback Mockup Data (Agar Preview Tetap Berjalan meskipun file tidak ada)
         const fallback = { words: {} };
         Object.values(swadeshCore).flat().forEach(w => {
             let fake = w.toLowerCase();
-            // Mockup sederhana membedakan tiap string berdasarkan key agar terlihat nyata
             fake = fake.replace(/[aeiou]/g, (match) => {
                 if (fetchKey.includes('palembang_bebaso')) return 'o';
                 if (fetchKey.includes('jav_krama')) return 'i';
@@ -755,50 +929,50 @@ async function loadLanguageJSON(langCode) {
 
 function renderEmptyDictionary() {
     const container = document.getElementById('dictionary-container');
-    const msg = translationsUI[currentLangUI].emptyMsg;
+    const msg = t('emptyMsg');
 
     if (viewMode === 'swadesh') {
         container.innerHTML = `
-                    <div class="text-center py-6 mb-4 opacity-70">
-                        <i data-lucide="map" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
-                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in opacity-50 grayscale">
-                        ${generateEmptyCardGroup('🎨 Spektrum Warna', swadeshCore.warna)}
-                        ${generateEmptyCardGroup('🧍 Anatomi Tubuh', swadeshCore.tubuh)}
-                        ${generateEmptyCardGroup('🐕 Fauna', swadeshCore.hewan)}
-                        ${generateEmptyCardGroup('🏃 Kata Kerja Dasar', swadeshCore.kerja)}
-                    </div>
-                `;
+            <div class="text-center py-6 mb-4 opacity-70">
+                <i data-lucide="map" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in opacity-50 grayscale">
+                ${generateEmptyCardGroup(t('kategori_warna'), swadeshCore.warna)}
+                ${generateEmptyCardGroup(t('kategori_tubuh'), swadeshCore.tubuh)}
+                ${generateEmptyCardGroup(t('kategori_hewan'), swadeshCore.hewan)}
+                ${generateEmptyCardGroup(t('kategori_kerja'), swadeshCore.kerja)}
+            </div>
+        `;
     } else {
         container.innerHTML = `
-                    <div class="text-center py-10 opacity-70">
-                        <i data-lucide="table" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
-                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
-                    </div>
-                    <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden fade-in opacity-30 grayscale h-64 flex items-center justify-center">
-                    </div>
-                `;
+            <div class="text-center py-10 opacity-70">
+                <i data-lucide="table" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
+            </div>
+            <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden fade-in opacity-30 grayscale h-64 flex items-center justify-center">
+            </div>
+        `;
     }
     lucide.createIcons();
 }
 
 function generateEmptyCardGroup(title, words) {
     let html = `
-            <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-                <h3 class="font-bold text-lg mb-4 text-slate-800 dark:text-white">${title}</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
+        <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+            <h3 class="font-bold text-lg mb-4 text-slate-800 dark:text-white">${title}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
 
     words.forEach(word => {
         html += `
-                <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-sm">
-                    <div class="bg-slate-100 dark:bg-slate-700 py-2 px-3 text-center border-b border-slate-200 dark:border-slate-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">${word}</span>
-                    </div>
-                    <div class="flex flex-col py-4 px-3 text-center text-xs text-slate-400 italic">
-                        ${translationsUI[currentLangUI].menunggu}
-                    </div>
-                </div>`;
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-sm">
+                <div class="bg-slate-100 dark:bg-slate-700 py-2 px-3 text-center border-b border-slate-200 dark:border-slate-700">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">${word}</span>
+                </div>
+                <div class="flex flex-col py-4 px-3 text-center text-xs text-slate-400 italic">
+                    ${t('menunggu')}
+                </div>
+            </div>`;
     });
 
     html += `</div></div>`;
@@ -816,13 +990,13 @@ async function fetchAndRenderDictionary() {
 
     if (viewMode === 'swadesh') {
         container.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
-                        ${generatePopulatedCardGroup('🎨 Spektrum Warna', swadeshCore.warna, dataMap)}
-                        ${generatePopulatedCardGroup('🧍 Anatomi Tubuh', swadeshCore.tubuh, dataMap)}
-                        ${generatePopulatedCardGroup('🐕 Fauna', swadeshCore.hewan, dataMap)}
-                        ${generatePopulatedCardGroup('🏃 Kata Kerja Dasar', swadeshCore.kerja, dataMap)}
-                    </div>
-                `;
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
+                ${generatePopulatedCardGroup(t('kategori_warna'), swadeshCore.warna, dataMap)}
+                ${generatePopulatedCardGroup(t('kategori_tubuh'), swadeshCore.tubuh, dataMap)}
+                ${generatePopulatedCardGroup(t('kategori_hewan'), swadeshCore.hewan, dataMap)}
+                ${generatePopulatedCardGroup(t('kategori_kerja'), swadeshCore.kerja, dataMap)}
+            </div>
+        `;
     } else {
         container.innerHTML = generatePopulatedTableView(dataMap);
     }
@@ -833,17 +1007,14 @@ function getLanguageDisplayName(langCode) {
     let displayName = langInfo.name;
     let currentLevel = langInfo;
 
-    // Cek tambahan nama Dialek
     if (activeDialects[langCode] && langInfo.dialects) {
         currentLevel = langInfo.dialects[activeDialects[langCode]];
         displayName = currentLevel.name;
     }
 
-    // Cek tambahan nama Register
     if (activeRegisters[langCode] && currentLevel.registers) {
         displayName += ` (${currentLevel.registers[activeRegisters[langCode]].name})`;
     } else if (activeRegisters[langCode] && langInfo.registers) {
-        // Fallback jika registernya ada di root
         displayName += ` (${langInfo.registers[activeRegisters[langCode]].name})`;
     }
 
@@ -852,20 +1023,20 @@ function getLanguageDisplayName(langCode) {
 
 function generatePopulatedCardGroup(title, words, dataMap) {
     let html = `
-            <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-                <h3 class="font-bold text-lg mb-4 text-slate-800 dark:text-white">${title}</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
+        <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+            <h3 class="font-bold text-lg mb-4 text-slate-800 dark:text-white">${title}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
 
     words.forEach(word => {
         html += `
-                <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="bg-slate-100 dark:bg-slate-700 py-2 px-3 text-center border-b border-slate-200 dark:border-slate-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">${word}</span>
-                    </div>
-                    <div class="flex flex-col">
-                        ${generateTranslationRows(word, dataMap)}
-                    </div>
-                </div>`;
+            <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                <div class="bg-slate-100 dark:bg-slate-700 py-2 px-3 text-center border-b border-slate-200 dark:border-slate-700">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">${word}</span>
+                </div>
+                <div class="flex flex-col">
+                    ${generateTranslationRows(word, dataMap)}
+                </div>
+            </div>`;
     });
 
     html += `</div></div>`;
@@ -880,10 +1051,10 @@ function generateTranslationRows(wordKey, dataMap) {
         const bgClass = index % 2 === 0 ? 'bg-slate-50 dark:bg-slate-800/50' : 'bg-white dark:bg-slate-800';
 
         html += `
-                <div class="flex justify-between items-center py-2 px-3 border-b border-slate-100 dark:border-slate-700/50 last:border-0 ${bgClass}">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[100px]" title="${displayName}">${displayName}</span>
-                    <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">${translated}</span>
-                </div>`;
+            <div class="flex justify-between items-center py-2 px-3 border-b border-slate-100 dark:border-slate-700/50 last:border-0 ${bgClass}">
+                <span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[100px]" title="${displayName}">${displayName}</span>
+                <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">${translated}</span>
+            </div>`;
     });
     return html;
 }
@@ -891,7 +1062,7 @@ function generateTranslationRows(wordKey, dataMap) {
 function generatePopulatedTableView(dataMap) {
     const allWords = [...swadeshCore.warna, ...swadeshCore.tubuh, ...swadeshCore.hewan, ...swadeshCore.kerja];
 
-    let headers = `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">Kata Dasar</th>`;
+    let headers = `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">${t('header_kata_dasar')}</th>`;
     selectedLangs.forEach(code => {
         const displayName = getLanguageDisplayName(code);
         headers += `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">${displayName}</th>`;
@@ -909,29 +1080,26 @@ function generatePopulatedTableView(dataMap) {
     }).join('');
 
     return `
-            <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden fade-in">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead class="border-b border-slate-200 dark:border-slate-600">
-                            <tr>${headers}</tr>
-                        </thead>
-                        <tbody>${rows}</tbody>
-                    </table>
-                </div>
-            </div>`;
+        <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden fade-in">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="border-b border-slate-200 dark:border-slate-600">
+                        <tr>${headers}</tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+        </div>`;
 }
 
-// --- 6. LOGIKA PELAPORAN KESALAHAN (DENGAN CENTERING SEMPURNA) ---
+// --- 6. PELAPORAN KESALAHAN ---
 function toggleReportModal(show) {
     const modalOverlay = document.getElementById('report-modal-overlay');
     const modalContent = document.getElementById('report-modal-content');
 
     if (show) {
-        // Hapus 'hidden' dan aktifkan 'flex' agar items-center & justify-center berjalan
         modalOverlay.classList.remove('hidden');
         modalOverlay.classList.add('flex');
-
-        // Animasi fade-in dan scale-in
         setTimeout(() => {
             modalOverlay.classList.remove('opacity-0');
             modalContent.classList.remove('scale-95');
@@ -950,7 +1118,6 @@ function toggleReportModal(show) {
     }
 }
 
-// Fitur Autocomplete Bahasa
 function handleLangAutocomplete(val) {
     const list = document.getElementById('lang-autocomplete-list');
     list.innerHTML = '';
@@ -985,13 +1152,14 @@ function handleLangAutocomplete(val) {
 document.addEventListener('click', function (e) {
     const input = document.getElementById('report-lang');
     const list = document.getElementById('lang-autocomplete-list');
-    if (e.target !== input && e.target !== list && !list.contains(e.target)) {
+    if (input && list && e.target !== input && e.target !== list && !list.contains(e.target)) {
         list.classList.add('hidden');
     }
 });
 
 function showToast(message) {
     const toast = document.getElementById('toast-notification');
+    if (!toast) return;
     const toastMsg = document.getElementById('toast-message');
     toastMsg.innerText = message;
 
