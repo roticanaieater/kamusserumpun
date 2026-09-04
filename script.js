@@ -53,7 +53,8 @@ const icons = {
     bugis: getFlag('bugis.svg'),
     tolaki: getFlag('tolaki.svg'),
     muna: getFlag('muna.svg'),
-    gorontalo: getFlag('gorontalo.svg')
+    gorontalo: getFlag('gorontalo.svg'),
+    tetun: getFlag('timor.svg')
 };
 
 const bibliographyBase = [
@@ -302,6 +303,7 @@ const languageMap = {
     'tld': { name: 'Talaud', icon: icons.placeholder, file: 'bahasa/tld.json', biblio: '<strong>Balai Bahasa Sulawesi Utara.</strong> (2018). <em>Kamus Dwibahasa Bahasa Talaud-Bahasa Indonesia</em>. Balai Bahasa Sulawesi Utara, Manado.' },
     'mqy': { name: 'Manggarai', icon: icons.placeholder, file: 'bahasa/mqy.json', biblio: '<strong>Lon, Yohanes S., dkk.</strong> (2018). <em>Kamus Bahasa Indonesia – Manggarai</em>. PT Kanisius & LPPM STKIP Santu Paulus Ruteng.' },
     'aoz': { name: 'Uab Meto', icon: icons.placeholder, file: 'bahasa/aoz.json' },
+    'tet': { name: 'Tetun', icon: icons.tetun, file: 'bahasa/tet.json',  biblio: `<strong>Manhitu, Yohanes.</strong> (2007). <em>Kamus Indonesia-Tetun, Tetun-Indonesia</em>. Penerbit PT Gramedia Pustaka Utama, Jakarta.` },
     'bhw': { name: 'Biak', icon: icons.placeholder, file: 'bahasa/bhw.json' },
     'kei': { name: 'Kei', icon: icons.placeholder, file: 'bahasa/kei.json' }
 };
