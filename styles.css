@@ -1,146 +1,243 @@
-/* Subtle Batik/Songket Pattern Placeholder */
-        
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,700;1,400&display=swap');
 
-        .fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        
-
-        #map-scroll-container::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        #map-scroll-container::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        #map-scroll-container::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.5);
-            border-radius: 10px;
-        }
-
-        .custom-select {
-            appearance: none;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding-right: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right center;
-        }
-
-        .custom-select option {
-            background-color: #fff;
-            color: #000;
-        }
-
-        .dark .custom-select option {
-            background-color: #1b242d;
-            color: #fff;
-        }
-
-        .icon-svg svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .group:hover .group-hover\:block {
-            display: block;
-        }
-
-        /* Flags styling */
-        .flag-icon {
-            width: 28px;
-            height: 20px;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: inline-block;
-        }
-
-.fade-in {
-    animation: fadeIn 0.4s ease-in-out;
+/* ==========================================================================
+Base & Background Styles
+========================================================================== */
+body {
+    background-image: url("./bg-light.png");
+    background-size: cover;
+    background-attachment: fixed;
+    transition: background-image 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
+.dark body {
+    background-image: url("./bg-dark.png");
+    background-size: cover;
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* ==========================================================================
+Custom Scrollbar
+========================================================================== */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
+    border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.7);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.8);
+}
+ 
+.flag-sm {
+width: 1.25rem;  /* w-5 */
+height: 0.875rem; /* h-3.5 */
+display: flex;
+overflow: hidden;
+border-radius: 2px;
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+flex-shrink: 0;
+}
+
+.header-flag {
+    width: 2.5rem;
+    /* w-10 */
+    height: 1.75rem; /* h-7 */
+    border-radius: 0.25rem;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .header-flag {
+        width: 3rem;
+        /* md:w-12 /
+height: 2rem; / md:h-8 */
     }
 }
 
-/* Map Styles */
-.island {
-    fill: #10b981;
-    transition: all 0.3s;
+.dark .header-flag {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-glass {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgb(226, 232, 240);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
     cursor: pointer;
 }
 
-.island:hover {
-    fill: #34d399;
-    filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.6));
+.btn-glass:hover {
+    background-color: rgb(248, 250, 252);
 }
 
-.island.selected {
-    fill: #f59e0b;
-    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.8));
+.dark .btn-glass {
+    background-color: rgba(27, 36, 45, 0.9);
+    border-color: rgb(51, 65, 85);
 }
 
-.map-text {
-    fill: white;
-    font-size: 13px;
-    font-weight: bold;
-    pointer-events: none;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+.dark .btn-glass:hover {
+    background-color: rgb(51, 65, 85);
 }
 
-/* Custom Styles untuk Diagram Tubuh */
-.body-diagram-container {
-    position: relative;
+.map-ctrl-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgb(226, 232, 240);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
 }
 
-.word-card {
-    z-index: 10;
-    position: relative;
+.map-ctrl-btn:hover {
+    background-color: rgb(241, 245, 249);
 }
 
-/* Custom Scrollbar untuk Peta (Biar estetik) */
-#map-scroll-container::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+.dark .map-ctrl-btn {
+    background-color: rgba(27, 36, 45, 0.9);
+    border-color: rgb(51, 65, 85);
 }
 
-#map-scroll-container::-webkit-scrollbar-track {
-    background: rgba(186, 230, 253, 0.3);
-    border-radius: 8px;
+.dark .map-ctrl-btn:hover {
+    background-color: rgb(51, 65, 85);
 }
 
-#map-scroll-container::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.6);
-    border-radius: 8px;
+
+.legend-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.25rem;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.2s ease;
 }
 
-#map-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(100, 116, 139, 0.8);
+.legend-item.items-center {
+    align-items: center;
+}
+
+.legend-item.items-start {
+    align-items: flex-start;
+}
+
+.legend-swatch {
+    display: flex;
+    height: 1.25rem;
+width: 3rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.legend-swatch span {
+    width: 33.333333%;
+    height: 100%;
+}
+
+.legend-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.025em;
+}
+
+.slot-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 2px dashed rgb(203, 213, 225);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(148, 163, 184);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+    .slot-circle {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}
+
+.dark .slot-circle {
+    border-color: rgb(71, 85, 105);
+    color: rgb(148, 163, 184);
+}
+
+.form-control {
+    width: 100%;
+    background-color: rgb(248, 250, 252);
+    border: 1px solid rgb(226, 232, 240);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: rgb(15, 23, 42);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 2px #eab308;
+    border-color: transparent;
+}
+
+.dark .form-control {
+    background-color: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+SVG Map Styling
+========================================================================== */
+.language-region {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.language-region path {
+    transition: fill 0.3s ease;
+}
+
+.language-region.selected path {
+    fill: #eab308 !important;
+    filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.5));
+}
+
+.map-bg {
+    fill: #1b242d;
+    transition: fill 0.3s ease;
+}
+
+.dark .map-bg {
+    fill: #d7e3f0;
 }
