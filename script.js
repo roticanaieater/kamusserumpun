@@ -85,11 +85,11 @@ const languageMap = {
         }
     },
     'sun': {
-        name: 'Sunda Jawa Barat',
+        name: 'Sunda Jabar',
         icon: icons.sunda,
         dialects: {
             'standard': {
-                name: 'Baku (Priangan)',
+                name: 'Parahyangan',
                 registers: {
                     'loma': { name: 'Loma', file: 'bahasa/sun_loma.json' },
                     'lemes': { name: 'Lemes', file: 'bahasa/sun_lemes.json' }
@@ -309,11 +309,23 @@ const languageMap = {
 };
 
 const swadeshCore = {
-    warna: ['Merah', 'Putih', 'Hitam', 'Hijau'],
+    warna: [
+        { key: 'Merah', hex: '#e11d48' },
+        { key: 'Hijau', hex: '#10b981' },
+        { key: 'Kuning', hex: '#fbbf24' },
+        { key: 'Hitam', hex: '#0f172a' },
+        { key: 'Putih', hex: '#ffffff', border: true }
+    ],
+    angka: ['Satu', 'Dua', 'Tiga', 'Empat', 'Lima'],
     tubuh: ['Kepala', 'Tangan', 'Mata', 'Kaki'],
     hewan: ['Anjing', 'Ikan', 'Burung', 'Ular'],
     kerja: ['Makan', 'Minum', 'Tidur', 'Jalan']
 };
+
+// State Global untuk Widget
+let activeWarna = 'Hijau';
+let activeAngka = 'Empat';
+let currentDataMap = {}; // Menyimpan data hasil fetch agar interaksi tidak perlu loading ulang
 
 // --- DATA I18N DINAMIS & KAMUS LENGKAP MANDIRI ---
 let uiTranslationsCache = null;
@@ -538,6 +550,12 @@ function toggleDarkMode() {
     const isDark = document.documentElement.classList.contains('dark');
     document.getElementById('theme-icon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
     lucide.createIcons();
+}
+
+if (localStorage.getItem('theme') == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
 }
 
 // Pemetaan ikon bendera untuk dropdown navigasi atas
@@ -908,27 +926,46 @@ async function loadLanguageJSON(langCode) {
     if (languageCache[fetchKey]) return languageCache[fetchKey];
 
     try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error(`HTTP Error`);
-        const data = await response.json();
-        languageCache[fetchKey] = data;
-        return data;
+        const diakritikPath = filePath.replace('bahasa/', 'diakritik/');
+        
+        // Fetch paralel untuk bahasa dan diakritik
+        const [resBahasa, resDiakritik] = await Promise.allSettled([
+            fetch(filePath),
+            fetch(diakritikPath)
+        ]);
+
+        let wordsData = { words: {} };
+        let diakritikData = { words: {} };
+
+        if (resBahasa.status === 'fulfilled' && resBahasa.value.ok) {
+            wordsData = await resBahasa.value.json();
+        } else {
+            throw new Error(`Gagal memuat JSON utama`);
+        }
+
+        if (resDiakritik.status === 'fulfilled' && resDiakritik.value.ok) {
+            diakritikData = await resDiakritik.value.json();
+        }
+
+        const finalData = {
+            words: wordsData.words || {},
+            diakritik: diakritikData.words || {}
+        };
+
+        languageCache[fetchKey] = finalData;
+        return finalData;
     } catch (error) {
-        const fallback = { words: {} };
+        // Fallback generator
+        const fallback = { words: {}, diakritik: {} };
         Object.values(swadeshCore).flat().forEach(w => {
-            let fake = w.toLowerCase();
-            fake = fake.replace(/[aeiou]/g, (match) => {
-                if (fetchKey.includes('palembang_bebaso')) return 'o';
-                if (fetchKey.includes('jav_krama')) return 'i';
-                return match;
-            });
-            fallback.words[w] = (fake.charAt(0).toUpperCase() + fake.slice(1)) + '*';
+            let wordKey = typeof w === 'object' ? w.key : w;
+            let fake = wordKey.toLowerCase();
+            fallback.words[wordKey] = (fake.charAt(0).toUpperCase() + fake.slice(1)) + '*';
         });
         languageCache[fetchKey] = fallback;
         return fallback;
     }
 }
-
 function renderEmptyDictionary() {
     const container = document.getElementById('dictionary-container');
     const msg = t('emptyMsg');
@@ -982,9 +1019,10 @@ function generateEmptyCardGroup(title, words) {
 }
 
 async function fetchAndRenderDictionary() {
-    const dataMap = {};
+    // Reset Data Map Global
+    currentDataMap = {};
     for (let code of selectedLangs) {
-        dataMap[code] = await loadLanguageJSON(code);
+        currentDataMap[code] = await loadLanguageJSON(code);
     }
 
     const container = document.getElementById('dictionary-container');
@@ -992,15 +1030,21 @@ async function fetchAndRenderDictionary() {
 
     if (viewMode === 'swadesh') {
         container.innerHTML = `
+            <!-- Grid Interaktif (Warna & Angka) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-stretch">
+                <div id="widget-warna-container" class="h-full">${renderWidgetWarna()}</div>
+                <div id="widget-angka-container" class="h-full">${renderWidgetAngka()}</div>
+            </div>
+
+            <!-- Kategori Standar (Bawaan Lama) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
-                ${generatePopulatedCardGroup(t('kategori_warna'), swadeshCore.warna, dataMap)}
-                ${generatePopulatedCardGroup(t('kategori_tubuh'), swadeshCore.tubuh, dataMap)}
-                ${generatePopulatedCardGroup(t('kategori_hewan'), swadeshCore.hewan, dataMap)}
-                ${generatePopulatedCardGroup(t('kategori_kerja'), swadeshCore.kerja, dataMap)}
+                ${generatePopulatedCardGroup(t('kategori_tubuh'), swadeshCore.tubuh, currentDataMap)}
+                ${generatePopulatedCardGroup(t('kategori_hewan'), swadeshCore.hewan, currentDataMap)}
+                ${generatePopulatedCardGroup(t('kategori_kerja'), swadeshCore.kerja, currentDataMap)}
             </div>
         `;
     } else {
-        container.innerHTML = generatePopulatedTableView(dataMap);
+        container.innerHTML = generatePopulatedTableView(currentDataMap);
     }
 }
 
@@ -1021,6 +1065,108 @@ function getLanguageDisplayName(langCode) {
     }
 
     return displayName;
+}
+
+// --- WIDGET INTERAKTIF CUSTOM ---
+window.changeWarna = function(warnaKey) {
+    activeWarna = warnaKey;
+    document.getElementById('widget-warna-container').innerHTML = renderWidgetWarna();
+};
+
+window.changeAngka = function(angkaKey) {
+    activeAngka = angkaKey;
+    document.getElementById('widget-angka-container').innerHTML = renderWidgetAngka();
+};
+
+function renderWidgetBottomBar(wordKey) {
+    let html = `<div class="flex justify-between items-start pt-6 border-t border-slate-200 dark:border-slate-700 mt-auto w-full">`;
+    
+    selectedLangs.forEach((langCode, index) => {
+        const displayName = getLanguageDisplayName(langCode);
+        const translated = currentDataMap[langCode]?.words?.[wordKey] || '-';
+        const diakritik = currentDataMap[langCode]?.diakritik?.[wordKey];
+        
+        const diakritikHtml = diakritik ? `<span class="text-xs text-slate-400 dark:text-slate-500 italic block mt-1">[${diakritik}]</span>` : '';
+        const borderClass = index < selectedLangs.length - 1 ? 'border-r border-slate-200 dark:border-slate-700 px-2' : 'px-2';
+        
+        html += `
+            <div class="flex-1 text-center ${borderClass}">
+                <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">${displayName}</span>
+                <span class="text-lg md:text-xl font-extrabold text-slate-800 dark:text-white tracking-tight">${translated}</span>
+                ${diakritikHtml}
+            </div>`;
+    });
+    
+    return html + `</div>`;
+}
+
+function renderWidgetWarna() {
+    let swatchesHtml = '';
+    swadeshCore.warna.forEach(c => {
+        const isActive = c.key === activeWarna;
+        const scale = isActive ? 'scale-110 shadow-lg z-10' : 'scale-90 hover:scale-100 opacity-80';
+        const height = isActive ? 'h-24' : 'h-16'; 
+        const border = c.border ? 'border-2 border-slate-200 dark:border-slate-600' : '';
+        
+        swatchesHtml += `
+            <button onclick="changeWarna('${c.key}')" 
+                class="w-16 ${height} rounded-2xl transition-all duration-300 ease-out cursor-pointer ${scale} ${border}" 
+                style="background-color: ${c.hex};"></button>`;
+    });
+
+    return `
+        <div class="bg-white dark:bg-slate-800 h-full rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col items-center justify-between transition-colors">
+            <div class="w-full flex flex-col items-center">
+                <div class="bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-6 shadow-inner">WARNA</div>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-800 dark:text-white uppercase tracking-tight mb-8 relative">
+                    ${activeWarna}
+                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-800 dark:bg-slate-400 rounded-full"></div>
+                </h3>
+                <div class="flex items-center justify-center gap-3 mb-8 h-28">
+                    ${swatchesHtml}
+                </div>
+            </div>
+            ${renderWidgetBottomBar(activeWarna)}
+        </div>`;
+}
+
+function renderWidgetAngka() {
+    let sliderHtml = '';
+    swadeshCore.angka.forEach((a, idx) => {
+        const num = idx + 1;
+        const isActive = a === activeAngka;
+        
+        if (isActive) {
+            sliderHtml += `
+                <button class="relative z-10 w-14 h-16 bg-[#fde047] rounded-xl shadow-lg flex items-center justify-center transform scale-110 font-extrabold text-slate-900 text-2xl border-b-4 border-amber-500 transition-all">
+                    ${num}
+                </button>`;
+        } else {
+            sliderHtml += `
+                <button onclick="changeAngka('${a}')" class="flex-1 h-full flex items-center justify-center font-bold text-white/90 hover:text-white hover:bg-white/10 transition-colors text-xl">
+                    ${num}
+                </button>`;
+            
+            if (idx < swadeshCore.angka.length - 1 && swadeshCore.angka[idx + 1] !== activeAngka) {
+                sliderHtml += `<div class="w-px h-8 bg-white/20"></div>`;
+            }
+        }
+    });
+
+    return `
+        <div class="bg-white dark:bg-slate-800 h-full rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col items-center justify-between transition-colors">
+            <div class="w-full flex flex-col items-center">
+                <div class="kategori_angka bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-6 shadow-inner">ANGKA</div>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-800 dark:text-white uppercase tracking-tight mb-8 relative">
+                    ${activeAngka}
+                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-800 dark:bg-slate-400 rounded-full"></div>
+                </h3>
+                <div class="w-full max-w-sm h-14 bg-amber-500 rounded-2xl flex items-center px-1.5 mb-8 shadow-inner mt-4">
+                    ${sliderHtml}
+                </div>
+            </div>
+            ${renderWidgetBottomBar(activeAngka)}
+        </div>`;
 }
 
 function generatePopulatedCardGroup(title, words, dataMap) {
@@ -1062,7 +1208,8 @@ function generateTranslationRows(wordKey, dataMap) {
 }
 
 function generatePopulatedTableView(dataMap) {
-    const allWords = [...swadeshCore.warna, ...swadeshCore.tubuh, ...swadeshCore.hewan, ...swadeshCore.kerja];
+    const warnaKeys = swadeshCore.warna.map(w => w.key);
+const allWords = [...warnaKeys, ...swadeshCore.angka, ...swadeshCore.tubuh, ...swadeshCore.hewan, ...swadeshCore.kerja];
 
     let headers = `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">${t('header_kata_dasar')}</th>`;
     selectedLangs.forEach(code => {
