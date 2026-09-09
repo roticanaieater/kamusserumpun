@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamus Serumpun - Perbandingan Bahasa Nusantara</title>
+    <title>Kamus Serumpun</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="languagedata.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -34,7 +35,7 @@
     </script>
 </head>
 
-<body class="text-serumpun-dark dark:text-white antialiased min-h-screen flex flex-col pb-28">
+<body class="text-serumpun-dark dark:text-white antialiased min-h-screen flex flex-col">
 
     <!-- Top Navigation (Lang & Theme) -->
     <nav class="w-full flex justify-end items-center p-4 gap-4 max-w-6xl mx-auto absolute top-0 right-0 z-50">
@@ -79,13 +80,13 @@
                         <span class="flag-sm">
                             <img src="./flag/jawa.svg" alt="Jawa" class="w-full h-full object-cover" onerror="this.style.display='none'">
                         </span>
-                        ꦗꦮ
+                        ꦗꦮꦏ꧀ꦫꦩ
                     </button>
                     <button onclick="changeUILang('su')" class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
                         <span class="flag-sm">
                             <img src="./flag/sunda.svg" alt="Sunda" class="w-full h-full object-cover" onerror="this.style.display='none'">
                         </span>
-                        ᮞᮥᮔ᮪ᮓ
+                        ᮞᮥᮔ᮪ᮓ ᮜᮨᮙᮨᮞ᮪
                     </button>
                     <button onclick="changeUILang('tb')" class="w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
                         <span class="flag-sm">
@@ -171,7 +172,7 @@
                 </div>
 
                 <!-- Daftar Keterangan Rumpun Bahasa -->
-                <div id="legend-list" class="space-y-2.5 lg:space-y-3 flex flex-row lg:flex-col justify-evenly">
+                <div id="legend-list" class="flex flex-row lg:flex-col justify-evenly">
                     <div class="justify-start">
                         <!-- 1. Melayik-Chamik -->
                         <div class="legend-item items-center">
@@ -1194,18 +1195,18 @@
             <div id="dialect-box"
                 class="bg-serumpun-dark text-white rounded-lg px-4 py-2 flex items-center gap-3 shadow-md opacity-50 grayscale pointer-events-none transition-all duration-300">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span class="text-sm font-semibold whitespace-nowrap">Pilih Dialek:</span>
-                <div id="dialect-options" class="flex gap-2">
-                    <span class="text-sm italic text-slate-400">Pilih bahasa...</span>
+                <span data-i18n="dialek" class="text-sm font-semibold whitespace-nowrap">Pilih Dialek:</span>
+                <div id="dialect-options" class="flex flex-col lg:flex-row gap-2">
+                    <span data-i18n="menunggu" class="text-sm italic text-slate-400">Menunggu pilihan bahasa...</span>
                 </div>
             </div>
 
             <div id="register-box"
                 class="bg-serumpun-yellow text-slate-900 rounded-lg px-4 py-2 flex items-center gap-3 shadow-md opacity-50 grayscale pointer-events-none transition-all duration-300">
                 <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
-                <span class="text-sm font-bold whitespace-nowrap">Tingkat Bahasa:</span>
-                <div id="register-options" class="flex gap-2">
-                    <span class="text-sm italic text-slate-700">Pilih bahasa...</span>
+                <span data-i18n="tingkat" class="text-sm font-bold whitespace-nowrap">Tingkat Bahasa:</span>
+                <div id="register-options" class="flex flex-col lg:flex-row gap-2">
+                    <span data-i18n="menunggu" class="text-sm italic text-slate-700">Menunggu pilihan bahasa...</span>
                 </div>
             </div>
         </div>
@@ -1222,7 +1223,7 @@
     <div class="fixed bottom-6 left-0 right-0 mx-auto w-11/12 max-w-2xl bg-white/95 dark:bg-serumpun-dark/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-3 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-between z-[60] gap-3 md:gap-4 transition-all duration-300">
         <!-- Slot Section -->
         <div class="w-full md:w-auto flex items-center justify-center space-x-2 md:space-x-4">
-            <span class="text-sm text-slate-500 dark:text-slate-400 font-semibold hidden md:inline">Terpilih:</span>
+            <span id="terpilih_label" class="text-sm text-slate-500 dark:text-slate-400 font-semibold hidden md:inline">Terpilih:</span>
             <div id="selected-slots" class="flex space-x-2 md:space-x-3">
                 <div class="slot-circle">1</div>
                 <div class="slot-circle">2</div>
@@ -1264,8 +1265,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-6 text-center text-slate-500 text-xs">
-        <p>&copy; 2026 Serumpunologi. Mengembangkan narasi persaudaraan nusantara.</p>
+    <footer class="bg-black py-6 text-center text-slate-500 text-xs md:pb-32 pb-48">
+        <p data-i18n="footer_text">&copy; 2026 Serumpunologi. Mengembangkan narasi persaudaraan nusantara.</p>
     </footer>
 
     <!-- Report Modal -->
@@ -1277,7 +1278,7 @@
             <div class="bg-amber-500 dark:bg-amber-600 px-6 py-4 flex items-center justify-between shrink-0">
                 <div class="flex items-center gap-2 text-white">
                     <i data-lucide="flag" class="w-5 h-5"></i>
-                    <h3 class="font-bold text-lg">Laporkan Kesalahan / Masukan</h3>
+                    <h3 data-i18n="report_modal_title" class="font-bold text-lg">Laporkan Kesalahan / Masukan</h3>
                 </div>
                 <button onclick="toggleReportModal(false)"
                     class="text-amber-100 hover:text-white transition-colors bg-amber-600 dark:bg-amber-700 hover:bg-amber-700 dark:hover:bg-amber-800 p-1.5 rounded-full">
@@ -1286,26 +1287,27 @@
             </div>
 
             <form id="report-form" class="p-6 flex flex-col gap-4 text-sm overflow-y-auto custom-scrollbar" onsubmit="submitReport(event)">
-                <p class="text-slate-500 dark:text-slate-400 text-xs mb-2">Bantu kami menyempurnakan data bahasa Nusantara. Laporan Anda akan dikirim langsung ke tim kami.</p>
+                <p data-i18n="report_modal_desc" class="text-slate-500 dark:text-slate-400 text-xs mb-2">Bantu kami menyempurnakan data bahasa Nusantara. Laporan Anda akan dikirim langsung ke tim kami.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama Pengunjung</label>
-                        <input type="text" id="report-name" required class="form-control" placeholder="Nama Anda">
+                        <label data-i18n="report_label_name" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama Pengunjung</label>
+                        <input type="text" id="report-name" required class="form-control" data-i18n-placeholder="report_placeholder_name" placeholder="Nama Anda">
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Email</label>
-                        <input type="email" id="report-email" required class="form-control" placeholder="email@contoh.com">
+                        <label data-i18n="report_label_email" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                        <input type="email" id="report-email" required class="form-control" data-i18n-placeholder="report_placeholder_email" placeholder="email@contoh.com">
                     </div>
                 </div>
 
                 <div class="relative">
-                    <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Bahasa yang Ingin Diperbaiki</label>
+                    <label data-i18n="report_label_lang" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Bahasa yang Ingin Diperbaiki</label>
                     <div class="relative">
                         <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-slate-400"></i>
                         <input type="text" id="report-lang" required autocomplete="off"
                             onkeyup="handleLangAutocomplete(this.value)"
                             class="form-control !pl-9"
+                            data-i18n-placeholder="report_placeholder_lang"
                             placeholder="Ketik nama bahasa (Cth: Sunda, Sumbawa...)">
                     </div>
                     <ul id="lang-autocomplete-list"
@@ -1314,17 +1316,18 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Keterangan (Koreksi/Penambahan)</label>
-                    <textarea id="report-desc" required rows="4" class="form-control resize-none" placeholder="Sebutkan kata yang salah dan perbaikannya..."></textarea>
+                    <label data-i18n="report_label_desc" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Keterangan (Koreksi/Penambahan)</label>
+                    <textarea id="report-desc" required rows="4" class="form-control resize-none" data-i18n-placeholder="report_placeholder_desc" placeholder="Sebutkan kata yang salah dan perbaikannya..."></textarea>
                 </div>
 
                 <div class="mt-2 flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800 shrink-0">
                     <button type="button" onclick="toggleReportModal(false)"
+                        data-i18n="btn_cancel"
                         class="px-5 py-2 rounded-lg font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Batal</button>
                     <button type="submit"
                         class="px-5 py-2 rounded-lg font-semibold bg-serumpun-dark hover:bg-serumpun-middark text-white shadow-md transition-colors flex items-center gap-2">
                         <i data-lucide="send" class="w-4 h-4"></i>
-                        Kirim Laporan
+                        <span data-i18n="btn_send_report">Kirim Laporan</span>
                     </button>
                 </div>
             </form>

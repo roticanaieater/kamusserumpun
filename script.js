@@ -1,313 +1,3 @@
-// --- 1. METADATA & DATA (Mekanisme ISO 639-3) ---
-function getFlag(filename) {
-    return `<img src="./flag/${filename}" alt="Bendera" class="w-full h-full object-cover" 
-                     onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23cbd5e1%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%228%22 opacity=%220.3%22/%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%224%22/%3E%3C/svg%3E'">`;
-}
-
-const icons = {
-    placeholder: `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8" opacity="0.3"/><circle cx="12" cy="12" r="4"/></svg>`,
-    indonesia: getFlag('indonesia.svg'),
-    malaysia: getFlag('malaysia.svg'),
-    brunei: getFlag('brunei.svg'),
-    aceh: getFlag('aceh.svg'),
-    gayo: getFlag('gayo.svg'),
-    jawa: getFlag('jawa.svg'),
-    bali: getFlag('bali.svg'),
-    sunda: getFlag('sunda.svg'),
-    sunbanten: getFlag('sunbanten.svg'),
-    banten: getFlag('banten.svg'),
-    sasak: getFlag('sasak.svg'),
-    betawi: getFlag('betawi.svg'),
-    madura: getFlag('madura.svg'),
-    sumbawa: getFlag('sumbawa.svg'),
-    bima: getFlag('bima.svg'),
-    karo: getFlag('karo.svg'),
-    simalungun: getFlag('simalungun.svg'),
-    pakpak: getFlag('pakpak.svg'),
-    toba: getFlag('toba.svg'),
-    angkola: getFlag('angkola.svg'),
-    kerinci: getFlag('kerinci.svg'),
-    sumtim: getFlag('sumtim.svg'),
-    asahan: getFlag('asahan.svg'),
-    riau: getFlag('riau.svg'),
-    kelantan: getFlag('kelantan.svg'),
-    terengganu: getFlag('terengganu.svg'),
-    pahang: getFlag('pahang.svg'),
-    perak: getFlag('perak.svg'),
-    negeri: getFlag('negeri.svg'),
-    kedah: getFlag('kedah.svg'),
-    jambi: getFlag('jambi.svg'),
-    musi: getFlag('musi.svg'),
-    ketapang: getFlag('ketapang.svg'),
-    minang: getFlag('minang.svg'),
-    nias: getFlag('nias.svg'),
-    api: getFlag('saibatin.svg'),
-    nyo: getFlag('pepadun.svg'),
-    iban: getFlag('iban.svg'),
-    ngaju: getFlag('ngaju.svg'),
-    kadazan: getFlag('kadazandusun.svg'),
-    tidong: getFlag('tidong.svg'),
-    banjar: getFlag('banjar.svg'),
-    kutai: getFlag('kutai.svg'),
-    makassar: getFlag('makassar.svg'),
-    bugis: getFlag('bugis.svg'),
-    tolaki: getFlag('tolaki.svg'),
-    muna: getFlag('muna.svg'),
-    gorontalo: getFlag('gorontalo.svg'),
-    tetun: getFlag('timor.svg')
-};
-
-const bibliographyBase = [
-    `<strong>Blust, Robert.</strong> (2013). <em>The Austronesian Languages</em>. Edisi Revisi. Asia-Pacific Linguistics, Australian National University.`,
-    `<strong>Adelaar, K. Alexander & Himmelmann, N.</strong> (2005). <em>The Austronesian Languages of Asia and Madagascar</em>. Routledge.`,
-    `<strong>Kridalaksana, Harimurti.</strong> (2008). <em>Kamus Linguistik</em>. Edisi Keempat. Gramedia Pustaka Utama, Jakarta.`,
-    `<strong>Swadesh, Morris.</strong> (1955). <em>Towards Greater Accuracy in Lexicostatistic Dating</em>. International Journal of American Linguistics, 21(2), 121-137.`
-];
-
-// Definisi lengkap Bahasa beserta file sumber dan bibliografi spesifik
-const languageMap = {
-    'ind': { name: 'Indonesia', code: 'id', icon: icons.indonesia, file: 'bahasa/ind.json' },
-    'zsm': { name: 'Melayu (MY)', code: 'my', icon: icons.malaysia, file: 'bahasa/zsm.json', biblio: `<strong>Asmah Haji Omar.</strong> (2015). <em>Ensiklopedia Bahasa Melayu</em>. Dewan Bahasa dan Pustaka, Kuala Lumpur.` },
-    'jav': {
-        name: 'Jawa',
-        icon: icons.jawa,
-        dialects: {
-            'standard': {
-                name: 'Baku',
-                registers: {
-                    'ngoko': { name: 'Ngoko', file: 'bahasa/jav_ngoko.json' },
-                    'krama': { name: 'Krama', file: 'bahasa/jav_krama.json' }
-                }
-            },
-            'cirebon': { name: 'Cirebon', file: 'bahasa/jav_cirebon.json' },
-            'tegal': { name: 'Tegal', file: 'bahasa/jav_tegal.json' },
-            'ngawi': { name: 'Ngawi', file: 'bahasa/jav_ngawi.json' }
-        }
-    },
-    'sun': {
-        name: 'Sunda Jabar',
-        icon: icons.sunda,
-        dialects: {
-            'standard': {
-                name: 'Parahyangan',
-                registers: {
-                    'loma': { name: 'Loma', file: 'bahasa/sun_loma.json' },
-                    'lemes': { name: 'Lemes', file: 'bahasa/sun_lemes.json' }
-                }
-            },
-            'bogorkarawang': {
-                name: 'Bogor-Karawang',
-                file: 'bahasa/sun_bogorkarawang.json',
-                biblio: '<strong>Hardja Sudjana, Ahmad S., Ahmad Marzuki, Ahmad Abas, dan Rukmanta Jayawiguna.</strong> (1983). <em>Struktur Bahasa Sunda Pesisir Utara Jawa Barat</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.'
-            },
-            'indramayu': { name: 'Indramayu', file: 'bahasa/sun_indramayu.json' }
-        }
-    },
-    'sunbanten': {
-        name: 'Sunda Banten',
-        icon: icons.sunbanten,
-        dialects: {
-            'standard': { name: 'Sérang', file: 'bahasa/sun_serang.json' },
-            'tangerang': {
-                name: 'Tangerang',
-                file: 'bahasa/sun_tangerang.json',
-                biblio: '<strong>Sobarna, C.; Wartini, T.; Ampera, T.</strong> (2022). <em>Bahasa dan Sastra Daerah di Kabupaten Tangerang</em>. Tangerang: Pusat Studi Sunda dan Pemerintah Kabupaten Tangerang.'
-            },
-            'pandeglang': {
-                name: 'Pandéglang',
-                file: 'bahasa/sun_pandeglang.json',
-                biblio: '<strong>Sujana, Dadan.</strong> (Penyunting). (2015). <em>Bahasa Sunda Banten di Pandéglang</em>. Dinas Kebudayaan dan Pariwisata Provinsi Banten dan Banten Heritage, Serang dan Pandeglang.'
-            },
-            'baduy': { name: 'Baduy', file: 'bahasa/sun_baduy.json' }
-        }
-    },
-    'bew': { name: 'Betawi', icon: icons.betawi, file: 'bahasa/bew.json' },
-    'mad': { name: 'Madura', icon: icons.madura, file: 'bahasa/mad.json' },
-    'ban': { name: 'Bali', icon: icons.bali, registers: { 'andap': { name: 'Andap', file: 'bahasa/ban_andap.json' }, 'alus': { name: 'Alus', file: 'bahasa/ban_alus.json' } } },
-    'banten': { name: 'Jawa Sérang', icon: icons.banten, file: 'bahasa/banten.json' },
-    'sas': { name: 'Sasak', icon: icons.sasak, file: 'bahasa/sas.json' },
-    'smw': { name: 'Sumbawa', icon: icons.sumbawa, file: 'bahasa/smw.json' },
-    'bhp': { name: 'Bima', icon: icons.bima, file: 'bahasa/bhp.json' },
-    'ace': { name: 'Aceh', icon: icons.aceh, file: 'bahasa/ace.json' },
-    'gay': { name: 'Gayo', icon: icons.gayo, file: 'bahasa/gay.json' },
-    'btz': { name: 'Batak Alas', icon: icons.placeholder, file: 'bahasa/btz.json' },
-    'btx': { name: 'Batak Karo', icon: icons.karo, file: 'bahasa/btx.json' },
-    'bts': { name: 'Batak Simalungun', icon: icons.simalungun, file: 'bahasa/bts.json' },
-    'btp': { name: 'Batak Pakpak', icon: icons.pakpak, file: 'bahasa/btp.json' },
-    'bbc': { name: 'Batak Toba', icon: icons.toba, file: 'bahasa/bbc.json' },
-    'akb': { name: 'Batak Angkola-Mandailing', icon: icons.angkola, file: 'bahasa/akb.json' },
-    'kvr': { name: 'Kerinci', icon: icons.kerinci, file: 'bahasa/kvr.json', biblio: '<strong>Usman, A. Hakim.</strong> (1985). <em>Kamus Umum Kerinci-Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
-    'deli': {
-        name: 'Melayu Sumatera Timur',
-        icon: icons.sumtim,
-        dialects: {
-            'standard': { name: 'Deli', file: 'bahasa/deli.json' },
-            'langkat': { name: 'Langkat', file: 'bahasa/langkat.json' },
-            'tamiang': { name: 'Tamiang', file: 'bahasa/tamiang.json' }
-        }
-    },
-    'asahan': { name: 'Melayu Asahan-Panai', icon: icons.asahan, file: 'bahasa/asahan.json' },
-    'riau': {
-        name: 'Melayu Riau',
-        icon: icons.riau,
-        dialects: {
-            'standard': { name: 'Siak', file: 'bahasa/siak.json' },
-            'rokan': { name: 'Rokan', file: 'bahasa/rokan.json' },
-            'kuansing': { name: 'Kuantan Singingi', file: 'bahasa/kuansing.json' }
-        }
-    },
-    'mfa': { name: 'Melayu Kelantan', icon: icons.kelantan, file: 'bahasa/mfa.json' },
-    'terengganu': {
-        name: 'Melayu Terengganu',
-        icon: icons.terengganu,
-        dialects: {
-            'standard': { name: 'Pesisir', file: 'bahasa/terengganupesisir.json' },
-            'hulu': { name: 'Hulu', file: 'bahasa/terengganuhulu.json' }
-        }
-    },
-    'pahang': {
-        name: 'Melayu Pahang',
-        icon: icons.pahang,
-        dialects: {
-            'standard': { name: 'Umum', file: 'bahasa/pahang.json' },
-            'timur': { name: 'Timur (Kuantan-Gambang)', file: 'bahasa/pahangtimur.json' },
-            'hilir': { name: 'Hilir (Pekan-Rompin)', file: 'bahasa/pahanghilir.json' },
-            'tengah': { name: 'Tengah (Temerloh-Teriang)', file: 'bahasa/pahangtengah.json' },
-            'barat': { name: 'Barat (Raub)', file: 'bahasa/pahangbarat.json' },
-            'hulu': { name: 'Hulu (Lipis)', file: 'bahasa/pahanghulu.json' },
-            'tembeling': { name: 'Hulu Tembeling', file: 'bahasa/pahangtembeling.json' },
-            'jerantut': { name: 'Jerantut', file: 'bahasa/pahangjerantut.json' },
-            'bentong': { name: 'Bentong', file: 'bahasa/pahangbentong.json' },
-            'rompin': { name: 'Hulu Rompin', file: 'bahasa/pahangrompin.json' }
-        }
-    },
-    'perak': { name: 'Melayu Perak', icon: icons.perak, file: 'bahasa/perak.json' },
-    'meo': {
-        name: 'Melayu Kedah',
-        icon: icons.kedah,
-        dialects: {
-            'standard': { name: 'Kedah', file: 'bahasa/meo.json' },
-            'perlis': { name: 'Perlis', file: 'bahasa/perlis.json' },
-            'pinang': { name: 'Pulau Pinang', file: 'bahasa/pinang.json' }
-        }
-    },
-    'zmi': { name: 'Melayu Negeri Sembilan', icon: icons.negeri, file: 'bahasa/zmi.json' },
-    'jax': {
-        name: 'Melayu Jambi',
-        icon: icons.jambi,
-        dialects: {
-            'standard': { name: 'Umum', file: 'bahasa/jax.json' },
-            'seberang': { name: 'Seberang', file: 'bahasa/jambi_seberang.json' },
-            'anakdalam': { name: 'Anak Dalam', file: 'bahasa/jambi_anakdalam.json' },
-            'kualajambi': { name: 'Kuala Jambi', file: 'bahasa/jambi_kuala.json', biblio: `<strong>Mira, Gustia, M. Jul Adwin, Rahmadina, & Fitria.</strong> (2025). <em>Kamus Melayu Jambi Dialek Teluk Majelis-Indonesia</em>. Balai Bahasa Provinsi Jambi, Jambi.` }
-        }
-    },
-    'mfb': { name: 'Melayu Bangka', icon: icons.placeholder, file: 'bahasa/mfb.json', biblio: `<strong>Khaliffitriansyah, Feri Pristiawan, Prima Hariyanto, Dwi Oktarina, Dewi Septi Kurniawati, dan Edwin Dwijaya.</strong> (2018). <em>Kamus Bahasa Melayu Bangka - Indonesia</em>. Kantor Bahasa Kepulauan Bangka Belitung, Kementerian Pendidikan dan Kebudayaan, Pangkalpinang.` },
-    'mui': {
-        name: 'Melayu Musi',
-        icon: icons.musi,
-        dialects: {
-            'standard': { name: 'Musi', file: 'bahasa/mui.json' },
-            'palembang': {
-                name: 'Palembang',
-                registers: {
-                    'sari': { name: 'Sari-sari', file: 'bahasa/palembang_sari.json' },
-                    'bebaso': { name: 'Bebaso', file: 'bahasa/palembang_bebaso.json' }
-                }
-            },
-            'lematang': { name: 'Lematang', file: 'bahasa/lmt.json' }
-        }
-    },
-    'pse': {
-        name: 'Melayu Tengah',
-        icon: icons.placeholder,
-        dialects: {
-            'standard': { name: 'Besemah', file: 'bahasa/pse.json' }
-        }
-    },
-    'rej': { name: 'Rejang', icon: icons.placeholder, file: 'bahasa/rej.json' },
-    'ketapang': { name: 'Melayu Ketapang', icon: icons.ketapang, file: 'bahasa/ketapang.json' },
-    'min': { name: 'Minangkabau', icon: icons.minang, file: 'bahasa/min.json' },
-    'nia': { name: 'Nias', icon: icons.nias, file: 'bahasa/nia.json' },
-    'mwv': {
-        name: 'Mentawai',
-        icon: icons.placeholder,
-        file: 'bahasa/mwv.json',
-        biblio: '<strong>Khatib, Yusran, Erizal Gani, Nurzuir Husin, & Jufrizal.</strong> (1998). <em>Kamus Bahasa Indonesia-Mentawai</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.'
-    },
-    'ljp': { name: 'Lampung Api', icon: icons.api, file: 'bahasa/ljp.json' },
-    'abl': { name: 'Lampung Nyo', icon: icons.nyo, file: 'bahasa/abl.json' },
-    'kge': { name: 'Komering', icon: icons.placeholder, file: 'bahasa/kge.json' },
-    'kxd': { name: 'Melayu Brunei', icon: icons.brunei, file: 'bahasa/kxd.json' },
-    'iba': { name: 'Dayak Iban', icon: icons.iban, file: 'bahasa/iba.json' },
-    'nij': { name: 'Dayak Ngaju', icon: icons.ngaju, file: 'bahasa/nij.json' },
-    'dtp': {
-        name: 'Kadazan-Dusun',
-        icon: icons.kadazan,
-        dialects: {
-            'standard': { name: 'BunduLiwan', file: 'bahasa/dtp.json' },
-            'tangaa': { name: 'Tangaa', file: 'bahasa/kzj.json' },
-            'kimaragang': { name: 'Kimaragang', file: 'bahasa/kqr.json' },
-            'klias': { name: 'Sungai Klias', file: 'bahasa/kqt.json' },
-            'kinabatangan': { name: 'Labuk-Kinabatangan', file: 'bahasa/dtb.json' },
-            'lotud': { name: 'Lotud', file: 'bahasa/dtr.json' }
-        }
-    },
-    'kayan': {
-        name: 'Dayak Kayan',
-        icon: icons.placeholder,
-        dialects: {
-            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' }
-        }
-    },
-    'tid': {
-        name: 'Tidong',
-        icon: icons.tidong,
-        dialects: {
-            'standard': { name: 'Baram-Sungai Kayan', file: 'bahasa/kayan_baram.json' }
-        }
-    },
-    'murut': {
-        name: 'Dayak Murut',
-        icon: icons.placeholder,
-        dialects: {
-            'standard': { name: 'Tahol', file: 'bahasa/mvv.json' },
-            'timugon': { name: 'Timugon', file: 'bahasa/tih.json' }
-        }
-    },
-    'bjn': { name: 'Banjar', icon: icons.banjar, dialects: { 'standard': { name: 'Kuala', file: 'bahasa/bjn_kuala.json' }, 'hulu': { name: 'Hulu', file: 'bahasa/bjn_hulu.json' } } },
-    'vkt': { name: 'Kutai', icon: icons.kutai, dialects: { 'standard': { name: 'Tenggarong', file: 'bahasa/vkt.json' }, 'kotabangun': { name: 'Kota Bangun', file: 'bahasa/mqg.json' } } },
-    'bve': { name: 'Berau', icon: icons.placeholder, file: 'bahasa/bve.json' },
-    'mak': {
-        name: 'Makassar',
-        icon: icons.makassar,
-        dialects: {
-            'standard': { name: 'Baku', file: 'bahasa/mak.json' },
-            'selayar': { name: 'Selayar', file: 'bahasa/mak_selayar.json' }
-        }
-    },
-    'bug': {
-        name: 'Bugis',
-        icon: icons.bugis,
-        dialects: {
-            'standard': { name: 'Baku', file: 'bahasa/bug.json' },
-            'sawitto': { name: 'Sawitto', file: 'bahasa/bug_sawitto.json' }
-        }
-    },
-    'mdr': { name: 'Mandar', icon: icons.placeholder, file: 'bahasa/mdr.json', biblio: '<strong>Muthalib, Abdul.</strong> (1977). <em>Kamus Bahasa Mandar - Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
-    'lew': { name: 'Kaili Ledo', icon: icons.placeholder, file: 'bahasa/lew.json' },
-    'loe': { name: 'Saluan', icon: icons.placeholder, file: 'bahasa/loe.json' },
-    'lbw': { name: 'Tolaki', icon: icons.tolaki, file: 'bahasa/lbw.json', biblio: '<strong>Muthalib, Abdul, Alimuddin D.P., Husen Chalik, & Arsamid.</strong> (1985). <em>Kamus Tolaki – Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
-    'mnb': { name: 'Muna', icon: icons.muna, file: 'bahasa/mnb.json' },
-    'gor': { name: 'Gorontalo', icon: icons.gorontalo, file: 'bahasa/gor.json' },
-    'tld': { name: 'Talaud', icon: icons.placeholder, file: 'bahasa/tld.json', biblio: '<strong>Balai Bahasa Sulawesi Utara.</strong> (2018). <em>Kamus Dwibahasa Bahasa Talaud-Bahasa Indonesia</em>. Balai Bahasa Sulawesi Utara, Manado.' },
-    'mqy': { name: 'Manggarai', icon: icons.placeholder, file: 'bahasa/mqy.json', biblio: '<strong>Lon, Yohanes S., dkk.</strong> (2018). <em>Kamus Bahasa Indonesia – Manggarai</em>. PT Kanisius & LPPM STKIP Santu Paulus Ruteng.' },
-    'aoz': { name: 'Uab Meto', icon: icons.placeholder, file: 'bahasa/aoz.json' },
-    'tet': { name: 'Tetun', icon: icons.tetun, file: 'bahasa/tet.json', biblio: `<strong>Manhitu, Yohanes.</strong> (2007). <em>Kamus Indonesia-Tetun, Tetun-Indonesia</em>. Penerbit PT Gramedia Pustaka Utama, Jakarta.` },
-    'bhw': { name: 'Biak', icon: icons.placeholder, file: 'bahasa/bhw.json' },
-    'kei': { name: 'Kei', icon: icons.placeholder, file: 'bahasa/kei.json' }
-};
-
 const swadeshCore = {
     warna: [
         { key: 'Merah', hex: '#e11d48' },
@@ -317,15 +7,19 @@ const swadeshCore = {
         { key: 'Putih', hex: '#ffffff', border: true }
     ],
     angka: ['Satu', 'Dua', 'Tiga', 'Empat', 'Lima'],
-    kepala: ['Telinga', 'Mata', 'Hidung', 'Mulut', 'Gigi', 'Lidah', 'Rambut', 'Leher'], // Ganti 'tubuh' menjadi 'kepala'
-    hewan: ['Anjing', 'Ikan', 'Burung', 'Ular'],
-    kerja: ['Makan', 'Minum', 'Tidur', 'Jalan']
+    kepala: ['Telinga', 'Mata', 'Hidung', 'Mulut', 'Gigi', 'Lidah', 'Rambut', 'Leher'],
+    badan: ['Kepala', 'Payudara', 'Punggung', 'Perut', 'Tangan', 'Tungkai', 'Lutut', 'Kaki'],
+    organ: ['Hati', 'Jantung', 'Usus'],
+    animal: ['Anjing', 'Ikan', 'Burung', 'Ular', 'Cacing', 'Kutu'],
+    tumbuhan: ['Pohon', 'Hutan', 'Ranting', 'Buah', 'Biji', 'Daun', 'Akar', 'Kulit Kayu', 'Rumput'],
 };
 
 // State Global untuk Widget
 let activeWarna = 'Hijau';
 let activeAngka = 'Empat';
-let activeKepala = 'Gigi';
+let activeKepala = 'Telinga';
+let activeBadan = 'Tangan';
+let activeOrgan = 'Jantung';
 let currentDataMap = {}; // Menyimpan data hasil fetch agar interaksi tidak perlu loading ulang
 
 // --- DATA I18N DINAMIS & KAMUS LENGKAP MANDIRI ---
@@ -984,57 +678,6 @@ async function loadLanguageJSON(langCode) {
         return fallback;
     }
 }
-function renderEmptyDictionary() {
-    const container = document.getElementById('dictionary-container');
-    const msg = t('emptyMsg');
-
-    if (viewMode === 'swadesh') {
-        container.innerHTML = `
-            <div class="text-center py-6 mb-4 opacity-70">
-                <i data-lucide="map" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in opacity-50 grayscale">
-                ${generateEmptyCardGroup(t('kategori_warna'), swadeshCore.warna)}
-                ${generateEmptyCardGroup(t('kategori_tubuh'), swadeshCore.kepala)}
-                ${generateEmptyCardGroup(t('kategori_hewan'), swadeshCore.hewan)}
-                ${generateEmptyCardGroup(t('kategori_kerja'), swadeshCore.kerja)}
-            </div>
-        `;
-    } else {
-        container.innerHTML = `
-            <div class="text-center py-10 opacity-70">
-                <i data-lucide="table" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${msg}</p>
-            </div>
-            <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden fade-in opacity-30 grayscale h-64 flex items-center justify-center">
-            </div>
-        `;
-    }
-    lucide.createIcons();
-}
-
-function generateEmptyCardGroup(title, words) {
-    let html = `
-        <div class="bg-white dark:bg-serumpun-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-            <h3 class="font-bold text-lg mb-4 text-slate-800 dark:text-white">${title}</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
-
-    words.forEach(word => {
-        html += `
-            <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-sm">
-                <div class="bg-slate-100 dark:bg-slate-700 py-2 px-3 text-center border-b border-slate-200 dark:border-slate-700">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">${word}</span>
-                </div>
-                <div class="flex flex-col py-4 px-3 text-center text-xs text-slate-400 italic">
-                    ${t('menunggu')}
-                </div>
-            </div>`;
-    });
-
-    html += `</div></div>`;
-    return html;
-}
 
 async function fetchAndRenderDictionary() {
     // Reset Data Map Global
@@ -1048,21 +691,20 @@ async function fetchAndRenderDictionary() {
 
     if (viewMode === 'swadesh') {
         container.innerHTML = `
-            <!-- Grid Interaktif (Warna & Angka) -->
+            <!-- Warna & Angka -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-stretch">
                 <div id="widget-warna-container" class="h-full">${renderWidgetWarna()}</div>
                 <div id="widget-angka-container" class="h-full">${renderWidgetAngka()}</div>
             </div>
 
-            <!-- Widget Interaktif Anggota Tubuh (Baru) -->
+            <!-- Anggota Tubuh -->
             <div class="relative [background-size:20px_20px] rounded-3xl mb-8">
-                <div id="widget-kepala-container">${renderWidgetKepala()}</div>
+                <div id="widget-anatomi-container">${renderWidgetAnggotaBadan()}</div>
             </div>
 
-            <!-- Kategori Standar (Bawaan Lama - Tubuh Dihapus) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
-                ${generatePopulatedCardGroup(t('kategori_hewan'), swadeshCore.hewan, currentDataMap)}
-                ${generatePopulatedCardGroup(t('kategori_kerja'), swadeshCore.kerja, currentDataMap)}
+            <!-- Animals -->
+            <div class="relative rounded-3xl">
+                <div id="widget-animal-container">${renderWidgetAnimal()}</div>
             </div>
         `;
     } else {
@@ -1100,35 +742,40 @@ window.changeAngka = function (angkaKey) {
     document.getElementById('widget-angka-container').innerHTML = renderWidgetAngka();
 };
 
-// --- LOGIKA INTERAKSI KEPALA ---
-window.changeKepala = function (kepalaKey) {
-    activeKepala = kepalaKey;
-    document.getElementById('widget-kepala-container').innerHTML = renderWidgetKepala();
+// --- LOGIKA INTERAKSI BADAN (DIPISAH) ---
+window.updateAnatomiWidget = function() {
+    const container = document.getElementById('widget-anatomi-container');
+    if (container) container.innerHTML = renderWidgetAnggotaBadan();
 };
 
-window.hoverKepala = function (part) {
-    const svgGroup = document.getElementById('svg-' + part.toLowerCase());
-    const btn = document.getElementById('btn-kepala-' + part.toLowerCase());
-    if (svgGroup) {
-        svgGroup.style.filter = "brightness(1.15) drop-shadow(0px 8px 10px rgba(0,0,0,0.3))";
-        svgGroup.style.transform = "scale(1.05)";
+window.changeKepala = function (key) { activeKepala = key; updateAnatomiWidget(); };
+window.changeBadan = function (key) { activeBadan = key; updateAnatomiWidget(); };
+window.changeOrgan = function (key) { activeOrgan = key; updateAnatomiWidget(); };
+
+window.hoverPart = function (partKey, activeState) {
+    const el = document.getElementById('svg-part-' + partKey.toLowerCase());
+    const btn = document.getElementById('btn-part-' + partKey.toLowerCase());
+    if (el) {
+        el.style.filter = "brightness(1.2) drop-shadow(0px 6px 12px rgba(234,179,8,0.4))";
+        el.style.transform = "scale(1.04)";
     }
-    if (btn && part !== activeKepala) {
+    if (btn && partKey !== activeState) {
         btn.classList.add('bg-slate-200', 'dark:bg-slate-700');
     }
 };
 
-window.unhoverKepala = function (part) {
-    const svgGroup = document.getElementById('svg-' + part.toLowerCase());
-    const btn = document.getElementById('btn-kepala-' + part.toLowerCase());
-    if (svgGroup) {
-        svgGroup.style.filter = "";
-        svgGroup.style.transform = "";
+window.unhoverPart = function (partKey, activeState) {
+    const el = document.getElementById('svg-part-' + partKey.toLowerCase());
+    const btn = document.getElementById('btn-part-' + partKey.toLowerCase());
+    if (el) {
+        el.style.filter = "";
+        el.style.transform = "";
     }
-    if (btn && part !== activeKepala) {
+    if (btn && partKey !== activeState) {
         btn.classList.remove('bg-slate-200', 'dark:bg-slate-700');
     }
 };
+
 
 function renderWidgetBottomBar(wordKey) {
     let html = `<div class="flex justify-between items-start pt-6 border-t border-slate-200 dark:border-slate-700 mt-auto w-full">`;
@@ -1144,7 +791,7 @@ function renderWidgetBottomBar(wordKey) {
 
         let flagHtml = '';
         if (langInfo.icon && langInfo.icon !== icons.placeholder) {
-            flagHtml = `<span class="inline-block w-[20px] h-[14px] mr-1.5 rounded-sm overflow-hidden flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)] bg-slate-100 dark:bg-slate-800">${langInfo.icon}</span>`;
+            flagHtml = `<span class="inline-block h-[18px] mr-1.5 rounded-sm overflow-hidden flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)] bg-slate-100 dark:bg-slate-800">${langInfo.icon}</span>`;
         }
 
         html += `
@@ -1160,6 +807,11 @@ function renderWidgetBottomBar(wordKey) {
 
     return html + `</div>`;
 }
+
+window.changeAnimal = function (animalKey) {
+    activeAnimal = animalKey;
+    document.getElementById('widget-animal-container').innerHTML = renderWidgetAnimal();
+};
 
 function renderWidgetWarna() {
     let swatchesHtml = '';
@@ -1217,7 +869,7 @@ function renderWidgetAngka() {
     return `
         <div class="bg-white dark:bg-slate-800 h-full rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col items-center justify-between transition-colors">
             <div class="w-full flex flex-col items-center">
-                <div class="kategori_angka bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-6 shadow-inner">${t('widget_angka')}</div>
+                <div class="kategori_animal bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-6 shadow-inner">${t('widget_an')}</div>
                 <h3 class="text-3xl md:text-4xl font-black text-slate-800 dark:text-white uppercase tracking-tight mb-8 relative">
                     ${t('word_' + activeAngka.toLowerCase())}
                     <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-800 dark:bg-slate-400 rounded-full"></div>
@@ -1226,33 +878,38 @@ function renderWidgetAngka() {
                     ${sliderHtml}
                 </div>
             </div>
-            ${renderWidgetBottomBar(activeAngka)}
+            ${renderWidgetBottomBar()}
         </div>`;
 }
 
-function renderWidgetKepala() {
-    let buttonsHtml = '';
-    swadeshCore.kepala.forEach(k => {
-        const isActive = k === activeKepala;
-        const activeClasses = isActive
-            ? 'bg-[#fde047] text-slate-900 shadow-md font-bold scale-105 ring-2 ring-amber-400'
-            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700';
+function renderWidgetAnggotaBadan() {
+    // 1. Helper generator tombol per kategori
+    const makeButtonList = (list, activeState, changeFnName) => {
+        return list.map(item => {
+            const isActive = item === activeState;
+            const activeClasses = isActive
+                ? 'bg-[#fde047] text-slate-900 shadow-md font-bold scale-105 ring-2 ring-amber-400'
+                : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700';
 
-        buttonsHtml += `
-            <button id="btn-kepala-${k.toLowerCase()}" 
-                onclick="changeKepala('${k}')" 
-                onmouseenter="hoverKepala('${k}')" 
-                onmouseleave="unhoverKepala('${k}')"
-                class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl transition-all duration-300 ease-out cursor-pointer uppercase tracking-wider text-xs sm:text-sm ${activeClasses}">
-                ${t('word_' + k.toLowerCase())}
-            </button>`;
-    });
+            return `
+                <button id="btn-part-${item.toLowerCase()}" 
+                    onclick="${changeFnName}('${item}')" 
+                    onmouseenter="hoverPart('${item}', '${activeState}')" 
+                    onmouseleave="unhoverPart('${item}', '${activeState}')"
+                    class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl transition-all duration-300 ease-out cursor-pointer uppercase tracking-wider text-xs ${activeClasses}">
+                    ${t('word_' + item.toLowerCase())}
+                </button>`;
+        }).join('');
+    };
+
+    const buttonsKepala = makeButtonList(swadeshCore.kepala, activeKepala, 'changeKepala');
+    const buttonsBadan = makeButtonList(swadeshCore.badan, activeBadan, 'changeBadan');
+    const buttonsOrgan = makeButtonList(swadeshCore.organ, activeOrgan, 'changeOrgan');
 
     const svgHead = `
         <svg id="humanHeadSvg" class="w-full max-w-[280px] h-auto drop-shadow-lg select-none mx-auto" viewBox="0 0 600 750" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs
-     id="defs9"><linearGradient
-       id="skinBaseGrad"
+            <defs id="defs9">
+            <linearGradient id="skinBaseGrad"
        x1="300"
        y1="180"
        x2="300"
@@ -1438,32 +1095,420 @@ function renderWidgetKepala() {
          transform="matrix(0.88007022,0,0,0.88007022,1017.7815,-505.49765)" />
          </g>
         </svg>`;
+const svgBody = `
+        <svg id="humanBodySvg" class="w-full max-w-[200px] h-auto drop-shadow-md select-none mx-auto" viewBox="0 0 400 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kepala (Sebagai referensi bagian tubuh) -->
+            <g id="svg-part-kepala" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Kepala')" onmouseenter="hoverTubuh('Kepala')" onmouseleave="unhoverTubuh('Kepala')">
+                <circle cx="200" cy="70" r="50" fill="#f3bba0" stroke="#281a16" stroke-width="3" />
+            </g>
+            <!-- Payudara / Dada -->
+            <g id="svg-part-payudara" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Payudara')" onmouseenter="hoverTubuh('Payudara')" onmouseleave="unhoverTubuh('Payudara')">
+                <path d="M 150,150 Q 200,165 250,150 Q 255,210 200,215 Q 145,210 150,150 Z" fill="#e29b7d" stroke="#281a16" stroke-width="3" />
+            </g>
+            <!-- Perut -->
+            <g id="svg-part-perut" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Perut')" onmouseenter="hoverTubuh('Perut')" onmouseleave="unhoverTubuh('Perut')">
+                <path d="M 155,215 Q 200,215 245,215 Q 250,310 200,320 Q 150,310 155,215 Z" fill="#f8cdb0" stroke="#281a16" stroke-width="3" />
+            </g>
+            <!-- Punggung (Area bahu belakang / torso lateral) -->
+            <g id="svg-part-punggung" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Punggung')" onmouseenter="hoverTubuh('Punggung')" onmouseleave="unhoverTubuh('Punggung')">
+                <path d="M 135,135 Q 200,120 265,135 L 255,160 Q 200,145 145,160 Z" fill="#c97d5d" stroke="#281a16" stroke-width="2.5" />
+            </g>
+            <!-- Tangan / Lengan -->
+            <g id="svg-part-tangan" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Tangan')" onmouseenter="hoverTubuh('Tangan')" onmouseleave="unhoverTubuh('Tangan')">
+                <path d="M 135,145 Q 100,240 85,340 Q 95,350 110,340 Q 120,250 150,175 Z" fill="#f3bba0" stroke="#281a16" stroke-width="3" />
+                <path d="M 265,145 Q 300,240 315,340 Q 305,350 290,340 Q 280,250 250,175 Z" fill="#f3bba0" stroke="#281a16" stroke-width="3" />
+            </g>
+            <!-- Tungkai / Paha -->
+            <g id="svg-part-tungkai" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Tungkai')" onmouseenter="hoverTubuh('Tungkai')" onmouseleave="unhoverTubuh('Tungkai')">
+                <path d="M 150,320 Q 140,420 155,500 L 195,500 Q 195,410 195,320 Z" fill="#e8ad92" stroke="#281a16" stroke-width="3" />
+                <path d="M 250,320 Q 260,420 245,500 L 205,500 Q 205,410 205,320 Z" fill="#e8ad92" stroke="#281a16" stroke-width="3" />
+            </g>
+            <!-- Lutut -->
+            <g id="svg-part-lutut" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Lutut')" onmouseenter="hoverTubuh('Lutut')" onmouseleave="unhoverTubuh('Lutut')">
+                <ellipse cx="175" cy="515" rx="20" ry="14" fill="#d89679" stroke="#281a16" stroke-width="2.5" />
+                <ellipse cx="225" cy="515" rx="20" ry="14" fill="#d89679" stroke="#281a16" stroke-width="2.5" />
+            </g>
+            <!-- Kaki / Telapak Kaki -->
+            <g id="svg-part-kaki" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Kaki')" onmouseenter="hoverTubuh('Kaki')" onmouseleave="unhoverTubuh('Kaki')">
+                <path d="M 160,530 L 160,690 Q 130,715 170,725 Q 195,720 190,690 L 190,530 Z" fill="#f8cdb0" stroke="#281a16" stroke-width="3" />
+                <path d="M 240,530 L 240,690 Q 270,715 230,725 Q 205,720 210,690 L 210,530 Z" fill="#f8cdb0" stroke="#281a16" stroke-width="3" />
+            </g>
+        </svg>`;
+
+    // 4. SVG Organ Dalam (Jantung, Hati, Usus)
+    const svgOrgans = `
+        <svg id="humanOrgansSvg" class="w-full max-w-[420px] h-auto drop-shadow-md select-none mx-auto" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Jantung -->
+            <g id="svg-part-jantung" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Jantung')" onmouseenter="hoverTubuh('Jantung')" onmouseleave="unhoverTubuh('Jantung')">
+                <circle cx="120" cy="110" r="80" fill="transparent" />
+                <path d="M 120,165 C 70,120 60,75 95,55 C 115,45 120,60 120,65 C 120,60 125,45 145,55 C 180,75 170,120 120,165 Z" fill="#e11d48" stroke="#881337" stroke-width="4" />
+                <text x="120" y="195" text-anchor="middle" font-size="14" font-weight="bold" fill="#64748b" class="uppercase tracking-wider">Jantung</text>
+            </g>
+            <!-- Hati (Liver) -->
+            <g id="svg-part-hati" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Hati')" onmouseenter="hoverTubuh('Hati')" onmouseleave="unhoverTubuh('Hati')">
+                <circle cx="300" cy="110" r="80" fill="transparent" />
+                <path d="M 240,80 C 270,55 350,65 365,95 C 375,125 350,155 315,160 C 275,165 235,135 240,80 Z" fill="#9a3412" stroke="#431407" stroke-width="4" />
+                <text x="300" y="195" text-anchor="middle" font-size="14" font-weight="bold" fill="#64748b" class="uppercase tracking-wider">Hati</text>
+            </g>
+            <!-- Usus -->
+            <g id="svg-part-usus" class="cursor-pointer transition-all duration-300" onclick="changeTubuh('Usus')" onmouseenter="hoverTubuh('Usus')" onmouseleave="unhoverTubuh('Usus')">
+                <circle cx="480" cy="110" r="80" fill="transparent" />
+                <path d="M 440,75 C 470,60 500,60 520,80 C 490,95 450,105 480,120 C 510,135 460,150 490,165 C 460,170 440,150 455,135 C 420,125 450,90 440,75 Z" fill="#f59e0b" stroke="#78350f" stroke-width="4" />
+                <text x="480" y="195" text-anchor="middle" font-size="14" font-weight="bold" fill="#64748b" class="uppercase tracking-wider">Usus</text>
+            </g>
+        </svg>`;
 
     return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col transition-colors w-full">
-            <div class="bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">${t('widget_badan')}</div>
+            <div class="bg-slate-900 dark:bg-slate-950 text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
+                ${t('kategori_tubuh')}
+            </div>
 
-            <div class="flex flex-col md:flex-row w-full items-center md:items-stretch justify-between gap-8 md:gap-12">
-                <!-- Kolom Kiri: SVG Kepala Sendirian -->
-                <div class="w-full md:w-5/12 flex items-center justify-center">
-                    ${svgHead}
-                </div>
-
-                <!-- Kolom Kanan: Label Tombol & Hasil Terjemahan dalam Satu Div -->
-                <div class="w-full md:w-7/12 flex flex-col justify-between">
-                    <!-- Tombol Navigasi Pilihan Organ -->
-                    <div class="mb-8">
-                        <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-3 text-center md:text-left">Pilih Bagian:</span>
-                        <div class="flex flex-wrap gap-2.5 justify-center md:justify-start">
-                            ${buttonsHtml}
+            <!-- Baris 1: Kiri (Kepala) & Kanan (Badan) -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 pb-8 border-b border-slate-100 dark:border-slate-700/60 items-start">
+                
+                <!-- KEPALA -->
+                <div class="flex flex-col bg-slate-50/70 dark:bg-slate-900/40 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/40 h-full justify-between relative">
+                    <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 text-center">Bagian Kepala</span>
+                    <div class="w-full flex items-center justify-center min-h-[220px]">
+                        ${svgHead}
+                    </div>
+                    <div class="w-full mt-4">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2 text-center">Pilih Bagian:</span>
+                        <div class="flex flex-wrap gap-1.5 justify-center">
+                            ${buttonsKepala}
                         </div>
                     </div>
-
-                    <!-- Terjemahan Bahasa Pilihan yang Menempel di Bawah Kolom Kanan -->
-                    <div class="w-full mt-auto">
+                    <!-- TERJEMAHAN KEPALA -->
+                    <div class="w-full mt-auto pt-8">
+                        <div class="text-center mb-3">
+                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Terpilih:</span>
+                            <span class="text-lg font-black text-amber-500 ml-1 uppercase tracking-tight">${t('word_' + activeKepala.toLowerCase())}</span>
+                        </div>
                         ${renderWidgetBottomBar(activeKepala)}
                     </div>
                 </div>
+
+                <!-- BADAN -->
+                <div class="flex flex-col bg-slate-50/70 dark:bg-slate-900/40 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/40 h-full justify-between relative">
+                    <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 text-center">Bagian Badan & Gerak</span>
+                    <div class="w-full flex items-center justify-center min-h-[220px]">
+                        ${svgBody}
+                    </div>
+                    <div class="w-full mt-4">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2 text-center">Pilih Bagian:</span>
+                        <div class="flex flex-wrap gap-1.5 justify-center">
+                            ${buttonsBadan}
+                        </div>
+                    </div>
+                    <!-- TERJEMAHAN BADAN -->
+                    <div class="w-full mt-auto pt-8">
+                        <div class="text-center mb-3">
+                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Terpilih:</span>
+                            <span class="text-lg font-black text-amber-500 ml-1 uppercase tracking-tight">${t('word_' + activeBadan.toLowerCase())}</span>
+                        </div>
+                        ${renderWidgetBottomBar(activeBadan)}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Baris 2: Bawah (Organ Dalam) -->
+            <div class="mt-8 flex flex-col items-center bg-slate-50/50 dark:bg-slate-900/30 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/40">
+                <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4">Organ Dalam</span>
+                <div class="w-full flex items-center justify-center">
+                    ${svgOrgans}
+                </div>
+                <div class="w-full mt-4 max-w-xl mx-auto">
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        ${buttonsOrgan}
+                    </div>
+                    <!-- TERJEMAHAN ORGAN -->
+                    <div class="w-full mt-8">
+                        <div class="text-center mb-3">
+                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Terpilih:</span>
+                            <span class="text-lg font-black text-amber-500 ml-1 uppercase tracking-tight">${t('word_' + activeOrgan.toLowerCase())}</span>
+                        </div>
+                        ${renderWidgetBottomBar(activeOrgan)}
+                    </div>
+                </div>
+            </div>
+
+        </div>`;
+}
+
+
+function renderWidgetKepala() {
+    return renderWidgetAnggotaBadan();
+}
+
+const animalIllustrations = {
+    'Anjing': `
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Anjing">
+                <!-- Tail -->
+                <path d="M175 145 C195 130 215 110 205 95 C198 85 186 98 178 115" stroke="#E67E22" stroke-width="12" stroke-linecap="round" fill="none"></path>
+                <!-- Body -->
+                <ellipse cx="120" cy="155" rx="55" ry="45" fill="#F39C12"></ellipse>
+                <ellipse cx="120" cy="160" rx="35" ry="30" fill="#FFF2DE"></ellipse>
+                <!-- Paws -->
+                <ellipse cx="90" cy="195" rx="14" ry="10" fill="#FDEBD0"></ellipse>
+                <ellipse cx="150" cy="195" rx="14" ry="10" fill="#FDEBD0"></ellipse>
+                <!-- Left Ear (floppy) -->
+                <path d="M72 82 C55 85 45 110 48 135 C50 148 60 152 68 142 C78 128 78 98 72 82 Z" fill="#D35400"></path>
+                <!-- Right Ear (floppy) -->
+                <path d="M168 82 C185 85 195 110 192 135 C190 148 180 152 172 142 C162 128 162 98 168 82 Z" fill="#D35400"></path>
+                <!-- Head -->
+                <circle cx="120" cy="100" r="46" fill="#F39C12"></circle>
+                <!-- Forehead Spot -->
+                <path d="M120 70 C128 85 132 95 120 102 C108 95 112 85 120 70 Z" fill="#FFE9CE"></path>
+                <!-- Muzzle -->
+                <ellipse cx="120" cy="116" rx="24" ry="18" fill="#FFF3E0"></ellipse>
+                <!-- Nose -->
+                <path d="M113 108 C113 105 127 105 127 108 C127 114 120 117 120 117 C120 117 113 114 113 108 Z" fill="#2C3E50"></path>
+                <!-- Mouth & Tongue -->
+                <path d="M120 117 L120 123 M114 121 C117 124 120 124 120 124 C120 124 123 124 126 121" stroke="#2C3E50" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+                <path d="M116 124 C116 132 124 132 124 124 Z" fill="#FF6B6B"></path>
+                <!-- Eyes -->
+                <ellipse cx="98" cy="96" rx="6.5" ry="7.5" fill="#2C3E50"></ellipse>
+                <circle cx="96" cy="94" r="2.2" fill="#FFFFFF"></circle>
+                <circle cx="100" cy="98" r="1" fill="#FFFFFF"></circle>
+                <ellipse cx="142" cy="96" rx="6.5" ry="7.5" fill="#2C3E50"></ellipse>
+                <circle cx="140" cy="94" r="2.2" fill="#FFFFFF"></circle>
+                <circle cx="144" cy="98" r="1" fill="#FFFFFF"></circle>
+                <!-- Cheeks -->
+                <circle cx="86" cy="112" r="5" fill="#FCA5A5"></circle>
+                <circle cx="154" cy="112" r="5" fill="#FCA5A5"></circle>
+                <!-- Collar & Tag -->
+                <path d="M92 140 C108 148 132 148 148 140" stroke="#E74C3C" stroke-width="7" stroke-linecap="round"></path>
+                <circle cx="120" cy="148" r="5.5" fill="#F1C40F" stroke="#D68910" stroke-width="1.5"></circle>
+              </svg>`,
+
+    'Burung': `
+        <!-- SVG: BURUNG (Solid Flat) -->
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Burung">
+                <!-- Branch Perch -->
+                <path d="M40 185 C80 183 160 183 205 185" stroke="#854D0E" stroke-width="7" stroke-linecap="round"></path>
+                <circle cx="175" cy="180" r="4" fill="#22C55E"></circle>
+                <path d="M175 180 Q185 170 190 178" stroke="#22C55E" stroke-width="2" fill="none"></path>
+                <!-- Tail Feathers -->
+                <path d="M145 155 L195 195 C198 198 195 205 190 202 L138 168 Z" fill="#047857"></path>
+                <path d="M152 150 L205 185 C209 188 206 195 200 192 L145 160 Z" fill="#059669"></path>
+                <!-- Feet -->
+                <path d="M110 175 L110 185 M106 186 L114 186" stroke="#D97706" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M125 175 L125 185 M121 186 L129 186" stroke="#D97706" stroke-width="3" stroke-linecap="round"></path>
+                <!-- Body -->
+                <ellipse cx="118" cy="130" rx="38" ry="46" fill="#10B981"></ellipse>
+                <!-- Yellow Chest (Solid) -->
+                <path d="M88 120 C88 155 105 172 125 172 C108 165 96 142 96 122 Z" fill="#FBBF24"></path>
+                <!-- Wing (Solid Blue) -->
+                <path d="M115 110 C145 110 155 135 150 160 C140 165 125 155 115 135 Z" fill="#2563EB"></path>
+                <path d="M125 125 C140 128 145 142 142 154" stroke="#60A5FA" stroke-width="2.5" stroke-linecap="round"></path>
+                <!-- Head -->
+                <circle cx="95" cy="85" r="26" fill="#10B981"></circle>
+                <!-- Crest -->
+                <path d="M96 60 C92 48 80 50 78 55 C82 65 90 62 96 60 Z" fill="#047857"></path>
+                <path d="M102 61 C100 50 90 51 88 56 C92 65 98 62 102 61 Z" fill="#059669"></path>
+                <!-- Beak -->
+                <path d="M72 82 L48 88 L72 94 Z" fill="#F59E0B"></path>
+                <!-- Eye -->
+                <circle cx="88" cy="82" r="6.5" fill="#FFFFFF"></circle>
+                <circle cx="86" cy="82" r="3.5" fill="#0F172A"></circle>
+                <circle cx="85" cy="80" r="1.2" fill="#FFFFFF"></circle>
+              </svg>`,
+
+    'Ular': `
+        <!-- SVG: ULAR (Solid Flat) -->
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Ular">
+                <!-- Coiled Body Path (Solid Emerald) -->
+                <path d="M190 170 C190 195 150 205 110 205 C65 205 45 185 45 160 C45 135 70 125 110 125 C150 125 180 115 180 95 C180 75 160 65 135 65 C115 65 105 75 105 85" stroke="#0D9488" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <!-- Belly Highlight/Accent Line (Solid Mint) -->
+                <path d="M190 173 C190 192 153 201 113 201 C72 201 50 183 50 162 C50 143 72 129 110 129 C145 129 175 120 176 96" stroke="#99F6E4" stroke-width="7" stroke-linecap="round" fill="none"></path>
+                <!-- Scales / Diamond pattern spots (Solid dark teal) -->
+                <circle cx="80" cy="155" r="3.5" fill="#115E59"></circle>
+                <circle cx="120" cy="130" r="4" fill="#115E59"></circle>
+                <circle cx="160" cy="115" r="3.5" fill="#115E59"></circle>
+                <circle cx="150" cy="70" r="3.5" fill="#115E59"></circle>
+                <circle cx="140" cy="195" r="4" fill="#115E59"></circle>
+                <!-- Snake Head (Solid Emerald) -->
+                <ellipse cx="102" cy="85" rx="20" ry="16" fill="#0D9488"></ellipse>
+                <!-- Forked Tongue -->
+                <path d="M84 85 L65 85 M65 85 L56 78 M65 85 L56 92" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <!-- Eye & Pupil -->
+                <circle cx="96" cy="78" r="6" fill="#FDE047"></circle>
+                <ellipse cx="96" cy="78" rx="1.6" ry="4.5" fill="#0F172A"></ellipse>
+                <circle cx="94.5" cy="76" r="1" fill="#FFFFFF"></circle>
+                <!-- Nostril -->
+                <circle cx="86" cy="82" r="1.2" fill="#115E59"></circle>
+              </svg>`,
+
+    'Ikan': `
+        <!-- SVG: IKAN (Solid Flat) -->
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Ikan">
+                <!-- Bubbles -->
+                <circle cx="45" cy="85" r="5" fill="#38BDF8"></circle>
+                <circle cx="35" cy="65" r="3.5" fill="#7DD3FC"></circle>
+                <circle cx="55" cy="50" r="2.5" fill="#38BDF8"></circle>
+                <!-- Dorsal Fin (Top) -->
+                <path d="M100 85 C115 50 160 55 170 82 C145 78 120 80 100 85 Z" fill="#F97316"></path>
+                <!-- Ventral Fin (Bottom) -->
+                <path d="M120 150 C135 175 160 175 165 152 C150 151 135 150 120 150 Z" fill="#F97316"></path>
+                <!-- Tail Fin -->
+                <path d="M175 120 C205 85 225 90 220 120 C225 150 205 155 175 120 Z" fill="#EA580C"></path>
+                <!-- Body -->
+                <ellipse cx="120" cy="120" rx="65" ry="38" fill="#0284C7"></ellipse>
+                <!-- White Accent Stripes -->
+                <path d="M110 84 C118 96 118 144 110 156 C116 154 124 144 122 120 C124 96 116 86 110 84 Z" fill="#FFFFFF"></path>
+                <path d="M152 92 C157 102 157 138 152 148 C156 146 161 138 160 120 C161 102 156 94 152 92 Z" fill="#FFFFFF"></path>
+                <!-- Pectoral Fin -->
+                <path d="M95 125 C85 135 90 150 105 145 C115 140 115 130 95 125 Z" fill="#FB923C"></path>
+                <!-- Eye -->
+                <circle cx="78" cy="112" r="9" fill="#FFFFFF"></circle>
+                <circle cx="76" cy="112" r="5" fill="#0F172A"></circle>
+                <circle cx="74" cy="110" r="1.8" fill="#FFFFFF"></circle>
+                <!-- Mouth -->
+                <path d="M56 122 C58 125 64 125 66 123" stroke="#082F49" stroke-width="2.5" stroke-linecap="round"></path>
+                <!-- Gills -->
+                <path d="M92 105 C98 112 98 128 92 135" stroke="#0369A1" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+              </svg>`,
+
+    'Cacing': `
+        <!-- SVG: CACING (Solid Flat) -->
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Cacing">
+                <!-- Soil Mound (Solid Dark Brown) -->
+                <ellipse cx="120" cy="185" rx="80" ry="24" fill="#543310"></ellipse>
+                <ellipse cx="90" cy="175" rx="14" ry="7" fill="#713F12"></ellipse>
+                <ellipse cx="150" cy="180" rx="18" ry="8" fill="#713F12"></ellipse>
+                <!-- Little Sprout on Ground -->
+                <path d="M170 170 Q175 155 185 155 Q180 168 172 170 Z" fill="#4ADE80"></path>
+                <path d="M170 170 Q162 160 160 150 Q168 155 170 170 Z" fill="#22C55E"></path>
+                <!-- Wavy Worm Body emerging from soil (Solid Pink/Rose) -->
+                <path d="M150 180 C155 160 145 145 135 145" stroke="#F43F5E" stroke-width="22" stroke-linecap="round" fill="none"></path>
+                <path d="M135 145 C115 145 100 120 120 95 C132 80 128 65 110 65 C95 65 85 78 85 92" stroke="#F43F5E" stroke-width="22" stroke-linecap="round" fill="none"></path>
+                <!-- Worm Body Segment Rings (Solid darker rose) -->
+                <ellipse cx="124" cy="98" rx="11" ry="3" fill="#BE123C" transform="rotate(-25 124 98)"></ellipse>
+                <ellipse cx="114" cy="120" rx="11" ry="3" fill="#BE123C" transform="rotate(30 114 120)"></ellipse>
+                <ellipse cx="140" cy="160" rx="11" ry="3" fill="#BE123C" transform="rotate(45 140 160)"></ellipse>
+                <!-- Head -->
+                <circle cx="86" cy="90" r="14" fill="#FB7185"></circle>
+                <!-- Cute Eyes -->
+                <circle cx="80" cy="86" r="4.5" fill="#FFFFFF"></circle>
+                <circle cx="79" cy="86" r="2.3" fill="#1E293B"></circle>
+                <circle cx="78" cy="85" r="0.8" fill="#FFFFFF"></circle>
+                <circle cx="90" cy="86" r="4.5" fill="#FFFFFF"></circle>
+                <circle cx="89" cy="86" r="2.3" fill="#1E293B"></circle>
+                <circle cx="88" cy="85" r="0.8" fill="#FFFFFF"></circle>
+                <!-- Smile -->
+                <path d="M81 95 Q86 100 91 95" stroke="#9F1239" stroke-width="2" stroke-linecap="round" fill="none"></path>
+                <!-- Cheeks -->
+                <circle cx="76" cy="92" r="2.5" fill="#FDA4AF"></circle>
+                <circle cx="95" cy="92" r="2.5" fill="#FDA4AF"></circle>
+              </svg>`,
+
+    'Kutu': `
+        <!-- SVG: KUTU (Solid Flat) -->
+              <svg class="max-h-full max-w-full w-auto h-auto object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Kutu">
+                <!-- Back Powerful Jumping Legs (Solid Dark Purple) -->
+                <path d="M150 145 L185 130 L195 185 L210 195" stroke="#6B21A8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <path d="M130 150 L160 160 L165 195 L175 200" stroke="#7E22CE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <!-- Front Legs -->
+                <path d="M90 145 L65 160 L60 190 L50 195" stroke="#7E22CE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <path d="M105 150 L95 170 L95 195 L90 200" stroke="#6B21A8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                <!-- Abdomen (Solid Purple) -->
+                <ellipse cx="140" cy="125" rx="42" ry="34" fill="#7E22CE"></ellipse>
+                <!-- Segment Grooves (Solid Lavender) -->
+                <path d="M125 96 C135 112 135 138 125 154" stroke="#D8B4FE" stroke-width="2.5" stroke-linecap="round"></path>
+                <path d="M145 94 C155 110 155 140 145 156" stroke="#D8B4FE" stroke-width="2.5" stroke-linecap="round"></path>
+                <path d="M165 100 C173 114 173 136 165 150" stroke="#D8B4FE" stroke-width="2.5" stroke-linecap="round"></path>
+                <!-- Thorax & Head Combined Shield (Solid Violet) -->
+                <circle cx="95" cy="120" r="26" fill="#A855F7"></circle>
+                <!-- Antennae -->
+                <path d="M82 100 C75 85 62 82 55 84" stroke="#6B21A8" stroke-width="3.5" stroke-linecap="round" fill="none"></path>
+                <circle cx="53" cy="84" r="3.5" fill="#C084FC"></circle>
+                <path d="M90 96 C88 80 80 75 74 74" stroke="#6B21A8" stroke-width="3.5" stroke-linecap="round" fill="none"></path>
+                <circle cx="73" cy="74" r="3.5" fill="#C084FC"></circle>
+                <!-- Eye -->
+                <circle cx="82" cy="116" r="7.5" fill="#FFFFFF"></circle>
+                <circle cx="80" cy="116" r="4.2" fill="#1E1B4B"></circle>
+                <circle cx="78.5" cy="114" r="1.5" fill="#FFFFFF"></circle>
+                <!-- Mouthparts -->
+                <path d="M72 128 L60 134" stroke="#581C87" stroke-width="3" stroke-linecap="round"></path>
+                <!-- Body Bristles (Solid light violet) -->
+                <path d="M178 115 L188 112 M182 128 L192 128 M176 142 L185 145" stroke="#C084FC" stroke-width="2" stroke-linecap="round"></path>
+              </svg>`
+};
+
+function renderWidgetAnimal() {
+    const animals = swadeshCore.animal;
+
+    const cardsHtml = animals.map(animalKey => {
+        const animalTitle = t('word_' + animalKey.toLowerCase()) || animalKey;
+        const illustration = animalIllustrations[animalKey] || '';
+
+        let translationListHtml = '';
+
+        if (selectedLangs.length === 0) {
+            translationListHtml = `
+                <div class="text-[11px] text-slate-400 italic text-center py-2.5">
+                    ${t('menunggu')}
+                </div>`;
+        } else {
+            translationListHtml = selectedLangs.map(code => {
+                const langInfo = typeof languageMap !== 'undefined' ? languageMap[code] : null;
+                const displayName = getLanguageDisplayName(code);
+                const translated = currentDataMap[code]?.words?.[animalKey] || '-';
+                const diakritik = currentDataMap[code]?.diakritik?.[animalKey];
+
+                let flagHtml = '';
+                if (langInfo?.icon && (typeof icons === 'undefined' || langInfo.icon !== icons.placeholder)) {
+                    flagHtml = `<span class="inline-block h-[18px] rounded-[2px] overflow-hidden flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)] bg-slate-100 dark:bg-slate-800">${langInfo.icon}</span>`;
+                }
+
+                const diakritikHtml = diakritik
+                    ? `<span class="text-[10px] text-slate-400 dark:text-slate-400 font-serif italic ml-1">[${diakritik}]</span>`
+                    : '';
+
+                return `
+                    <div class="flex flex-col items-center justify-between gap-1 py-1.5 px-2 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/50 shadow-xs">
+                        <span class="flex items-center gap-1.5 font-medium text-slate-600 dark:text-slate-300 text-[15px] truncate" title="${displayName}">
+                            ${flagHtml}
+                            <span class="truncate">${displayName}</span>
+                        </span>
+                        <div class="text-right whitespace-nowrap pl-1">
+                            <span class="font-bold text-slate-800 dark:text-slate-100 text-xl">${translated}</span>
+                            ${diakritikHtml}
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        return `
+            <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 p-4 flex flex-col items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                <!-- Ilustrasi Hewan -->
+                <div class="w-full flex items-center justify-center py-2 min-h-[105px] max-h-[250px]">
+                    ${illustration}
+                </div>
+
+                <!-- Judul Nama Hewan -->
+                <h2 class="text-xl xl:text-base font-black text-slate-800 dark:text-white uppercase tracking-wider my-2 text-center">
+                    ${animalTitle}
+                </h2>
+
+                <!-- List Terjemahan Bahasa -->
+                <div class="w-full mt-2 pt-2 border-t border-slate-200/80 dark:border-slate-700/60 space-y-1.5">
+                    ${translationListHtml}
+                </div>
+            </div>`;
+    }).join('');
+
+    return `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col transition-colors w-full">
+            <div class="bg-slate-900 dark:bg-slate-950 text-white text-xl font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
+                ${t('widget_animal') || 'HEWAN'}
+            </div>
+
+            <!-- Grid 6 Kartu Hewan (Anjing, Burung, Ular, Ikan, Cacing, Kutu) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 w-full">
+                ${cardsHtml}
             </div>
         </div>`;
 }
