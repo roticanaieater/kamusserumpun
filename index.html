@@ -154,18 +154,21 @@
             <aside id="legend-box"
                 class="w-full lg:w-72 xl:w-[290px] shrink-0 bg-bgSerumpun bg-cover bg-center bg-no-repeat text-white rounded-2xl lg:rounded-3xl p-4 sm:p-5 lg:p-4 shadow-2xl border border-slate-800 lg:sticky lg:top-4 transition-all">
                 <div class="flex items-center justify-between pb-2.5 border-b border-white-800 mb-3.5">
-                    <h2 id="legend-title" class="text-2xl font-extrabold font-sans tracking-tight text-white flex flex-col">
-                        <span>Rumpun Bahasa:</span>
-                        <div class="relative inline-block group">
-                            <a target="_blank" href="https://doi.org/10.1075%2Fdia.23062.smi" class="external text" id="mwAWo">
-                                <span id="title-desc" class="text-[12px] italic font-normal block underline decoration-dotted">Klasifikasi menurut penelitian Smith tahun 2025</span>
-                            </a>
-                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-72 px-2.5 py-1 text-sm font-medium text-serumpun-dark bg-[#fde401] rounded-md shadow-sm z-10 transition-opacity">
-                                Smith, Alexander D. (2025). "Late Malayo-Polynesian: A new model of Austronesian linguistic relations". <i>Diachronica:</i> 435-490.
-                                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#fde401]"></div>
-                            </div>
-                        </div>
-                    </h2>
+                    <h2 class="text-2xl font-extrabold font-sans tracking-tight text-white flex flex-col">
+    <!-- Beri ID atau data-i18n khusus pada span teks saja -->
+    <span id="legend-title" data-i18n="legend-title">Rumpun Bahasa:</span>
+    <div class="relative inline-block group">
+        <a target="_blank" href="https://doi.org/10.1075%2Fdia.23062.smi" class="external text" id="mwAWo">
+            <span id="title-desc" data-i18n="title-desc" class="text-[12px] italic font-normal block underline decoration-dotted">
+                Klasifikasi menurut penelitian Smith tahun 2025
+            </span>
+        </a>
+        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-72 px-2.5 py-1 text-sm font-medium text-serumpun-dark bg-[#fde401] rounded-md shadow-sm z-10 transition-opacity">
+            Smith, Alexander D. (2025). "Late Malayo-Polynesian: A new model of Austronesian linguistic relations". <i>Diachronica:</i> 435-490.
+            <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#fde401]"></div>
+        </div>
+    </div>
+</h2>
                     <button type="button" onclick="toggleLegendCollapse()" class="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg bg-slate-900 border border-slate-800">
                         <i data-lucide="chevron-down" id="legend-collapse-icon" class="w-4 h-4"></i>
                     </button>
