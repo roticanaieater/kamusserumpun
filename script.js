@@ -1,3 +1,146 @@
+// ==========================================
+// FITUR DROPDOWN PILIH BAHASA OTOMATIS
+// ==========================================
+
+function toggleLangPickerDropdown(forceClose = false) {
+    const menu = document.getElementById('lang-picker-menu');
+    const arrow = document.getElementById('lang-picker-arrow');
+    const searchInput = document.getElementById('lang-picker-search');
+    if (!menu) return;
+
+    if (forceClose || !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+    } else {
+        menu.classList.remove('hidden');
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+        if (searchInput) {
+            searchInput.value = '';
+            filterLangPickerList('');
+            setTimeout(() => searchInput.focus(), 50);
+        }
+    }
+}
+
+// Tutup dropdown jika klik di luar area
+document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('custom-lang-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        toggleLangPickerDropdown(true);
+    }
+});
+
+// Render daftar semua bahasa yang ada di languageMap secara alfabetis
+function renderLanguagePickerDropdown() {
+    const listContainer = document.getElementById('lang-picker-list');
+    if (!listContainer || typeof languageMap === 'undefined') return;
+
+    listContainer.innerHTML = '';
+
+    // Ambil seluruh bahasa yang terdaftar di languageMap
+    const languages = Object.entries(languageMap).map(([code, data]) => ({
+        code: code,
+        name: data.name || code,
+        icon: data.icon || (typeof icons !== 'undefined' ? icons.placeholder : '')
+    }));
+
+    // Urutkan secara alfabetis berdasarkan nama bahasa
+    languages.sort((a, b) => a.name.localeCompare(b.name, 'id'));
+
+    languages.forEach(lang => {
+        const isSelected = selectedLangs.includes(lang.code);
+        
+        let flagHtml = '';
+        if (lang.icon && (typeof icons === 'undefined' || lang.icon !== icons.placeholder)) {
+            flagHtml = `<span class="inline-block w-6 h-[18px] rounded-xs overflow-hidden shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)] bg-slate-100 dark:bg-slate-800 flex items-center justify-center">${lang.icon}</span>`;
+        } else {
+            flagHtml = `<span class="inline-block w-6 h-[18px] rounded-xs overflow-hidden shrink-0 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] text-slate-500 font-bold">?</span>`;
+        }
+
+        const activeClass = isSelected
+            ? 'bg-amber-400/20 text-amber-700 dark:text-amber-300 font-bold'
+            : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700/60 font-medium';
+
+        const checkIcon = isSelected 
+            ? `<i data-lucide="check" class="w-4 h-4 text-amber-500 stroke-[2.5]"></i>` 
+            : '';
+
+        listContainer.innerHTML += `
+            <li onclick="handleSelectFromDropdown('${lang.code}')" 
+                data-lang-name="${lang.name.toLowerCase()}"
+                class="flex items-center justify-between px-2.5 py-2 rounded-xl cursor-pointer transition-colors text-xs select-none ${activeClass}">
+                <div class="flex items-center gap-2.5 truncate pr-2">
+                    ${flagHtml}
+                    <span class="truncate">${lang.name}</span>
+                </div>
+                <div class="shrink-0 flex items-center">
+                    ${checkIcon}
+                </div>
+            </li>`;
+    });
+
+    updateLanguagePickerUI();
+    if (window.lucide) lucide.createIcons();
+}
+
+// Filter pencarian nama bahasa
+function filterLangPickerList(keyword) {
+    const listContainer = document.getElementById('lang-picker-list');
+    if (!listContainer) return;
+
+    const items = listContainer.querySelectorAll('li');
+    const term = keyword.trim().toLowerCase();
+
+    items.forEach(item => {
+        const langName = item.getAttribute('data-lang-name') || '';
+        if (langName.includes(term)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+// Aksi ketika item bahasa di dropdown diklik
+function handleSelectFromDropdown(langCode) {
+    // Memanggil fungsi pemilihan bahasa utama agar sinkron dengan peta & slot
+    toggleLanguage(langCode);
+    
+    // Perbarui checklist di dropdown
+    renderLanguagePickerDropdown();
+}
+
+// Perbarui teks tombol dropdown & badge counter
+function updateLanguagePickerUI() {
+    const btnText = document.getElementById('lang-picker-selected-text');
+    const countBadge = document.getElementById('picker-count-badge');
+    
+    if (countBadge) {
+        countBadge.innerText = `${selectedLangs.length}/3`;
+    }
+
+    if (btnText) {
+        if (selectedLangs.length === 0) {
+            btnText.innerHTML = `<span class="text-slate-400 dark:text-slate-500 font-normal">-- Cari atau Pilih Bahasa --</span>`;
+        } else {
+            // Tampilkan icon bendera bahasa yang sedang dipilih di tombol
+            let iconsHtml = selectedLangs.map(code => {
+                const lang = typeof languageMap !== 'undefined' ? languageMap[code] : null;
+                if (lang?.icon) {
+                    return `<span class="inline-block w-5 h-[14px] rounded-xs overflow-hidden shadow-xs">${lang.icon}</span>`;
+                }
+                return '';
+            }).join('');
+
+            btnText.innerHTML = `
+                <div class="flex items-center gap-1.5 truncate">
+                    <div class="flex items-center gap-1">${iconsHtml}</div>
+                    <span class="text-xs font-bold text-slate-800 dark:text-white truncate">${selectedLangs.length} Bahasa Terpilih</span>
+                </div>`;
+        }
+    }
+}
+
 const swadeshCore = {
     warna: [
         { key: 'Merah', hex: '#e11d48' },
@@ -12,6 +155,7 @@ const swadeshCore = {
     organlain: ['Hati', 'Jantung', 'Usus', 'Jari', 'Kuku', 'Daging', 'Darah', 'Tulang', 'Lemak'],
     animal: ['Anjing', 'Ikan', 'Burung', 'Ular', 'Cacing', 'Kutu'],
     plant: ['Pohon', 'Hutan', 'Ranting', 'Buah', 'Biji', 'Daun', 'Akar', 'Kulit Kayu', 'Rumput', 'Bunga'],
+    earth: ['Hujan', 'Sungai', 'Danau' ,'Laut', 'Garam', 'Batu', 'Pasir', 'Awan', 'Kabut', 'Tanah', 'Langit', 'Angin'],
     verb: [
         'Memegang', 'Meremas', 'Menggosok', 'Mencuci', 'Mengusap', 'Menarik', 'Mendorong',
         'Melempar', 'Mengikat', 'Menjahit', 'Memotong', 'Menusuk', 'Mencakar', 'Menggaruk',
@@ -40,90 +184,14 @@ let activeRegisters = {};
 let languageCache = {}; // Cache JSON kata
 let availableLanguageNames = [];
 
-const FALLBACK_UI_TRANSLATIONS = {
-    "id": {
-        "current-lang-text": "Indonesia",
-        "ui-desc": "Jelajahi perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.",
-        "ui-map-hint": "Klik wilayah di peta untuk memilih bahasa (Maks 3 bahasa)",
-        "ui-title-compare": "Perbandingan Bahasa Pilihan",
-        "btn-swadesh": "Kamus Swadesh",
-        "btn-list": "Daftar Kosa Kata",
-        "ui-btn-source": "Lihat Sumber",
-        "btn-compare": "Bandingkan",
-        "ui-title-bib": "Sumber & Bibliografi",
-        "ui-desc-bib": "Kumpulan data linguistik dan kosa kata swadesh pada website ini merujuk pada literatur akademis dan penelitian serumpunologi berikut:",
-        "emptyMsg": "Silakan pilih bahasa dari peta untuk memulai.",
-        "dialek": "Pilih Dialek",
-        "tingkat": "Tingkat Bahasa",
-        "menunggu": "Menunggu pilihan bahasa...",
-        "tidak_tersedia": "- Tidak tersedia -",
-        "widget_warna": "WARNA",
-        "widget_angka": "ANGKA",
-        "widget_badan": "ANATOMI TUBUH",
-        "subwidget_kepala": "Bagian Kepala",
-        "subwidget_badan": "Bagian Badan & Gerak",
-        "widget_organlain": "ORGAN & BAGIAN TUBUH",
-        "widget_animal": "FAUNA & HEWAN",
-        "widget_plant": "FLORA & TUMBUHAN",
-        "header_kata_dasar": "Kata Dasar",
-        "terpilih_label": "Terpilih:",
-        "max_lang_alert": "Maksimal memilih 3 bahasa."
-    },
-    "my": {
-        "current-lang-text": "Melayu",
-        "ui-desc": "Terokai perbandingan kosa kata bahasa-bahasa Austronesia di Nusantara.",
-        "ui-map-hint": "Klik wilayah pada peta untuk memilih bahasa (Maks 3 bahasa)",
-        "ui-title-compare": "Perbandingan Bahasa Pilihan",
-        "btn-swadesh": "Kamus Swadesh",
-        "btn-list": "Senarai Kosa Kata",
-        "ui-btn-source": "Lihat Sumber",
-        "btn-compare": "Bandingkan",
-        "ui-title-bib": "Sumber & Bibliografi",
-        "ui-desc-bib": "Kumpulan data linguistik dan kosa kata swadesh pada laman web ini merujuk kepada literatur akademik dan penyelidikan serumpunologi berikut:",
-        "emptyMsg": "Sila pilih bahasa dari peta untuk bermula.",
-        "dialek": "Pilih Dialek",
-        "tingkat": "Tahap Bahasa",
-        "menunggu": "Menunggu pilihan bahasa...",
-        "tidak_tersedia": "- Tidak tersedia -",
-        "widget_warna": "WARNA",
-        "widget_angka": "ANGKA",
-        "widget_badan": "ANATOMI BADAN",
-        "subwidget_kepala": "Bahagian Kepala",
-        "subwidget_badan": "Bahagian Badan & Gerak",
-        "widget_organlain": "ORGAN & RUAS BADAN",
-        "widget_animal": "HAIWAN",
-        "widget_plant": "TUMBUHAN",
-        "header_kata_dasar": "Kata Dasar",
-        "terpilih_label": "Dipilih:",
-        "max_lang_alert": "Maksimum memilih 3 bahasa sahaja."
-    },
-    "en": {
-        "current-lang-text": "English",
-        "ui-desc": "Explore the vocabulary comparison of Austronesian languages in the Archipelago.",
-        "ui-map-hint": "Click regions on the map to select languages (Max 3 languages)",
-        "ui-title-compare": "Comparison of Selected Languages",
-        "btn-swadesh": "Swadesh Dictionary",
-        "btn-list": "Vocabulary List",
-        "ui-btn-source": "View Sources",
-        "btn-compare": "Compare",
-        "ui-title-bib": "Sources & Bibliography",
-        "ui-desc-bib": "The collection of linguistic data and Swadesh vocabulary on this website refers to the following academic literature and cognate research:",
-        "emptyMsg": "Please select languages from the map to start.",
-        "dialek": "Select Dialect",
-        "tingkat": "Language Register",
-        "menunggu": "Waiting for language selection...",
-        "tidak_tersedia": "- Not available -",
-        "widget_warna": "COLOR",
-        "widget_angka": "NUMBER",
-        "widget_badan": "BODY ANATOMY",
-        "subwidget_kepala": "Head Region",
-        "subwidget_badan": "Torso & Limbs",
-        "widget_organlain": "INTERNAL ORGANS & BODY PARTS",
-        "widget_animal": "ANIMALS",
-        "widget_plant": "PLANTS",
-        "header_kata_dasar": "Root Word",
-        "terpilih_label": "Selected:",
-        "max_lang_alert": "Maximum 3 languages can be selected."
+let tableSortOrder = 'asc';
+
+window.toggleTableSortOrder = function () {
+    tableSortOrder = tableSortOrder === 'asc' ? 'desc' : 'asc';
+    const container = document.getElementById('dictionary-container');
+    if (container && viewMode === 'list') {
+        container.innerHTML = generatePopulatedTableView(currentDataMap);
+        if (window.lucide) lucide.createIcons();
     }
 };
 
@@ -168,6 +236,8 @@ window.onload = async () => {
 
     if (typeof languageMap !== 'undefined') {
         availableLanguageNames = Object.values(languageMap).map(lang => lang.name).sort();
+        // Render dropdown daftar bahasa
+        renderLanguagePickerDropdown();
     }
 
     const modalOverlay = document.getElementById('report-modal-overlay');
@@ -305,7 +375,9 @@ function resetSelection() {
     const titleCompare = document.getElementById('ui-title-compare');
     if (titleCompare) {
         window.scrollTo({ top: titleCompare.offsetTop - 50, behavior: 'smooth' });
-    }
+    };
+
+    renderLanguagePickerDropdown();
 }
 
 let currentZoom = 1;
@@ -415,6 +487,8 @@ function toggleLanguage(langCode) {
     } else {
         renderEmptyDictionary();
     }
+
+    renderLanguagePickerDropdown();
 }
 
 function updateStickyBar() {
@@ -495,7 +569,7 @@ function updateDropdownsUI() {
         if (langInfo && langInfo.dialects) {
             hasDialect = true;
             activeDialectObj = langInfo.dialects[activeDialects[code]];
-            let selectHTML = `<select class="custom-select bg-slate-700 text-sm font-medium rounded px-2 py-1" onchange="handleDialectChange('${code}', this.value)">`;
+            let selectHTML = `<select class="custom-select bg-[#323a42] dark:bg-[#e2e8f0] text-sm font-medium rounded px-2 py-1" onchange="handleDialectChange('${code}', this.value)">`;
             for (let [k, v] of Object.entries(langInfo.dialects)) {
                 selectHTML += `<option value="${k}" ${activeDialects[code] === k ? 'selected' : ''}>${langInfo.name} (${v.name})</option>`;
             }
@@ -772,7 +846,7 @@ function renderWidgetWarna() {
     return `
         <div class="bg-white dark:bg-slate-800 h-full rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col items-center justify-between transition-colors">
             <div class="w-full flex flex-col items-center">
-                <div class="bg-[#1b242d] dark:bg-[#fde401] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">${t('widget_warna')}</div>
+                <div class="bg-[#1b242d] dark:bg-[#e2e8f0] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">${t('widget_warna')}</div>
                 <h3 class="text-3xl md:text-4xl font-black text-slate-800 dark:text-white uppercase tracking-tight mb-8 relative">
                     ${t('word_' + activeWarna.toLowerCase())}
                     <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-800 dark:bg-slate-400 rounded-full"></div>
@@ -811,7 +885,7 @@ function renderWidgetAngka() {
     return `
         <div class="bg-white dark:bg-slate-800 h-full rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col items-center justify-between transition-colors">
             <div class="w-full flex flex-col items-center">
-                <div class="bg-[#1b242d] dark:bg-[#fde401] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">${t('widget_angka')}</div>
+                <div class="bg-[#1b242d] dark:bg-[#e2e8f0] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">${t('widget_angka')}</div>
                 <h3 class="text-3xl md:text-4xl font-black text-slate-800 dark:text-white uppercase tracking-tight mb-8 relative">
                     ${t('word_' + activeAngka.toLowerCase())}
                     <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-slate-800 dark:bg-slate-400 rounded-full"></div>
@@ -1164,7 +1238,7 @@ function renderWidgetAnggotaBadan() {
 
     return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col transition-colors w-full">
-            <div class="bg-[#1b242d] dark:bg-[#fde401] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
+            <div class="bg-[#1b242d] dark:bg-[#e2e8f0] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
                 ${t('widget_badan')}
             </div>
 
@@ -1636,7 +1710,7 @@ function renderWidgetAnimal() {
 
     return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col transition-colors w-full">
-            <div class="bg-[#1b242d] dark:bg-[#fde401] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
+            <div class="bg-[#1b242d] dark:bg-[#e2e8f0] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
                 ${t('widget_animal') || 'HEWAN'}
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 w-full">
@@ -1916,7 +1990,7 @@ function renderWidgetPlant() {
 
     return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 flex flex-col transition-colors w-full">
-            <div class="bg-[#1b242d] dark:bg-[#fde401] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
+            <div class="bg-[#1b242d] dark:bg-[#e2e8f0] text-white dark:text-[#1b242d] text-lg font-bold uppercase tracking-widest px-10 py-2.5 rounded-xl mb-8 shadow-inner self-center">
                 ${t('widget_plant') || 'FLORA & TUMBUHAN'}
             </div>
 
@@ -1968,7 +2042,9 @@ function generateTranslationRows(wordKey, dataMap) {
 
 function generatePopulatedTableView(dataMap) {
     const warnaKeys = swadeshCore.warna.map(w => w.key);
-    const allWords = [
+    
+    // Gabungkan seluruh kata dasar dan hilangkan duplikasi (jika ada)
+    const rawWords = [
         ...warnaKeys,
         ...swadeshCore.angka,
         ...swadeshCore.kepala,
@@ -1977,25 +2053,75 @@ function generatePopulatedTableView(dataMap) {
         ...swadeshCore.animal,
         ...swadeshCore.plant
     ];
+    const allWords = [...new Set(rawWords)];
 
-    let headers = `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">${t('header_kata_dasar')}</th>`;
-    selectedLangs.forEach(code => {
-        const displayName = getLanguageDisplayName(code);
-        headers += `<th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700">${displayName}</th>`;
+    // Pemetaan locale untuk Bahasa Indonesia (id), Melayu (ms), dan Inggris (en)
+    const localeMap = {
+        'id': 'id',
+        'my': 'ms',
+        'en': 'en'
+    };
+    const activeLocale = localeMap[currentLangUI] || 'id';
+
+    // Urutkan secara alfabetis berdasarkan teks terjemahan bahasa UI yang sedang aktif
+    allWords.sort((keyA, keyB) => {
+        const wordA = t('word_' + keyA.toLowerCase(), currentLangUI);
+        const wordB = t('word_' + keyB.toLowerCase(), currentLangUI);
+        const comparison = wordA.localeCompare(wordB, activeLocale, { sensitivity: 'base' });
+        return tableSortOrder === 'asc' ? comparison : -comparison;
     });
 
+    // Header kolom Kata Dasar dengan tombol toggle sortir A-Z / Z-A
+    const sortBadgeText = tableSortOrder === 'asc' ? 'A → Z' : 'Z → A';
+    const sortIconName = tableSortOrder === 'asc' ? 'arrow-down-a-z' : 'arrow-up-z-a';
+
+    let headers = `
+        <th onclick="toggleTableSortOrder()" class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 cursor-pointer select-none hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+            <div class="flex items-center justify-between gap-3">
+                <span>${t('header_kata_dasar')}</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-400 text-slate-900 shadow-xs">
+                    <span>${sortBadgeText}</span>
+                    <i data-lucide="${sortIconName}" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                </span>
+            </div>
+        </th>`;
+
+    // Header untuk setiap bahasa terpilih beserta benderanya
+    selectedLangs.forEach(code => {
+        const langInfo = typeof languageMap !== 'undefined' ? languageMap[code] : null;
+        const displayName = getLanguageDisplayName(code);
+
+        let flagHtml = '';
+        if (langInfo?.icon && (typeof icons === 'undefined' || langInfo.icon !== icons.placeholder)) {
+            flagHtml = `<span class="inline-block h-[18px] rounded-[2px] overflow-hidden flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)] bg-slate-100 dark:bg-slate-800">${langInfo.icon}</span>`;
+        }
+
+        headers += `
+            <th class="py-3 px-4 text-left font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 whitespace-nowrap">
+                <div class="flex items-center gap-2">
+                    ${flagHtml}
+                    <span>${displayName}</span>
+                </div>
+            </th>`;
+    });
+
+    // Render baris data tabel
     let rows = allWords.map((word, i) => {
-        const displayWord = t('word_' + word.toLowerCase());
+        const displayWord = t('word_' + word.toLowerCase(), currentLangUI);
         const bg = i % 2 === 0 ? 'bg-white dark:bg-serumpun-dark' : 'bg-slate-50 dark:bg-slate-800/50';
-        let cells = `<td class="py-3 px-4 text-slate-800 dark:text-slate-300 font-bold border-t border-slate-200 dark:border-slate-700">${displayWord}</td>`;
+        let cells = `<td class="py-3 px-4 text-slate-800 dark:text-slate-200 font-bold border-t border-slate-200 dark:border-slate-700">${displayWord}</td>`;
 
         selectedLangs.forEach(code => {
             const translated = dataMap[code]?.words?.[word] || '-';
             const diakritik = dataMap[code]?.diakritik?.[word];
-            const diakritikHtml = diakritik ? `<span class="text-xs text-slate-400 dark:text-slate-500 italic block font-serif">[${diakritik}]</span>` : '';
+            const diakritikHtml = diakritik 
+                ? `<span class="text-xs text-slate-400 dark:text-slate-500 italic block font-serif">[${diakritik}]</span>` 
+                : '';
+
             cells += `<td class="py-3 px-4 text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700">${translated} ${diakritikHtml}</td>`;
         });
-        return `<tr class="${bg} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">${cells}</tr>`;
+
+        return `<tr class="${bg} hover:bg-amber-500/10 transition-colors">${cells}</tr>`;
     }).join('');
 
     return `
