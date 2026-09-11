@@ -49,7 +49,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.5"
-     inkscape:cx="434"
+     inkscape:cx="517"
      inkscape:cy="523"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
@@ -66,10 +66,10 @@
        id="rect7"
        x="-0.19904813"
        y="0.00061987247"
-       style="fill:#fec60f;stroke-width:0.999994;fill-opacity:1"
+       style="fill:#fec60f;fill-opacity:1;stroke-width:0.999994"
        height="100%"
-       ry="160.8772"
-       rx="163.8772" /><g
+       ry="0"
+       rx="0" /><g
        id="g2"
        transform="matrix(0.70443029,0,0,0.70443029,1048.7056,74.063714)"><path
          style="display:inline;fill:#f8ebd6"
