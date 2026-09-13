@@ -1,6 +1,10 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "language": "Jawa Surabayanan",
+=======
+  "language": "Jawa Surabaya",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
   "language": "Jawa Surabaya",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -22,7 +26,11 @@
     "Kapan": "kapan, suk kapan",
     "Bagaimana": "kepiyé, piyé, yak-apa, yok-apa",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Tidak": "gak/igak",
+=======
+    "Tidak": "dudu, gak, igak",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Tidak": "dudu, gak, igak",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -32,7 +40,11 @@
     "Sedikit": "sithik, thithik, dumil",
     "Lain": "séjé, liya, bédha",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Satu": "sitok/situk, siji, tunggal",
+=======
+    "Satu": "sitok, situk, siji, tunggal",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Satu": "sitok, situk, siji, tunggal",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -47,7 +59,11 @@
     "Berat": "abot, antep",
     "Kecil": "cilik",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Pendek": "cindheg, cendheg, cendhek; pendhèk, cendhèk",
+=======
+    "Pendek": "cindheg, cendheg, cendhek, pendhèk, cendhèk",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Pendek": "cindheg, cendheg, cendhek, pendhèk, cendhèk",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -56,17 +72,23 @@
     "Perempuan": "wèdok",
     "Laki-laki": "lanang",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Orang": "wong/uwong, menungsa",
     "Anak": "anak",
     "Istri": "bojo wèdok, wèdokan",
     "Suami": "bojo lanang, lanangan",
     "Ibu": "embok/mbok, emak/mak",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Orang": "wong, uwong, menungsa",
     "Anak": "anak",
     "Istri": "bojo wèdok, wèdokan",
     "Suami": "bojo lanang, lanangan",
     "Ibu": "embok, mbok, emak, mak",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Ayah": "bapak",
     "Hewan": "kéwan",
@@ -77,17 +99,23 @@
     "Ular": "ula",
     "Cacing": "cacing",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Pohon": "wit/uwit",
     "Hutan": "alas, kebon",
     "Ranting": "pang",
     "Buah": "woh",
     "Biji": "iji, wos/uwos",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Pohon": "wit, uwit",
     "Hutan": "alas, kebon",
     "Ranting": "pang",
     "Buah": "woh",
     "Biji": "iji, wos, uwos",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Daun": "godhong",
     "Akar": "oyot",
@@ -100,8 +128,13 @@
     "Darah": "getih, getèh",
     "Tulang": "balung",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Lemak": "gajih/gajèh",
     "Telur": "endhok/ndhok",
+=======
+    "Lemak": "gajih, gajèh",
+    "Telur": "endhok, ndhok",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Lemak": "gajih, gajèh",
     "Telur": "endhok, ndhok",
@@ -111,7 +144,11 @@
     "Bulu": "ulu",
     "Rambut": "rambut",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Kepala": "endhas/ndhas",
+=======
+    "Kepala": "endhas, ndhas",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Kepala": "endhas, ndhas",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -124,7 +161,11 @@
     "Kuku": "kuku",
     "Kaki": "sikil",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Tungkai": "dlamakan",
+=======
+    "Tungkai": "sikil",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Tungkai": "sikil",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -150,15 +191,21 @@
     "Lihat": "delok, dengok, sawang",
     "Dengar": "rungu, ringi",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Tahu": "eroh/eruh",
     "Pikir": "pikir",
     "Cium": "ambus, ambu, ambung",
     "Takut": "wedi, jirih/jerih/jirèh, licik",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Tahu": "eroh, eruh",
     "Pikir": "pikir",
     "Cium": "ambus, ambu, ambung",
     "Takut": "wedi, jirih, jerih, jirèh, licik",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Tidur": "turu",
     "Hidup": "urip",
@@ -167,15 +214,21 @@
     "Berkelahi": "tukar, gelut",
     "Berburu": "incer",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Pukul": "thuthuk; gepuk",
     "Potong": "kethok",
     "Belah": "sigar, paro/paruh, dum",
     "Tusuk": "suduk/sunduk, coblos/cubles",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Pukul": "thuthuk, gepuk",
     "Potong": "kethok",
     "Belah": "sigar, paro, paruh, dum",
     "Tusuk": "suduk, sunduk, coblos, cubles",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Gores": "corèt",
     "Gali": "kedhuk, dhudhuk",
@@ -185,6 +238,7 @@
     "Datang": "teka",
     "Berbaring": "lumah",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Duduk": "lungguh/lunggoh, dhemeg",
     "Berdiri": "adeg",
     "Berputar": "ènggok",
@@ -193,6 +247,8 @@
     "Pegang": "jekel, jeket, cekel, gecel/gucel, gejeg/gujeg, gecet/gucet",
     "Peras": "peres (mêrês)",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Duduk": "lungguh, lunggoh, dhemeg",
     "Berdiri": "adeg",
     "Berputar": "ènggok",
@@ -200,6 +256,9 @@
     "Beri": "kèk, wèh",
     "Pegang": "jekel, jeket, cekel, gecel, gucel, gejeg, gujeg, gecet, gucet",
     "Peras": "peres, meres",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Gosok": "gosok",
     "Cuci": "umbah",
@@ -217,7 +276,11 @@
     "Mengalir": "ili",
     "Membeku": "kaku",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Membengkak": "aboh/abuh",
+=======
+    "Membengkak": "aboh, abuh",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Membengkak": "aboh, abuh",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -250,7 +313,11 @@
     "Hijau": "ijo",
     "Kuning": "kuning",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Putih": "putih/putèh",
+=======
+    "Putih": "putih, putèh",
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
 =======
     "Putih": "putih, putèh",
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
@@ -261,6 +328,7 @@
     "Hangat": "anget",
     "Dingin": "anyep, adhem, atis",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Penuh": "bek/beg, kebek/kebak",
     "Baru": "anyar",
     "Tua": "lawas, suwi/suwé",
@@ -269,6 +337,8 @@
     "Busuk": "bosok",
     "Kotor": "rusuh/rusoh, reged, rumbuk",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Penuh": "bek, beg, kebek, kebak",
     "Baru": "anyar",
     "Tua": "lawas, suwi, suwé",
@@ -276,6 +346,9 @@
     "Buruk": "èlèk",
     "Busuk": "bosok",
     "Kotor": "rusuh, rusoh, reged, rumbuk",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Lurus": "lempeng",
     "Bulat": "bunder",
@@ -290,15 +363,21 @@
     "Kanan": "tengen",
     "Kiri": "kiwa",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Di": "nang, nak/nuk, ndhik, ndhuk/ndhuluk",
     "Dalam": "jero",
     "Dengan": "ambi, ambik/mbik, mbarèk",
     "Dan": "ambi, ambik/mbik, mbarèk",
 =======
+=======
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Di": "nang, nak, nuk, ndhik, ndhuk, ndhuluk",
     "Dalam": "jero",
     "Dengan": "ambi, ambik, mbik, mbarèk",
     "Dan": "ambi, ambik, mbik, mbarèk",
+<<<<<<< HEAD
+>>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
+=======
 >>>>>>> 0b61505e4be76f846b0c08c5a14a6c624f93bbc1
     "Kalau": "nik, lik",
     "Karena": "merga, polahé, lakaré",
