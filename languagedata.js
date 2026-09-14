@@ -246,6 +246,13 @@ const languageMap = {
     'kxd': { name: 'Melayu Brunei', icon: icons.brunei, file: 'bahasa/kxd.json' },
     'iba': { name: 'Dayak Iban', icon: icons.iban, file: 'bahasa/iba.json' },
     'nij': { name: 'Dayak Ngaju', icon: icons.ngaju, file: 'bahasa/nij.json' },
+    'kenyah': {
+        name: 'Dayak Kenyah',
+        icon: icons.placeholder,
+        dialects: {
+            'standard': { name: 'Mainstream', file: 'bahasa/xkl.json' },
+        }
+    },
     'dtp': {
         name: 'Kadazan-Dusun',
         icon: icons.kadazan,
