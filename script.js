@@ -155,7 +155,7 @@ const swadeshCore = {
     organlain: ['Hati', 'Jantung', 'Usus', 'Jari', 'Kuku', 'Daging', 'Darah', 'Tulang', 'Lemak'],
     animal: ['Anjing', 'Ikan', 'Burung', 'Ular', 'Cacing', 'Kutu'],
     plant: ['Pohon', 'Hutan', 'Ranting', 'Buah', 'Biji', 'Daun', 'Akar', 'Kulit Kayu', 'Rumput', 'Bunga'],
-    earth: ['Hujan', 'Sungai', 'Danau' ,'Laut', 'Garam', 'Batu', 'Pasir', 'Awan', 'Kabut', 'Tanah', 'Langit', 'Angin'],
+    earth: ['Hujan', 'Sungai', 'Danau' ,'Laut', 'Garam', 'Batu', 'Pasir', 'Awan', 'Kabut', 'Tanah', 'Langit', 'Angin', 'Gunung'],
     verb: [
         'Memegang', 'Meremas', 'Menggosok', 'Mencuci', 'Mengusap', 'Menarik', 'Mendorong',
         'Melempar', 'Mengikat', 'Menjahit', 'Memotong', 'Menusuk', 'Mencakar', 'Menggaruk',
@@ -738,6 +738,9 @@ async function fetchAndRenderDictionary() {
             <!-- Grid 4: Tumbuhan / Flora (Format Kartu) -->
             <div class="relative rounded-3xl mb-8">
                 <div id="widget-plant-container">${renderWidgetPlant()}</div>
+            </div>
+            <div class="relative rounded-3xl mb-8">
+                <div id="widget-earth-container">${renderWidgetEarth()}</div>
             </div>
         `;
     } else {
@@ -1978,6 +1981,10 @@ function renderWidgetPlant() {
                 ${cardsHtml}
             </div>
         </div>`;
+}
+
+function renderWidgetEarth() {
+    
 }
 
 function generatePopulatedCardGroup(title, words, dataMap) {
