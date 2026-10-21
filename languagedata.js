@@ -314,6 +314,7 @@ const languageMap = {
     'mdr': { name: 'Mandar', icon: icons.placeholder, file: 'bahasa/mdr.json', biblio: '<strong>Muthalib, Abdul.</strong> (1977). <em>Kamus Bahasa Mandar - Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
     'lew': { name: 'Kaili Ledo', icon: icons.placeholder, file: 'bahasa/lew.json' },
     'loe': { name: 'Saluan', icon: icons.placeholder, file: 'bahasa/loe.json' },
+    'blz': { name: 'Balantak', icon: icons.placeholder, file: 'bahasa/blz.json' },
     'lbw': { name: 'Tolaki', icon: icons.tolaki, file: 'bahasa/lbw.json', biblio: '<strong>Muthalib, Abdul, Alimuddin D.P., Husen Chalik, & Arsamid.</strong> (1985). <em>Kamus Tolaki – Indonesia</em>. Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan, Jakarta.' },
     'mnb': { name: 'Muna', icon: icons.muna, file: 'bahasa/mnb.json' },
     'gor': { name: 'Gorontalo', icon: icons.gorontalo, file: 'bahasa/gor.json' },
